@@ -9,7 +9,7 @@ The ACTUS Dictionary provides the definition of terms of the ACTUS standard for 
 
 It comes in two forms; Excel for human readability and JSON for programmatic integration.
 
-# Generate JSON dictionary
+## Generate JSON dictionary
 
 The JSON dictionary (actus-dictionary.json) is derived from the Excel dictionary (actus-dictionary.xlsx) through the R script in the scripts folder. Compute the JSON dictionary as described below.
 
