@@ -8,3 +8,21 @@ ACTUS Dictionary
 The ACTUS Dictionary provides the definition of terms of the ACTUS standard for the algorithmic representation of financial contracts.
 
 It comes in two forms; Excel for human readability and JSON for programmatic integration.
+
+# Generate JSON dictionary
+
+The JSON dictionary (actus-dictionary.json) is derived from the Excel dictionary (actus-dictionary.xlsx) through the R script in the scripts folder. Compute the JSON dictionary as described below.
+
+## Requirements
+* `java`: v8.0
+* `R`: v3.4.4
+* `jsonlite`: from CRAN
+* `magrittr`: from CRAN
+* `readr`: from CRAN
+* `xlsx`: from CRAN
+
+## Execute
+```sh
+# scripts/
+Rscript create-dictionary.R
+```
