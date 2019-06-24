@@ -7,4 +7,4 @@ ACTUS Dictionary
 
 The ACTUS Dictionary provides the definition of terms of the ACTUS standard for the algorithmic representation of financial contracts.
 
-It comes in two forms; an Excel file for human readability and json forms that are derived from the Excel file for programmatic integration.
+It comes in two forms; Excel for human readability and JSON for programmatic integration.
