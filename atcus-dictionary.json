@@ -335,7 +335,7 @@
       "group": "Interest",
       "name": "Array Cycle Anchor Date Of Interest Payment",
       "accronym": "ARIPANXi",
-      "type": "[Timestamp,Timestamp,…]",
+      "type": "Timestamp[]",
       "allowedValues": ["ISO8601 Datetime"],
       "default": "",
       "description": "Same like IPANX but as array"
@@ -345,7 +345,7 @@
       "group": "Notional Principal",
       "name": "Array Cycle Anchor Date Of Principal Redemption",
       "accronym": "ARPRANXj",
-      "type": "[Timestamp,Timestamp,…]",
+      "type": "Timestamp[]",
       "allowedValues": [],
       "default": "",
       "description": "Same like PRANX but as array"
@@ -355,7 +355,7 @@
       "group": "Rate Reset",
       "name": "Array Cycle Anchor Date Of Rate Reset",
       "accronym": "ARRRANX",
-      "type": "[Timestamp,Timestamp,…]",
+      "type": "Timestamp[]",
       "allowedValues": [],
       "default": "",
       "description": "Same like RRANX but as array"
@@ -365,7 +365,7 @@
       "group": "Interest",
       "name": "Array Cycle Of Interest Payment",
       "accronym": "ARIPCLi",
-      "type": "[Cycle,Cycle,…]",
+      "type": "Cycle[]",
       "allowedValues": [],
       "default": "",
       "description": "Same like IPCL but as array"
@@ -375,7 +375,7 @@
       "group": "Notional Principal",
       "name": "Array Cycle Of Principal Redemption",
       "accronym": "ARPRCLj",
-      "type": "[Cycle,Cycle,…]",
+      "type": "Cycle[]",
       "allowedValues": [],
       "default": "",
       "description": "Same like PRCL but as array"
@@ -385,7 +385,7 @@
       "group": "Rate Reset",
       "name": "Array Cycle Of Rate Reset",
       "accronym": "ARRRCL",
-      "type": "[Cycle,Cycle,…]",
+      "type": "Cycle[]",
       "allowedValues": [],
       "default": "",
       "description": "Same like RRCL but as array"
@@ -395,7 +395,7 @@
       "group": "Rate Reset",
       "name": "Array Fixed Variable",
       "accronym": "ARFIXVAR",
-      "type": "[ Enum, Enum, ...]",
+      "type": "Enum[]",
       "allowedValues": ["F","V"],
       "default": "",
       "description": "For array-type rate reset schedules, this attributes defines the meaning of ARRATE."
@@ -405,7 +405,7 @@
       "group": "Notional Principal",
       "name": "Array Increase Decrease",
       "accronym": "ARINCDEC",
-      "type": "[Enum,Enum,…]",
+      "type": "Enum[]",
       "allowedValues": ["INC","DEC"],
       "default": "",
       "description": "Indicates whether a certain PRNXT element in ARPRNX increases the principal (NT) or decreases it.nApplies only for ANX, NAX, LAX Maturity CTs. For all other Maturity CTs the first principal payment is always in the opposite direction of all other (following) payments. "
@@ -415,7 +415,7 @@
       "group": "Notional Principal",
       "name": "Array Next Principal Redemption Payment",
       "accronym": "ARPRNXTj",
-      "type": "[Real,Real,…]",
+      "type": "Real[]",
       "allowedValues": [],
       "default": "",
       "description": "Same like PRNXT but as array"
@@ -425,7 +425,7 @@
       "group": "Rate Reset",
       "name": "Array Rate",
       "accronym": "ARRATE",
-      "type": "[Real,Real,…]",
+      "type": "Real[]",
       "allowedValues": [],
       "default": "",
       "description": "For array-type rate reset schedules, this attribute represents either an interest rate (corresponding to IPNR) or a spread (corresponding to RRSP). Which case applies depends on the attribute ARFIXVAR: if ARFIXVAR=”FIX” then it represents the new IPNR and if ARFIXVAR=”VAR” then the applicable RRSP."
