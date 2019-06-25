@@ -19,45 +19,68 @@ states = read.xlsx(paste0(excel_path,"actus-dictionary.xlsx"), sheetName="States
 events = read.xlsx(paste0(excel_path,"actus-dictionary.xlsx"), sheetName="Events", header=TRUE)
 
 # format column names
-colnames(taxonomy)=gsub("."," ",colnames(taxonomy),fixed=TRUE)
-colnames(terms)=gsub("."," ",colnames(terms),fixed=TRUE)
-colnames(states)=gsub("."," ",colnames(states),fixed=TRUE)
-colnames(events)=gsub("."," ",colnames(events),fixed=TRUE)
-
-# convert enum values to json array
-terms$'Allowed Values' = sapply(sapply(sapply(sapply(terms$'Allowed Values',strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1]))),toJSON)
-
-# remove NA strings
-terms[which(terms$Type!="Enum"),"Allowed Values"]=""
+tocamel=function(x,delim=" ") {
+	s <- strsplit(x, split=delim,fixed=TRUE)
+	sapply(s, function(y) {
+		if (any(is.na(y))) {
+		    y
+		}
+		else {
+		    first <- substring(y, 1, 1)
+		    first <- toupper(first)
+		    first[1] <- tolower(first[1])
+		    paste(first, substring(y, 2), sep = "", collapse = "")
+		}
+	    })
+}
+colnames(taxonomy)=tocamel(colnames(taxonomy),delim=".")
+colnames(terms)=tocamel(colnames(terms),delim=".")
+colnames(states)=tocamel(colnames(states),delim=".")
+colnames(events)=tocamel(colnames(events),delim=".")
 
 # create dictionary base structure
-dictionary = toJSON(unbox(data.frame(Taxonomy="TODO taxonomy",Terms="TODO terms",Applicability="TODO applicability",Events="TODO events",States="TODO states")),auto_unbox=TRUE,pretty=TRUE)
+dictionary = toJSON(unbox(data.frame(taxonomy="TODO taxonomy",terms="TODO terms",applicability="TODO applicability",events="TODO events",states="TODO states")),auto_unbox=TRUE,pretty=TRUE)
 
 # add taxonomy
-dictionary = gsub("\"TODO taxonomy\"", unbox(toJSON(lapply(split(taxonomy,taxonomy$Identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
+dictionary = gsub("\"TODO taxonomy\"", unbox(toJSON(lapply(split(taxonomy,taxonomy$identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
 
 # add terms as sub-json
-terms_sub=terms[,c("Identifier", "Group", "Name", "Accronym", "Type", "Allowed Values", "Default", "Description")]
+terms_sub=terms[,c("identifier", "group", "name", "accronym", "type", "allowedValues", "default", "description")]
 
-dictionary = gsub("\"TODO terms\"", unbox(toJSON(lapply(split(terms_sub,terms_sub$Identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
+# -> convert enum values to json array
+terms_sub$allowedValues = sapply(sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1]))),toJSON)
+
+# -> format null-arrays and NA strings
+terms_sub[which(is.na(terms_sub$default)),"default"]=""
+terms_sub[which(terms_sub$allowedValues=="[null]"),"allowedValues"]="[]"
+
+dictionary = gsub("\"TODO terms\"", unbox(toJSON(lapply(split(terms_sub,terms_sub$identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
 
 # add applicability
-applic_sub=as.data.frame(t(terms[,-which(colnames(terms)%in%c("Identifier","Group","Name","Accronym","Type","Allowed Values","Default","Description","CNTRL Sensitive"))]))
+applic_sub=as.data.frame(t(terms[,-which(colnames(terms)%in%c("identifier","group","name","accronym","type","allowedValues","default","description","cNTRLSensitive"))]))
 applic_sub=cbind(rownames(applic_sub),applic_sub)
-colnames(applic_sub) = c("Contract",terms$Identifier)
+colnames(applic_sub) = tocamel(c("Contract",terms$identifier))
 rownames(applic_sub) = NULL
 
-dictionary = gsub("\"TODO applicability\"", unbox(toJSON(lapply(split(applic_sub,applic_sub$Contract),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
+dictionary = gsub("\"TODO applicability\"", unbox(toJSON(lapply(split(applic_sub,applic_sub$contract),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
 
 # add events
-dictionary = gsub("\"TODO events\"", unbox(toJSON(lapply(split(events,events$Identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
+dictionary = gsub("\"TODO events\"", unbox(toJSON(lapply(split(events,events$identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
 
 # add states
-dictionary = gsub("\"TODO states\"", unbox(toJSON(lapply(split(states,states$Identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
+# -> convert enum values to json array
+states$allowedValues = sapply(sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1]))),toJSON)
+
+# -> format null-arrays and NA strings
+states[which(states$allowedValues=="[null]"),"allowedValues"]="[]"
+
+dictionary = gsub("\"TODO states\"", unbox(toJSON(lapply(split(states,states$identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
 
 # clean up form
 dictionary = gsub("\"[\"", "[\"", dictionary,fixed=TRUE)
 dictionary = gsub("\"]\"", "\"]", dictionary,fixed=TRUE)
+dictionary = gsub("\"[]\"", "[]", dictionary,fixed=TRUE)
+
 
 # export final form
 dictionary %>% write_lines(paste0(json_path,'atcus-dictionary.json'))
