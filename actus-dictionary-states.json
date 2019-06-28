@@ -18,7 +18,7 @@
         "accronym": "ICB",
         "description": "The basis at which interest is being accrued. Potentially different from NVL.",
         "type": "Real",
-        "allowedValues": null
+        "allowedValues": []
     },
     "interestScalingMultiplier": {
         "identifier": "interestScalingMultiplier",
@@ -26,7 +26,7 @@
         "accronym": "ISC",
         "description": "The multiplier being applied to interest cash flows",
         "type": "Real",
-        "allowedValues": null
+        "allowedValues": []
     },
     "lastEventDate": {
         "identifier": "lastEventDate",
@@ -42,7 +42,7 @@
         "accronym": "NPR",
         "description": "The value at which principal is being repaid. This may be including or excluding of interest depending on the Contract Type",
         "type": "Real",
-        "allowedValues": null
+        "allowedValues": []
     },
     "nominalAccrued": {
         "identifier": "nominalAccrued",
@@ -50,7 +50,7 @@
         "accronym": "NAC",
         "description": "The current value of nominal interest accrued",
         "type": "Real",
-        "allowedValues": null
+        "allowedValues": []
     },
     "nominalRate": {
         "identifier": "nominalRate",
@@ -58,7 +58,7 @@
         "accronym": "NRT",
         "description": "The applicable nominal rate",
         "type": "Real",
-        "allowedValues": null
+        "allowedValues": []
     },
     "nominalValue": {
         "identifier": "nominalValue",
@@ -66,7 +66,7 @@
         "accronym": "NVL",
         "description": "The outstanding nominal value",
         "type": "Real",
-        "allowedValues": null
+        "allowedValues": []
     },
     "notionalScalingMultiplier": {
         "identifier": "notionalScalingMultiplier",
@@ -74,7 +74,7 @@
         "accronym": "NSC",
         "description": "The multiplier being applied to principal cash flows",
         "type": "Real",
-        "allowedValues": null
+        "allowedValues": []
     },
     "payoffAtSettlement": {
         "identifier": "payoffAtSettlement",
@@ -82,7 +82,7 @@
         "accronym": "POS",
         "description": "The payoff of the contract if fixed at event time.",
         "type": "Real",
-        "allowedValues": null
+        "allowedValues": []
     }
 }
 

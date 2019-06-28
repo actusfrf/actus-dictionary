@@ -83,9 +83,9 @@ dictionary[["states"]] = lapply(split(states,states$identifier),unbox)
 # parse to json and fix formatting
 jsonDict = prettify(toJSON(dictionary,auto_unbox=TRUE,pretty=TRUE,digits=NA))
 jsonDict = gsub("null", "[]", jsonDict, fixed=TRUE)
-jsonDict = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonDict)
-jsonDict = gsub("\"(0,1)\"", "[\"(0,1)\"]", jsonDict)
-jsonDict = gsub("\"Positive\"", "[\"Positive\"]", jsonDict)
+jsonDict = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonDict,fixed=TRUE)
+jsonDict = gsub("\"(0,1)\"", "[\"(0,1)\"]", jsonDict,fixed=TRUE)
+jsonDict = gsub("\"Positive\"", "[\"Positive\"]", jsonDict,fixed=TRUE)
 
 # write json dictionary
 jsonDict %>% write_lines(paste0(json_path,'actus-dictionary.json'))
@@ -104,7 +104,9 @@ jsonTaxon %>% write_lines(paste0(json_path,'actus-dictionary-taxonomy.json'))
 # parse to json and fix formatting
 jsonTerms = prettify(toJSON(dictionary$terms,auto_unbox=TRUE,pretty=TRUE,digits=NA))
 jsonTerms = gsub("null", "[]", jsonTerms, fixed=TRUE)
-jsonTerms = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonTerms, fixed=TRUE)
+jsonTerms = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonTerms,fixed=TRUE)
+jsonTerms = gsub("\"(0,1)\"", "[\"(0,1)\"]", jsonTerms,fixed=TRUE)
+jsonTerms = gsub("\"Positive\"", "[\"Positive\"]", jsonTerms,fixed=TRUE)
 
 # write json
 jsonTerms %>% write_lines(paste0(json_path,'actus-dictionary-terms.json'))
@@ -126,7 +128,8 @@ jsonEvents %>% write_lines(paste0(json_path,'actus-dictionary-events.json'))
 # 5. states
 # parse to json and fix formatting
 jsonStates = prettify(toJSON(dictionary$states,auto_unbox=TRUE,pretty=TRUE,digits=NA))
-jsonStates = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonStates, fixed=TRUE)
+jsonStates = gsub("null", "[]", jsonStates, fixed=TRUE)
+jsonStates = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonStates)
 
 # write json
 jsonStates %>% write_lines(paste0(json_path,'actus-dictionary-states.json'))

@@ -603,7 +603,7 @@
             "name": "Coverage Of Credit Enhancement",
             "accronym": "CECV",
             "type": "Real",
-            "allowedValues": "(0,1)",
+            "allowedValues": ["(0,1)"],
             "default": "1.0",
             "description": "Defines which percentage of the exposure is covered"
         },
