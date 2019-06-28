@@ -1,0 +1,157 @@
+{
+    "analysis": {
+        "identifier": "analysis",
+        "name": "Analysis",
+        "accronym": "AD",
+        "description": "Analysis of contract. Evaluates all contract states",
+        "sequence": 22
+    },
+    "creditEvent": {
+        "identifier": "creditEvent",
+        "name": "Credit Event",
+        "accronym": "CD",
+        "description": "Credit event of counterparty to a contract",
+        "sequence": 10
+    },
+    "dividendPayment": {
+        "identifier": "dividendPayment",
+        "name": "Dividend Payment",
+        "accronym": "DV",
+        "description": "Scheduled dividend payment",
+        "sequence": 13
+    },
+    "execution": {
+        "identifier": "execution",
+        "name": "Execution",
+        "accronym": "XD",
+        "description": "Execution of a contractual feature such as optionality",
+        "sequence": 19
+    },
+    "feePayment": {
+        "identifier": "feePayment",
+        "name": "Fee Payment",
+        "accronym": "FP",
+        "description": "Scheduled fee payment",
+        "sequence": 4
+    },
+    "initialExchange": {
+        "identifier": "initialExchange",
+        "name": "Initial Exchange",
+        "accronym": "IED",
+        "description": "Scheduled date of first principal event, start of accrual calculation",
+        "sequence": 1
+    },
+    "interestCalculationBaseFixing": {
+        "identifier": "interestCalculationBaseFixing",
+        "name": "Interest Calculation Base Fixing",
+        "accronym": "IPCB",
+        "description": "Scheduled re-fixing of the interest calculation base",
+        "sequence": 18
+    },
+    "interestCapitalization": {
+        "identifier": "interestCapitalization",
+        "name": "Interest Capitalization",
+        "accronym": "IPCI",
+        "description": "Scheduled interest capitalization. Interest is capitalized instead of paid out",
+        "sequence": 2
+    },
+    "interestPayment": {
+        "identifier": "interestPayment",
+        "name": "Interest Payment",
+        "accronym": "IP",
+        "description": "Scheduled interest payment",
+        "sequence": 3
+    },
+    "marginCallPayment": {
+        "identifier": "marginCallPayment",
+        "name": "Margin Call Payment",
+        "accronym": "MR",
+        "description": "Scheduled margin call payment",
+        "sequence": 15
+    },
+    "maturity": {
+        "identifier": "maturity",
+        "name": "Maturity",
+        "accronym": "MD",
+        "description": "Scheduled maturity of a contract",
+        "sequence": 21
+    },
+    "penaltyPayment": {
+        "identifier": "penaltyPayment",
+        "name": "Penalty Payment",
+        "accronym": "PY",
+        "description": "Payment of a penalty",
+        "sequence": 8
+    },
+    "principal Drawing": {
+        "identifier": "principal Drawing",
+        "name": "Principal Drawing",
+        "accronym": "PD",
+        "description": "Drawing of principal amount\n",
+        "sequence": 6
+    },
+    "principalPaymentAmountFixing": {
+        "identifier": "principalPaymentAmountFixing",
+        "name": "Principal Payment Amount Fixing",
+        "accronym": "PRF",
+        "description": "Scheduled re-fixing of principal payment amount",
+        "sequence": 7
+    },
+    "principalPrepayment": {
+        "identifier": "principalPrepayment",
+        "name": "Principal Prepayment",
+        "accronym": "PP",
+        "description": "Unscheduled early repayment of principal",
+        "sequence": 9
+    },
+    "principalRedemption": {
+        "identifier": "principalRedemption",
+        "name": "Principal Redemption",
+        "accronym": "PR",
+        "description": "Scheduled principal redemption payment",
+        "sequence": 5
+    },
+    "purchase": {
+        "identifier": "purchase",
+        "name": "Purchase",
+        "accronym": "PRD",
+        "description": "Purchase of a contract",
+        "sequence": 14
+    },
+    "rateResetFixed": {
+        "identifier": "rateResetFixed",
+        "name": "Rate Reset Fixed",
+        "accronym": "RRF",
+        "description": "Scheduled variable rate fixing with new rate already fixed",
+        "sequence": 11
+    },
+    "rateResetVariable": {
+        "identifier": "rateResetVariable",
+        "name": "Rate Reset Variable",
+        "accronym": "RRF",
+        "description": "Scheduled variable rate fixing with new rate fixed at event time",
+        "sequence": 12
+    },
+    "scalingIndexRevision": {
+        "identifier": "scalingIndexRevision",
+        "name": "Scaling Index Revision",
+        "accronym": "SC",
+        "description": "Scheduled re-fixing of a scaling index",
+        "sequence": 17
+    },
+    "settlement": {
+        "identifier": "settlement",
+        "name": "Settlement",
+        "accronym": "STD",
+        "description": "Settlement of contractual claim",
+        "sequence": 20
+    },
+    "termination": {
+        "identifier": "termination",
+        "name": "Termination",
+        "accronym": "TD",
+        "description": "Termination of a contract",
+        "sequence": 16
+    }
+}
+

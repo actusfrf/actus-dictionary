@@ -1,0 +1,311 @@
+{
+    "annuity": {
+        "identifier": "annuity",
+        "name": "Annuity",
+        "accronym": "ANN",
+        "family": "Basic",
+        "class": "Fixed Income",
+        "description": "Principal payment fully at IED and interest plus principal repaid periodically in constant amounts till MD. If variable rate, total amount for interest and principal is recalculated to be fully matured at MD.",
+        "coverage": "Classical level payment mortgages, leasing contracts etc.",
+        "status": "Implemented, tested"
+    },
+    "callMoney": {
+        "identifier": "callMoney",
+        "name": "Call Money",
+        "accronym": "CLM",
+        "family": "Basic",
+        "class": "Fixed Income",
+        "description": "Lonas that are rolled over as long as they are not called. Once called it has to be paid back after the stipulated notice period.",
+        "coverage": "Inerbank loans with call features.",
+        "status": "Implemented, tested"
+    },
+    "capFloor": {
+        "identifier": "capFloor",
+        "name": "Cap Floors",
+        "accronym": "CAPFL",
+        "family": "Combined",
+        "class": "Asymmetric",
+        "description": "Interest rate option expressed in a maximum or minimum interest rate.",
+        "coverage": "Caps and Floor options.",
+        "status": "Implemented, tested"
+    },
+    "cash": {
+        "identifier": "cash",
+        "name": "Cash",
+        "accronym": "CSH",
+        "family": "Basic",
+        "class": "Ownership",
+        "description": "Cash or cash equivalent position",
+        "coverage": "Cash, deposits at central bank.",
+        "status": "Implemented, tested"
+    },
+    "collateral": {
+        "identifier": "collateral",
+        "name": "Collateral",
+        "accronym": "CEC",
+        "family": "Credit Enhancement",
+        "class": "Credit Enhancement",
+        "description": "Collateral creates a relationship between a collateral an obligee and a debtor, covering the exposure from the debtor with the collateral.",
+        "coverage": "Mortgages include a collateral contract. Any coverage with financial or physical collateral.",
+        "status": "Implemented, tested"
+    },
+    "commodity": {
+        "identifier": "commodity",
+        "name": "Commodity",
+        "accronym": "COM",
+        "family": "Basic",
+        "class": "Ownership",
+        "description": "This is not a financial contract in its propper sense. However it traks movements of commodities such as oil, gas or even houses. Such commodities can serve as underlyings of commodity futures, guarantees or simply asset positions.",
+        "coverage": "Oil, gas, electricity, houses etc.",
+        "status": "Implemented, tested"
+    },
+    "convertibleNote": {
+        "identifier": "convertibleNote",
+        "name": "Convertible Note",
+        "accronym": "BNDCP",
+        "family": "Combined",
+        "class": "Asymmetric",
+        "description": "Bonds with a call or put option. If option is exercised, underlying bond ceases to exist.",
+        "coverage": "Callable and puttable bonds or loans.",
+        "status": "Planned"
+    },
+    "creditDefaultSwap": {
+        "identifier": "creditDefaultSwap",
+        "name": "Credit Default Swap",
+        "accronym": "CDSWP",
+        "family": "Combined",
+        "class": "Asymmetric",
+        "description": "A payment is triggered if one or more of the ndelying counterparties defaults.",
+        "coverage": "All sorts of credit default swaps",
+        "status": "Implemented"
+    },
+    "creditLinkedNote": {
+        "identifier": "creditLinkedNote",
+        "name": "Credit Linked Note",
+        "accronym": "CLNTE",
+        "family": "Combined",
+        "class": "Asymmetric",
+        "description": "A credit linked note is a security with an embedded CDSWP",
+        "status": "Covered"
+    },
+    "eXOTi": {
+        "identifier": "eXOTi",
+        "name": "EXOTi",
+        "accronym": "EXOTi",
+        "family": "Combined",
+        "class": "Asymmetric",
+        "description": "As of current, most of the exotic options which were popular before 2008 are out of favor and factually irrelevant.Which of the exotic options will be implemented will depend on the real relevance in the future.",
+        "coverage": "Knock-in and Knock-out, Barrier, Ladder, Rainbow options etc.",
+        "status": "When need arises"
+    },
+    "exoticAnnuity": {
+        "identifier": "exoticAnnuity",
+        "name": "Exotic Annuity",
+        "accronym": "ANX",
+        "family": "Basic",
+        "class": "Fixed Income",
+        "description": "Exotic version of ANN However step ups with respect to (i) Principal, (ii) Interest rates are possible. Highly flexible to match totally irregular principal payments. Principal can also be paid out in steps.",
+        "coverage": "A special version of this kind are teaser rate loans and mortgages with annuity features.",
+        "status": "Planned"
+    },
+    "exoticLinearAmortizer": {
+        "identifier": "exoticLinearAmortizer",
+        "name": "Exotic Linear Amortizer",
+        "accronym": "LAX",
+        "family": "Basic",
+        "class": "Fixed Income",
+        "description": "Exotic version of LAM. However step ups with respect to (i) Principal, (ii) Interest rates are possible. Highly flexible to match totally irregular principal payments. Principal can also be paid out in steps.",
+        "coverage": "A special version of this kind are teaser rate loans and mortgages.",
+        "status": "Implemented, tested"
+    },
+    "exoticNegativeAmortizer": {
+        "identifier": "exoticNegativeAmortizer",
+        "name": "Exotic Negative Amortizer",
+        "accronym": "NAX",
+        "family": "Basic",
+        "class": "Fixed Income",
+        "description": "Exotic version of NAM However step ups with respect to (i) Principal, (ii) Interest rates are possible. Highly flexible to match totally irregular principal payments. Principal can also be paid out in steps.",
+        "coverage": "A special version of this kind are teaser rate loans and mortgages with variable MD.",
+        "status": "Planned"
+    },
+    "foreignExchangeOutright": {
+        "identifier": "foreignExchangeOutright",
+        "name": "Foreign Ex-change Outright",
+        "accronym": "FXOUT",
+        "family": "Combined",
+        "class": "Symmetric",
+        "description": "Two parties agree to exchange two fixed cash flows in different currencies at a certain point in time in future.",
+        "coverage": "Any FX-outright transaction at a future date. This is also the underlying of FX-options and FX futures.",
+        "status": "Implemented, tested"
+    },
+    "future": {
+        "identifier": "future",
+        "name": "Future",
+        "accronym": "FUTUR",
+        "family": "Combined",
+        "class": "Symmetric",
+        "description": "Keeps track of value changes for any basic CT as underlying (PAM, ANN etc. but also FXOUT, STK, COM). Handles margining calls.",
+        "coverage": "Standard interest rate, FX, stock and commodity futures.",
+        "status": "Implemented, tested"
+    },
+    "guarantee": {
+        "identifier": "guarantee",
+        "name": "Guarantee",
+        "accronym": "CEG",
+        "family": "Credit Enhancement",
+        "class": "Credit Enhancement",
+        "description": "Guarantee creates a relationship between a guarantor, an obligee and a debtor, moving the exposure from the debtor to the guarantor.",
+        "coverage": "Personal guarantee. Government guarantee. Underlyings of CDO´s.",
+        "status": "Implemented, tested"
+    },
+    "linearAmortizer": {
+        "identifier": "linearAmortizer",
+        "name": "Linear Amortizer",
+        "accronym": "LAM",
+        "family": "Basic",
+        "class": "Fixed Income",
+        "description": "Principal payment fully at IED. Principal repaid periodically in constant amounts till MD. Interest gets reduced accordingly. If variable rate, only interest payment is recalculated. Fixed and variable rates.",
+        "coverage": "Many amortizing loans.",
+        "status": "Implemented, tested"
+    },
+    "margining": {
+        "identifier": "margining",
+        "name": "Margining",
+        "accronym": "MAR",
+        "family": "Credit Enhancement",
+        "class": "Credit Enhancement",
+        "description": "A Margining contract traces the value changes and the different margin categories like inital and variation margin.",
+        "coverage": "Margin contracts as applied in central depositories for any underlying or portfolio of underlying instruments.",
+        "status": "Implemented"
+    },
+    "negativeAmortizer": {
+        "identifier": "negativeAmortizer",
+        "name": "Negative Amortizer",
+        "accronym": "NAM",
+        "family": "Basic",
+        "class": "Fixed Income",
+        "description": "Similar as ANN. However when resetting rate, total amount (interest plus principal) stay constant. MD shifts. Only variable rates.",
+        "coverage": "Special class of ARM´s (adjustable rate mortgages), Certain loans.",
+        "status": "Implemented, tested"
+    },
+    "option": {
+        "identifier": "option",
+        "name": "Option",
+        "accronym": "OPTNS",
+        "family": "Combined",
+        "class": "Asymmetric",
+        "description": "Calculates straight option pay-off for any basic CT as underlying (PAM, ANN etc.) but also SWAPS, FXOUT, STK and COM. Single, periodic and continuous strike is supported.",
+        "coverage": "European, American and Bermudan options with Interest rate, FX and stock futures as underlying instruments.",
+        "status": "Implemented, tested"
+    },
+    "perpetualBonds": {
+        "identifier": "perpetualBonds",
+        "name": "Perpetual Bonds",
+        "accronym": "PBN",
+        "family": "Basic",
+        "class": "Fixed Income",
+        "description": "Bonds without any maturity date. Interest is paid into eternity if is not terminated.",
+        "coverage": "Consoles, war loans.",
+        "status": "Planned"
+    },
+    "plainVanillaSwap": {
+        "identifier": "plainVanillaSwap",
+        "name": "Plain Vanilla Swap",
+        "accronym": "SWPPV",
+        "family": "Combined",
+        "class": "Symmetric",
+        "description": "Plain vanilla swaps where the underlyings are always two identical PAM´s however with one leg fixed and the other variable.",
+        "coverage": "More than 90% of all interest rate swaps follow this simple pattern.",
+        "status": "Implemented, tested"
+    },
+    "principalAtMaturity": {
+        "identifier": "principalAtMaturity",
+        "name": "Principal at Maturity",
+        "accronym": "PAM",
+        "family": "Basic",
+        "class": "Fixed Income",
+        "description": "Principal payment fully at Initial Exchange Date (IED) and repaid at Maturity Date (MD). Fixed and variable rates.",
+        "coverage": "All kind of bonds, term deposits, bullet loans and mortgages etc.",
+        "status": "Implemented, tested"
+    },
+    "repurchaseAgreement": {
+        "identifier": "repurchaseAgreement",
+        "name": "Repurchase Agreement",
+        "accronym": "REP",
+        "family": "Credit Enhancement",
+        "class": "Credit Enhancement",
+        "description": "A Repo contract controls and manages the sale and repurchase of assets on the books.",
+        "coverage": "Classical repo and reverse repo agreements.",
+        "status": "Planned"
+    },
+    "securitizationCreditRisk": {
+        "identifier": "securitizationCreditRisk",
+        "name": "Securitization Credit Risk",
+        "accronym": "SCRCR",
+        "family": "Combined",
+        "class": "Securitization",
+        "description": "Securitiazion contracts where contracs are ranked according to credit default. The lower ranked tranches are hit by the first defaults. Only when the lowest tranches are wiped out, the next higher tranch is hit.",
+        "coverage": "CDO´s",
+        "status": "Planned"
+    },
+    "securitizationMarketRisk": {
+        "identifier": "securitizationMarketRisk",
+        "name": "Securitization Market Risk",
+        "accronym": "SCRMR",
+        "family": "Combined",
+        "class": "Securitization",
+        "description": "Securitiazion contracts where all underlying contracts are treated equal. The buyer of a tranche gets a part of the cash-flows.",
+        "coverage": "ABS´s, MBS´s of all sorts. Could be a simple tranche or more complex tranch like interest only and principal only.",
+        "status": "Planned"
+    },
+    "stock": {
+        "identifier": "stock",
+        "name": "Stock",
+        "accronym": "STK",
+        "family": "Basic",
+        "class": "Ownership",
+        "description": "Any instrument which is bought at a certain amount (market price normally) and then follows an index.",
+        "coverage": "All straight stocks.",
+        "status": "Implemented, tested"
+    },
+    "swap": {
+        "identifier": "swap",
+        "name": "Swap",
+        "accronym": "SWAPS",
+        "family": "Combined",
+        "class": "Symmetric",
+        "description": "Exchange of two basic CT´s (PAM, ANN etc.). Normally one is fixed, the other variable. However all variants possible including different currencies for cross currency swaps, basic swaps or even different principal exchange programs.",
+        "coverage": "All kind of swaps. The variety is defined by the underlying CT´s which often are PAM and ANN in all its flavors. With each new basic CT the variety rises.",
+        "status": "Implemented, tested"
+    },
+    "totalReturnSwap": {
+        "identifier": "totalReturnSwap",
+        "name": "Total Return Swap",
+        "accronym": "TRSWP",
+        "family": "Combined",
+        "class": "Asymmetric",
+        "description": "A total return swap is a swap agreement in which one party makes payments based on a set rate, either fixed or variable, while the other party makes payments based on the return of an underlying asset, which includes both the income it generates and any capital gains.",
+        "status": "Planned"
+    },
+    "undefinedMaturityProfile": {
+        "identifier": "undefinedMaturityProfile",
+        "name": "Undefined Maturity Profile",
+        "accronym": "UMP",
+        "family": "Basic",
+        "class": "Fixed Income",
+        "description": "Principal paid in and out at any point in time without prefixed schedule. Interest calculated on outstanding and capitalized periodically. Needs link to a behavioral function describing expected flows.",
+        "coverage": "Saving products of all kind, current accounts. In some countries even variable rate mortgages can be represented with this CT.",
+        "status": "Implemented, tested"
+    },
+    "warrant": {
+        "identifier": "warrant",
+        "name": "Warrant",
+        "accronym": "BNDWR",
+        "family": "Combined",
+        "class": "Asymmetric",
+        "description": "Bonds with a warrant. If option is exercised, underlying bond continues to exist.",
+        "coverage": "Warrants.",
+        "status": "Planned"
+    }
+}
+

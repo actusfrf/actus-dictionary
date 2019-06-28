@@ -1,0 +1,88 @@
+{
+    "contractPerformance": {
+        "identifier": "contractPerformance",
+        "name": "Contract Performance",
+        "accronym": "PRF",
+        "description": "Indicates the current contract performance status. Different states of the contract range from performing to default.",
+        "type": "Enum",
+        "allowedValues": [
+            "PF",
+            "DL",
+            "DQ",
+            "DF"
+        ]
+    },
+    "interestCalculationBase": {
+        "identifier": "interestCalculationBase",
+        "name": "Interest Calculation Base",
+        "accronym": "ICB",
+        "description": "The basis at which interest is being accrued. Potentially different from NVL.",
+        "type": "Real",
+        "allowedValues": null
+    },
+    "interestScalingMultiplier": {
+        "identifier": "interestScalingMultiplier",
+        "name": "Interest Scaling Multiplier",
+        "accronym": "ISC",
+        "description": "The multiplier being applied to interest cash flows",
+        "type": "Real",
+        "allowedValues": null
+    },
+    "lastEventDate": {
+        "identifier": "lastEventDate",
+        "name": "Last Event Date",
+        "accronym": "LED",
+        "description": "The date of the most recent Contract Event",
+        "type": "Timestamp",
+        "allowedValues": ["ISO8601 Datetime"]
+    },
+    "nextPrincipalRedemptionPayment": {
+        "identifier": "nextPrincipalRedemptionPayment",
+        "name": "Next Principal Redemption Payment",
+        "accronym": "NPR",
+        "description": "The value at which principal is being repaid. This may be including or excluding of interest depending on the Contract Type",
+        "type": "Real",
+        "allowedValues": null
+    },
+    "nominalAccrued": {
+        "identifier": "nominalAccrued",
+        "name": "Nominal Accrued",
+        "accronym": "NAC",
+        "description": "The current value of nominal interest accrued",
+        "type": "Real",
+        "allowedValues": null
+    },
+    "nominalRate": {
+        "identifier": "nominalRate",
+        "name": "Nominal Rate",
+        "accronym": "NRT",
+        "description": "The applicable nominal rate",
+        "type": "Real",
+        "allowedValues": null
+    },
+    "nominalValue": {
+        "identifier": "nominalValue",
+        "name": "Nominal Value",
+        "accronym": "NVL",
+        "description": "The outstanding nominal value",
+        "type": "Real",
+        "allowedValues": null
+    },
+    "notionalScalingMultiplier": {
+        "identifier": "notionalScalingMultiplier",
+        "name": "Notional Scaling Multiplier",
+        "accronym": "NSC",
+        "description": "The multiplier being applied to principal cash flows",
+        "type": "Real",
+        "allowedValues": null
+    },
+    "payoffAtSettlement": {
+        "identifier": "payoffAtSettlement",
+        "name": "Payoff At Settlement",
+        "accronym": "POS",
+        "description": "The payoff of the contract if fixed at event time.",
+        "type": "Real",
+        "allowedValues": null
+    }
+}
+

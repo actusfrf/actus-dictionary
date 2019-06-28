@@ -6,17 +6,17 @@ options(stringsAsFactors = FALSE)
 library(jsonlite)
 library(magrittr)
 library(readr)
-library(xlsx)
+library(readxl)
 
 # define paths
 json_path = '../'
 excel_path = '../'
 
 # read data dictionary
-taxonomy = read.xlsx(paste0(excel_path,"actus-dictionary.xlsx"), sheetName="Taxonomy", header=TRUE)
-terms = read.xlsx(paste0(excel_path,"actus-dictionary.xlsx"), sheetName="Terms", header=TRUE)
-states = read.xlsx(paste0(excel_path,"actus-dictionary.xlsx"), sheetName="States", header=TRUE)
-events = read.xlsx(paste0(excel_path,"actus-dictionary.xlsx"), sheetName="Events", header=TRUE)
+taxonomy = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Taxonomy")
+terms = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Terms")
+states = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="States")
+events = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Events")
 
 # format column names
 tocamel=function(x,delim=" ") {
@@ -33,54 +33,100 @@ tocamel=function(x,delim=" ") {
 		}
 	    })
 }
-colnames(taxonomy)=tocamel(colnames(taxonomy),delim=".")
-colnames(terms)=tocamel(colnames(terms),delim=".")
-colnames(states)=tocamel(colnames(states),delim=".")
-colnames(events)=tocamel(colnames(events),delim=".")
+colnames(taxonomy)=tocamel(colnames(taxonomy),delim=" ")
+colnames(terms)=tocamel(colnames(terms),delim=" ")
+colnames(states)=tocamel(colnames(states),delim=" ")
+colnames(events)=tocamel(colnames(events),delim=" ")
 
 # create dictionary base structure
-dictionary = toJSON(unbox(data.frame(taxonomy="TODO taxonomy",terms="TODO terms",applicability="TODO applicability",events="TODO events",states="TODO states")),auto_unbox=TRUE,pretty=TRUE)
+dictionary = list()
 
 # add taxonomy
-dictionary = gsub("\"TODO taxonomy\"", unbox(toJSON(lapply(split(taxonomy,taxonomy$identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
+dictionary[["taxonomy"]] = lapply(split(taxonomy,taxonomy$identifier),unbox)
 
-# add terms as sub-json
+# add terms
 terms_sub=terms[,c("identifier", "group", "name", "accronym", "type", "allowedValues", "default", "description")]
 
 # -> convert enum values to json array
-terms_sub$allowedValues = sapply(sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1]))),toJSON)
+terms_sub$allowedValues = sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
 
-# -> format null-arrays and NA strings
+# -> format NA strings
 terms_sub[which(is.na(terms_sub$default)),"default"]=""
-terms_sub[which(terms_sub$allowedValues=="[null]"),"allowedValues"]="[]"
 
-dictionary = gsub("\"TODO terms\"", unbox(toJSON(lapply(split(terms_sub,terms_sub$identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
+# -> add to dictionary
+dictionary[["terms"]] = lapply(split(terms_sub,terms_sub$identifier),unbox)
 
 # add applicability
+
+# -> reshape data
 applic_sub=as.data.frame(t(terms[,-which(colnames(terms)%in%c("identifier","group","name","accronym","type","allowedValues","default","description","cNTRLSensitive"))]))
 applic_sub=cbind(rownames(applic_sub),applic_sub)
 colnames(applic_sub) = tocamel(c("Contract",terms$identifier))
 rownames(applic_sub) = NULL
 
-dictionary = gsub("\"TODO applicability\"", unbox(toJSON(lapply(split(applic_sub,applic_sub$contract),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
+# -> add to dictionary
+dictionary[["applicability"]] = lapply(split(applic_sub,applic_sub$contract),unbox)
 
 # add events
-dictionary = gsub("\"TODO events\"", unbox(toJSON(lapply(split(events,events$identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
+dictionary[["events"]] = lapply(split(events,events$identifier),unbox)
 
 # add states
 # -> convert enum values to json array
-states$allowedValues = sapply(sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1]))),toJSON)
+states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
 
-# -> format null-arrays and NA strings
-states[which(states$allowedValues=="[null]"),"allowedValues"]="[]"
+# -> add to dictionary
+dictionary[["states"]] = lapply(split(states,states$identifier),unbox)
 
-dictionary = gsub("\"TODO states\"", unbox(toJSON(lapply(split(states,states$identifier),unbox), auto_unbox=TRUE,pretty=TRUE)),dictionary)
+# write dictionary as single file
+# -------------------------------
 
-# clean up form
-dictionary = gsub("\"[\"", "[\"", dictionary,fixed=TRUE)
-dictionary = gsub("\"]\"", "\"]", dictionary,fixed=TRUE)
-dictionary = gsub("\"[]\"", "[]", dictionary,fixed=TRUE)
+# parse to json and fix formatting
+jsonDict = prettify(toJSON(dictionary,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonDict = gsub("null", "[]", jsonDict, fixed=TRUE)
+jsonDict = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonDict)
+jsonDict = gsub("\"(0,1)\"", "[\"(0,1)\"]", jsonDict)
+jsonDict = gsub("\"Positive\"", "[\"Positive\"]", jsonDict)
 
+# write json dictionary
+jsonDict %>% write_lines(paste0(json_path,'actus-dictionary.json'))
 
-# export final form
-dictionary %>% write_lines(paste0(json_path,'actus-dictionary.json'))
+# write dictionary as multiple files
+# -------------------------------
+
+# 1. taxonomy
+# parse to json and fix formatting
+jsonTaxon = prettify(toJSON(dictionary$taxonomy,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+
+# write json
+jsonTaxon %>% write_lines(paste0(json_path,'actus-dictionary-taxonomy.json'))
+
+# 2. terms
+# parse to json and fix formatting
+jsonTerms = prettify(toJSON(dictionary$terms,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonTerms = gsub("null", "[]", jsonTerms, fixed=TRUE)
+jsonTerms = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonTerms, fixed=TRUE)
+
+# write json
+jsonTerms %>% write_lines(paste0(json_path,'actus-dictionary-terms.json'))
+
+# 3. applicability
+# parse to json and fix formatting
+jsonApplic = prettify(toJSON(dictionary$applicability,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+
+# write json
+jsonApplic %>% write_lines(paste0(json_path,'actus-dictionary-applicability.json'))
+
+# 4. events
+# parse to json and fix formatting
+jsonEvents = prettify(toJSON(dictionary$events,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+
+# write json
+jsonEvents %>% write_lines(paste0(json_path,'actus-dictionary-events.json'))
+
+# 5. states
+# parse to json and fix formatting
+jsonStates = prettify(toJSON(dictionary$states,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonStates = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonStates, fixed=TRUE)
+
+# write json
+jsonStates %>% write_lines(paste0(json_path,'actus-dictionary-states.json'))
