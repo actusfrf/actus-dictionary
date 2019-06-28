@@ -83,4 +83,4 @@ dictionary = gsub("\"[]\"", "[]", dictionary,fixed=TRUE)
 
 
 # export final form
-dictionary %>% write_lines(paste0(json_path,'atcus-dictionary.json'))
+dictionary %>% write_lines(paste0(json_path,'actus-dictionary.json'))
