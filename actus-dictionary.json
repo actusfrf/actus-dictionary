@@ -443,6 +443,7 @@
             "accronym": "BDC",
             "type": "Enum",
             "allowedValues": [
+                "NOS",
                 "SCF",
                 "SCMF",
                 "CSF",
@@ -2279,7 +2280,7 @@
             "marketObjectCodeRateReset": "NN(9,1,)"
         }
     },
-    "events": {
+    "eventType": {
         "analysis": {
             "identifier": "analysis",
             "name": "Analysis",

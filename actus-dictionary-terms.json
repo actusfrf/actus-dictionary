@@ -132,6 +132,7 @@
         "accronym": "BDC",
         "type": "Enum",
         "allowedValues": [
+            "NOS",
             "SCF",
             "SCMF",
             "CSF",
