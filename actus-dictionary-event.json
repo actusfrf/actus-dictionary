@@ -1,0 +1,68 @@
+{
+    "eventTime": {
+        "identifier": "eventTime",
+        "name": "Event Time",
+        "type": "Timestamp",
+        "allowedValues": ["ISO8601 Datetime"]
+    },
+    "scheduleTime": {
+        "identifier": "scheduleTime",
+        "name": "Schedule Time",
+        "type": "Timestamp",
+        "allowedValues": ["ISO8601 Datetime"]
+    },
+    "eventType": {
+        "identifier": "eventType",
+        "name": "Event Type",
+        "type": "Enum",
+        "allowedValues": [
+            "AD",
+            "CD",
+            "DV",
+            "XD",
+            "FP",
+            "IED",
+            "IPCB",
+            "IPCI",
+            "IP",
+            "MR",
+            "MD",
+            "PY",
+            "PD",
+            "PRF",
+            "PP",
+            "PR",
+            "PRD",
+            "RRF",
+            "RRF",
+            "SC",
+            "STD",
+            "TD"
+        ]
+    },
+    "currency": {
+        "identifier": "currency",
+        "name": "Currency",
+        "type": "Varchar",
+        "allowedValues": [
+
+        ]
+    },
+    "payoff": {
+        "identifier": "payoff",
+        "name": "Payoff",
+        "type": "number",
+        "allowedValues": [
+
+        ]
+    },
+    "state": {
+        "identifier": "state",
+        "name": "State",
+        "type": "State",
+        "allowedValues": [
+
+        ]
+    }
+}
+

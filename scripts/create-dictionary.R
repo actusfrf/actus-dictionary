@@ -15,8 +15,8 @@ excel_path = '../'
 # read data dictionary
 taxonomy = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Taxonomy")
 terms = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Terms")
-states = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="States")
-events = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Events")
+states = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="State")
+eventType = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="EventType")
 
 # format column names
 tocamel=function(x,delim=" ") {
@@ -36,7 +36,7 @@ tocamel=function(x,delim=" ") {
 colnames(taxonomy)=tocamel(colnames(taxonomy),delim=" ")
 colnames(terms)=tocamel(colnames(terms),delim=" ")
 colnames(states)=tocamel(colnames(states),delim=" ")
-colnames(events)=tocamel(colnames(events),delim=" ")
+colnames(eventType)=tocamel(colnames(eventType),delim=" ")
 
 # create dictionary base structure
 dictionary = list()
@@ -68,7 +68,7 @@ rownames(applic_sub) = NULL
 dictionary[["applicability"]] = lapply(split(applic_sub,applic_sub$contract),unbox)
 
 # add events
-dictionary[["events"]] = lapply(split(events,events$identifier),unbox)
+dictionary[["eventType"]] = lapply(split(eventType,eventType$identifier),unbox)
 
 # add states
 # -> convert enum values to json array
@@ -118,14 +118,28 @@ jsonApplic = prettify(toJSON(dictionary$applicability,auto_unbox=TRUE,pretty=TRU
 # write json
 jsonApplic %>% write_lines(paste0(json_path,'actus-dictionary-applicability.json'))
 
-# 4. events
+# 4. event types
 # parse to json and fix formatting
-jsonEvents = prettify(toJSON(dictionary$events,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonEventTypes = prettify(toJSON(dictionary$eventType,auto_unbox=TRUE,pretty=TRUE,digits=NA))
 
 # write json
-jsonEvents %>% write_lines(paste0(json_path,'actus-dictionary-events.json'))
+jsonEventTypes %>% write_lines(paste0(json_path,'actus-dictionary-event-types.json'))
 
-# 5. states
+# 5. event
+# read json event structure
+jsonEvent = fromJSON('event.json')
+
+# add allowed values for event type
+jsonEvent$eventType$allowedValues = sapply(dictionary$eventType,function(x) x$accronym)
+
+# convert back to json and fix formatting
+jsonEvent = prettify(toJSON(jsonEvent,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonEvent = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonEvent,fixed=TRUE)
+
+# write json
+jsonEvent %>% write_lines(paste0(json_path,'actus-dictionary-event.json'))
+
+# 6. states
 # parse to json and fix formatting
 jsonStates = prettify(toJSON(dictionary$states,auto_unbox=TRUE,pretty=TRUE,digits=NA))
 jsonStates = gsub("null", "[]", jsonStates, fixed=TRUE)
