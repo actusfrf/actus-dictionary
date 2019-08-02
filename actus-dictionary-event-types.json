@@ -32,7 +32,7 @@
         "name": "Fee Payment",
         "accronym": "FP",
         "description": "Scheduled fee payment",
-        "sequence": 4
+        "sequence": 2
     },
     "initialExchange": {
         "identifier": "initialExchange",
@@ -53,14 +53,14 @@
         "name": "Interest Capitalization",
         "accronym": "IPCI",
         "description": "Scheduled interest capitalization. Interest is capitalized instead of paid out",
-        "sequence": 2
+        "sequence": 9
     },
     "interestPayment": {
         "identifier": "interestPayment",
         "name": "Interest Payment",
         "accronym": "IP",
         "description": "Scheduled interest payment",
-        "sequence": 3
+        "sequence": 8
     },
     "marginCallPayment": {
         "identifier": "marginCallPayment",
@@ -81,35 +81,35 @@
         "name": "Penalty Payment",
         "accronym": "PY",
         "description": "Payment of a penalty",
-        "sequence": 8
+        "sequence": 6
     },
     "principal Drawing": {
         "identifier": "principal Drawing",
         "name": "Principal Drawing",
         "accronym": "PD",
         "description": "Drawing of principal amount\n",
-        "sequence": 6
+        "sequence": 4
     },
     "principalPaymentAmountFixing": {
         "identifier": "principalPaymentAmountFixing",
         "name": "Principal Payment Amount Fixing",
         "accronym": "PRF",
         "description": "Scheduled re-fixing of principal payment amount",
-        "sequence": 7
+        "sequence": 5
     },
     "principalPrepayment": {
         "identifier": "principalPrepayment",
         "name": "Principal Prepayment",
         "accronym": "PP",
         "description": "Unscheduled early repayment of principal",
-        "sequence": 9
+        "sequence": 7
     },
     "principalRedemption": {
         "identifier": "principalRedemption",
         "name": "Principal Redemption",
         "accronym": "PR",
         "description": "Scheduled principal redemption payment",
-        "sequence": 5
+        "sequence": 3
     },
     "purchase": {
         "identifier": "purchase",
@@ -128,7 +128,7 @@
     "rateResetVariable": {
         "identifier": "rateResetVariable",
         "name": "Rate Reset Variable",
-        "accronym": "RRF",
+        "accronym": "RR",
         "description": "Scheduled variable rate fixing with new rate fixed at event time",
         "sequence": 12
     },
