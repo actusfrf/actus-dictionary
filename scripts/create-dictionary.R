@@ -13,6 +13,7 @@ json_path = '../'
 excel_path = '../'
 
 # read data dictionary
+version = read_excel(paste0(excel_path, "actus-dictionary.xlsx"), sheet="README")
 taxonomy = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Taxonomy")
 terms = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Terms")
 states = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="State")
@@ -41,11 +42,17 @@ colnames(eventType)=tocamel(colnames(eventType),delim=" ")
 # create dictionary base structure
 dictionary = list()
 
+# add version
+version_details = data.frame(Version=as.character(version[which(version[,1]=="Version"),2]),
+				Edition=as.character(version[which(version[,1]=="Edition"),2]),
+				Date=as.character(version[which(version[,1]=="Date"),2]))
+dictionary[["version"]] = unbox(version_details)
+
 # add taxonomy
 dictionary[["taxonomy"]] = lapply(split(taxonomy,taxonomy$identifier),unbox)
 
 # add terms
-terms_sub=terms[,c("identifier", "group", "name", "accronym", "type", "allowedValues", "default", "description")]
+terms_sub=terms[,c("identifier", "group", "name", "acronym", "type", "allowedValues", "default", "description")]
 
 # -> convert enum values to json array
 terms_sub$allowedValues = sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
@@ -59,7 +66,7 @@ dictionary[["terms"]] = lapply(split(terms_sub,terms_sub$identifier),unbox)
 # add applicability
 
 # -> reshape data
-applic_sub=as.data.frame(t(terms[,-which(colnames(terms)%in%c("identifier","group","name","accronym","type","allowedValues","default","description","cNTRLSensitive"))]))
+applic_sub=as.data.frame(t(terms[,-which(colnames(terms)%in%c("identifier","group","name","acronym","type","allowedValues","default","description","cNTRLSensitive"))]))
 applic_sub=cbind(rownames(applic_sub),applic_sub)
 colnames(applic_sub) = tocamel(c("Contract",terms$identifier))
 rownames(applic_sub) = NULL
@@ -95,14 +102,14 @@ jsonDict %>% write_lines(paste0(json_path,'actus-dictionary.json'))
 
 # 1. taxonomy
 # parse to json and fix formatting
-jsonTaxon = prettify(toJSON(dictionary$taxonomy,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonTaxon = prettify(toJSON(dictionary[c("version","taxonomy")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
 
 # write json
 jsonTaxon %>% write_lines(paste0(json_path,'actus-dictionary-taxonomy.json'))
 
 # 2. terms
 # parse to json and fix formatting
-jsonTerms = prettify(toJSON(dictionary$terms,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonTerms = prettify(toJSON(dictionary[c("version","terms")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
 jsonTerms = gsub("null", "[]", jsonTerms, fixed=TRUE)
 jsonTerms = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonTerms,fixed=TRUE)
 jsonTerms = gsub("\"(0,1)\"", "[\"(0,1)\"]", jsonTerms,fixed=TRUE)
@@ -113,14 +120,14 @@ jsonTerms %>% write_lines(paste0(json_path,'actus-dictionary-terms.json'))
 
 # 3. applicability
 # parse to json and fix formatting
-jsonApplic = prettify(toJSON(dictionary$applicability,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonApplic = prettify(toJSON(dictionary[c("version","applicability")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
 
 # write json
 jsonApplic %>% write_lines(paste0(json_path,'actus-dictionary-applicability.json'))
 
 # 4. event types
 # parse to json and fix formatting
-jsonEventTypes = prettify(toJSON(dictionary$eventType,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonEventTypes = prettify(toJSON(dictionary[c("version","eventType")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
 
 # write json
 jsonEventTypes %>% write_lines(paste0(json_path,'actus-dictionary-event-types.json'))
@@ -130,10 +137,10 @@ jsonEventTypes %>% write_lines(paste0(json_path,'actus-dictionary-event-types.js
 jsonEvent = fromJSON('event.json')
 
 # add allowed values for event type
-jsonEvent$eventType$allowedValues = sapply(dictionary$eventType,function(x) x$accronym)
+jsonEvent$eventType$allowedValues = sapply(dictionary$eventType,function(x) x$acronym)
 
 # convert back to json and fix formatting
-jsonEvent = prettify(toJSON(jsonEvent,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonEvent = prettify(toJSON(list(version=dictionary$version,event=jsonEvent),auto_unbox=TRUE,pretty=TRUE,digits=NA))
 jsonEvent = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonEvent,fixed=TRUE)
 
 # write json
@@ -141,7 +148,7 @@ jsonEvent %>% write_lines(paste0(json_path,'actus-dictionary-event.json'))
 
 # 6. states
 # parse to json and fix formatting
-jsonStates = prettify(toJSON(dictionary$states,auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonStates = prettify(toJSON(dictionary[c("version","states")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
 jsonStates = gsub("null", "[]", jsonStates, fixed=TRUE)
 jsonStates = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonStates)
 

@@ -1,68 +1,75 @@
 {
-    "eventTime": {
-        "identifier": "eventTime",
-        "name": "Event Time",
-        "type": "Timestamp",
-        "allowedValues": ["ISO8601 Datetime"]
+    "version": {
+        "Version": "1.1",
+        "Edition": "0",
+        "Date": "2019-10-09"
     },
-    "scheduleTime": {
-        "identifier": "scheduleTime",
-        "name": "Schedule Time",
-        "type": "Timestamp",
-        "allowedValues": ["ISO8601 Datetime"]
-    },
-    "eventType": {
-        "identifier": "eventType",
-        "name": "Event Type",
-        "type": "Enum",
-        "allowedValues": [
-            "AD",
-            "CD",
-            "DV",
-            "XD",
-            "FP",
-            "IED",
-            "IPCB",
-            "IPCI",
-            "IP",
-            "MR",
-            "MD",
-            "PY",
-            "PD",
-            "PRF",
-            "PP",
-            "PR",
-            "PRD",
-            "RRF",
-            "RR",
-            "SC",
-            "STD",
-            "TD"
-        ]
-    },
-    "currency": {
-        "identifier": "currency",
-        "name": "Currency",
-        "type": "Varchar",
-        "allowedValues": [
+    "event": {
+        "eventTime": {
+            "identifier": "eventTime",
+            "name": "Event Time",
+            "type": "Timestamp",
+            "allowedValues": ["ISO8601 Datetime"]
+        },
+        "scheduleTime": {
+            "identifier": "scheduleTime",
+            "name": "Schedule Time",
+            "type": "Timestamp",
+            "allowedValues": ["ISO8601 Datetime"]
+        },
+        "eventType": {
+            "identifier": "eventType",
+            "name": "Event Type",
+            "type": "Enum",
+            "allowedValues": [
+                "AD",
+                "CE",
+                "DV",
+                "XD",
+                "FP",
+                "IED",
+                "IPCB",
+                "IPCI",
+                "IP",
+                "MR",
+                "MD",
+                "PY",
+                "PD",
+                "PRF",
+                "PP",
+                "PR",
+                "PRD",
+                "RRF",
+                "RR",
+                "SC",
+                "STD",
+                "TD"
+            ]
+        },
+        "currency": {
+            "identifier": "currency",
+            "name": "Currency",
+            "type": "Varchar",
+            "allowedValues": [
 
-        ]
-    },
-    "payoff": {
-        "identifier": "payoff",
-        "name": "Payoff",
-        "type": "number",
-        "allowedValues": [
+            ]
+        },
+        "payoff": {
+            "identifier": "payoff",
+            "name": "Payoff",
+            "type": "number",
+            "allowedValues": [
 
-        ]
-    },
-    "state": {
-        "identifier": "state",
-        "name": "State",
-        "type": "State",
-        "allowedValues": [
+            ]
+        },
+        "state": {
+            "identifier": "state",
+            "name": "State",
+            "type": "State",
+            "allowedValues": [
 
-        ]
+            ]
+        }
     }
 }
 

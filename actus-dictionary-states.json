@@ -1,88 +1,135 @@
 {
-    "contractPerformance": {
-        "identifier": "contractPerformance",
-        "name": "Contract Performance",
-        "accronym": "PRF",
-        "description": "Indicates the current contract performance status. Different states of the contract range from performing to default.",
-        "type": "Enum",
-        "allowedValues": [
-            "PF",
-            "DL",
-            "DQ",
-            "DF"
-        ]
+    "version": {
+        "Version": "1.1",
+        "Edition": "0",
+        "Date": "2019-10-09"
     },
-    "interestCalculationBase": {
-        "identifier": "interestCalculationBase",
-        "name": "Interest Calculation Base",
-        "accronym": "ICB",
-        "description": "The basis at which interest is being accrued. Potentially different from NVL.",
-        "type": "Real",
-        "allowedValues": []
-    },
-    "interestScalingMultiplier": {
-        "identifier": "interestScalingMultiplier",
-        "name": "Interest Scaling Multiplier",
-        "accronym": "ISC",
-        "description": "The multiplier being applied to interest cash flows",
-        "type": "Real",
-        "allowedValues": []
-    },
-    "lastEventDate": {
-        "identifier": "lastEventDate",
-        "name": "Last Event Date",
-        "accronym": "LED",
-        "description": "The date of the most recent Contract Event",
-        "type": "Timestamp",
-        "allowedValues": ["ISO8601 Datetime"]
-    },
-    "nextPrincipalRedemptionPayment": {
-        "identifier": "nextPrincipalRedemptionPayment",
-        "name": "Next Principal Redemption Payment",
-        "accronym": "NPR",
-        "description": "The value at which principal is being repaid. This may be including or excluding of interest depending on the Contract Type",
-        "type": "Real",
-        "allowedValues": []
-    },
-    "nominalAccrued": {
-        "identifier": "nominalAccrued",
-        "name": "Nominal Accrued",
-        "accronym": "NAC",
-        "description": "The current value of nominal interest accrued",
-        "type": "Real",
-        "allowedValues": []
-    },
-    "nominalRate": {
-        "identifier": "nominalRate",
-        "name": "Nominal Rate",
-        "accronym": "NRT",
-        "description": "The applicable nominal rate",
-        "type": "Real",
-        "allowedValues": []
-    },
-    "nominalValue": {
-        "identifier": "nominalValue",
-        "name": "Nominal Value",
-        "accronym": "NVL",
-        "description": "The outstanding nominal value",
-        "type": "Real",
-        "allowedValues": []
-    },
-    "notionalScalingMultiplier": {
-        "identifier": "notionalScalingMultiplier",
-        "name": "Notional Scaling Multiplier",
-        "accronym": "NSC",
-        "description": "The multiplier being applied to principal cash flows",
-        "type": "Real",
-        "allowedValues": []
-    },
-    "payoffAtSettlement": {
-        "identifier": "payoffAtSettlement",
-        "name": "Payoff At Settlement",
-        "accronym": "POS",
-        "description": "The payoff of the contract if fixed at event time.",
-        "type": "Real",
-        "allowedValues": []
+    "states": {
+        "accruedInterest": {
+            "identifier": "accruedInterest",
+            "name": "Accrued Interest",
+            "acronym": "IPAC",
+            "description": "The current value of accrued interest",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "accruedInterest2": {
+            "identifier": "accruedInterest2",
+            "name": "Accrued Interest 2",
+            "acronym": "IPAC2",
+            "description": "The current value of accrued interest of the second leg",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "contractPerformance": {
+            "identifier": "contractPerformance",
+            "name": "Contract Performance",
+            "acronym": "PRF",
+            "description": "Indicates the current Contract Performance status. Different states of the contract range from performing to default.",
+            "type": "Enum",
+            "allowedValues": [
+                "PF",
+                "DL",
+                "DQ",
+                "DF"
+            ]
+        },
+        "feeAccrued": {
+            "identifier": "feeAccrued",
+            "name": "Fee Accrued",
+            "acronym": "FEAC",
+            "description": "The current value of accrued fees",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "interestCalculationBase": {
+            "identifier": "interestCalculationBase",
+            "name": "Interest Calculation Base",
+            "acronym": "ICB",
+            "description": "The basis at which interest is being accrued. Potentially different from NVL.",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "interestScalingMultiplier": {
+            "identifier": "interestScalingMultiplier",
+            "name": "Interest Scaling Multiplier",
+            "acronym": "ISC",
+            "description": "The multiplier being applied to interest cash flows",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "nextPrincipalRedemptionPayment": {
+            "identifier": "nextPrincipalRedemptionPayment",
+            "name": "Next Principal Redemption Payment",
+            "acronym": "NPR",
+            "description": "The value at which principal is being repaid. This may be including or excluding of interest depending on the Contract Type",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "nominalInterestRate": {
+            "identifier": "nominalInterestRate",
+            "name": "Nominal Interest Rate",
+            "acronym": "IPNR",
+            "description": "The applicable nominal rate",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "nominalInterestRate2": {
+            "identifier": "nominalInterestRate2",
+            "name": "Nominal Interest Rate 2",
+            "acronym": "IPNR2",
+            "description": "The applicable nominal rate",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "nonPerformingDate": {
+            "identifier": "nonPerformingDate",
+            "name": "Non Performing Date",
+            "acronym": "NPD",
+            "description": "The date of the (uncovered) payment event responsible for the current value of the \"Contract Performance\" state variable.",
+            "type": "Timestamp",
+            "allowedValues": ["ISO8601 Datetime"]
+        },
+        "notionalPrincipal": {
+            "identifier": "notionalPrincipal",
+            "name": "Notional Principal",
+            "acronym": "NT",
+            "description": "The outstanding nominal value",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "notionalPrincipal2": {
+            "identifier": "notionalPrincipal2",
+            "name": "Notional Principal 2",
+            "acronym": "NT2",
+            "description": "The outstanding nominal value of the second leg",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "notionalScalingMultiplier": {
+            "identifier": "notionalScalingMultiplier",
+            "name": "Notional Scaling Multiplier",
+            "acronym": "NSC",
+            "description": "The multiplier being applied to principal cash flows",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "payoffAtSettlement": {
+            "identifier": "payoffAtSettlement",
+            "name": "Payoff At Settlement",
+            "acronym": "POS",
+            "description": "The payoff of the contract if fixed at event time.",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "statusDate": {
+            "identifier": "statusDate",
+            "name": "Status Date",
+            "acronym": "SD",
+            "description": "The timestamp as per which the state is captured at any point in time",
+            "type": "Timestamp",
+            "allowedValues": ["ISO8601 Datetime"]
+        }
     }
 }
 
