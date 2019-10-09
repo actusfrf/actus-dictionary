@@ -314,6 +314,21 @@
             "default": "",
             "description": "This identifies the legal entity creating the contract record. The counterparty of the contract is tracked in CPID.\nCRID is ideally the official LEI which can be a firm, a government body, even a single person etc. However, this can also refer to a annonymous group in which case this information is not to be disclosed. CRID may also refer to a group taking a joint risk."
         },
+        "creditEventTypeCovered": {
+            "identifier": "creditEventTypeCovered",
+            "group": "Counterparty",
+            "name": "Credit Event Type Covered",
+            "acronym": "CETC",
+            "type": "Enum[]",
+            "allowedValues": [
+                "DL",
+                "DQ",
+                "DF",
+                "<wildcard>"
+            ],
+            "default": "DF",
+            "description": "The type of credit events covered e.g. in credit enhancement or credit default swap contracts. Only the defined credit event types may trigger the protection."
+        },
         "creditLineAmount": {
             "identifier": "creditLineAmount",
             "group": "Notional Principal",

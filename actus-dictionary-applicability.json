@@ -173,6 +173,7 @@
             "counterpartyID": "NN(,,2)",
             "guaranteedExposure": "NN",
             "coverageOfCreditEnhancement": "x",
+            "creditEventTypeCovered": "x",
             "contractDealDate": "NN"
         },
         "commodity": {
@@ -360,6 +361,7 @@
             "delinquencyRate": "x",
             "guaranteedExposure": "NN",
             "coverageOfCreditEnhancement": "x",
+            "creditEventTypeCovered": "x",
             "cycleAnchorDateOfFee": "x(1,2, )",
             "cycleOfFee": "x(1,2, )",
             "feeBasis": "NN(1,1, )",
