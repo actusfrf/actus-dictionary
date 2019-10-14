@@ -2608,6 +2608,74 @@
             "type": "Timestamp",
             "allowedValues": ["ISO8601 Datetime"]
         }
+    },
+    "contractStructure": {
+        "contractReference": [
+            {
+                "object": "<a reference object>",
+                "type": "<the reference type>",
+                "role": "<the reference role>"
+            },
+            {
+                "object": "<a reference object>",
+                "type": "<the reference type>",
+                "role": "<the reference role>"
+            }
+        ],
+        "type": {
+            "contract": {
+                "identifier": "contract",
+                "name": "Contract",
+                "description": "The reference represents an actual contract"
+            },
+            "contractIdentifier": {
+                "identifier": "contractIdentifier",
+                "name": "Contract Identifier",
+                "description": "The reference represents an identifier of an actual contract"
+            },
+            "marketObjectIdentifier": {
+                "identifier": "marketObjectIdentifier",
+                "name": "Market Object Identifier",
+                "description": "The reference represents the identifier of a market object"
+            },
+            "legalEntityIdentifier": {
+                "identifier": "legalEntityIdentifier",
+                "name": "Legal Entity Identifier",
+                "description": "The reference represents the identifier of a legal entity"
+            },
+            "contractStructure": {
+                "identifier": "contractStructure",
+                "name": "Contract Structure",
+                "description": "The reference represents a ContractStructure"
+            }
+        },
+        "role": {
+            "underlying": {
+                "identifier": "underlying",
+                "name": "Underlying",
+                "description": "The reference represents a simple underlyer contract"
+            },
+            "firstLeg": {
+                "identifier": "firstLeg",
+                "name": "First Leg",
+                "description": "The reference represents the first leg contract"
+            },
+            "secondLeg": {
+                "identifier": "secondLeg",
+                "name": "Second Leg",
+                "description": "The reference represents the second leg contract"
+            },
+            "coveredContract": {
+                "identifier": "coveredContract",
+                "name": "Covered Contract",
+                "description": "The reference represents a contract that is covered under the parent contract"
+            },
+            "coveringContract": {
+                "identifier": "coveringContract",
+                "name": "Covering Contract",
+                "description": "The reference represents a contract that covers for covering contracts under the parent contract Contract"
+            }
+        }
     }
 }
 

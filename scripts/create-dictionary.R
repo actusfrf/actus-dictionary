@@ -18,6 +18,8 @@ taxonomy = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Taxonom
 terms = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Terms")
 states = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="State")
 eventType = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="EventType")
+contractStruct = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="ContractStructure", col_types="text", col_names=FALSE)
+eventStruct = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Event", col_types="text", col_names=FALSE)
 
 # format column names
 tocamel=function(x,delim=" ") {
@@ -84,6 +86,9 @@ states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),
 # -> add to dictionary
 dictionary[["states"]] = lapply(split(states,states$identifier),unbox)
 
+# add contract structure
+dictionary[["contractStructure"]] = fromJSON(as.character(contractStruct))
+
 # write dictionary as single file
 # -------------------------------
 
@@ -134,7 +139,7 @@ jsonEventTypes %>% write_lines(paste0(json_path,'actus-dictionary-event-types.js
 
 # 5. event
 # read json event structure
-jsonEvent = fromJSON('event.json')
+jsonEvent = fromJSON(as.character(eventStruct))
 
 # add allowed values for event type
 jsonEvent$eventType$allowedValues = sapply(dictionary$eventType,function(x) x$acronym)
@@ -154,3 +159,11 @@ jsonStates = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonStates)
 
 # write json
 jsonStates %>% write_lines(paste0(json_path,'actus-dictionary-states.json'))
+
+# 7. contract structure
+# parse to json and fix formatting
+jsonStruct = prettify(toJSON(dictionary[c("version","contractStructure")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
+
+# write json
+jsonStruct %>% write_lines(paste0(json_path,'actus-dictionary-contract-structure.json'))
+
