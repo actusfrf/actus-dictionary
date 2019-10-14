@@ -2,7 +2,7 @@
     "version": {
         "Version": "1.1",
         "Edition": "0",
-        "Date": "2019-10-09"
+        "Date": "2019-10-16"
     },
     "taxonomy": {
         "annuity": {
@@ -540,6 +540,7 @@
                 "BUY",
                 "SEL",
                 "COL",
+                "CNO",
                 "GUA",
                 "OBL"
             ],
@@ -1456,7 +1457,7 @@
             "identifier": "scalingIndexAtStatusDate",
             "group": "Notional Principal",
             "name": "Scaling Index At Status Date",
-            "acronym": "SCIXSD",
+            "acronym": "SCIED",
             "type": "Real",
             "allowedValues": ["Positive"],
             "default": ""
