@@ -2,7 +2,7 @@
     "version": {
         "Version": "1.1",
         "Edition": "0",
-        "Date": "2019-10-16"
+        "Date": "2019-10-18"
     },
     "terms": {
         "accruedInterest": {
@@ -640,6 +640,26 @@
             "default": "",
             "description": "In case contract is traded between DVEX and next DV payment date (i.e. PRD>DVEX & PRD<next DV payment date), then the old “holder” of the contract (previous to the trade) receives the next DV payment. In other words, the next DV payment is “cancelled” for the new (after the trade) holder of the contract."
         },
+        "exerciseAmount": {
+            "identifier": "exerciseAmount",
+            "group": "Settlement",
+            "name": "Exercise Amount",
+            "acronym": "XA",
+            "type": "Real",
+            "allowedValues": [],
+            "default": "",
+            "description": "The amount fixed at Exercise Date for a contingent event/obligation such as a forward condition, optionality etc. The Exercise Amount is fixed at Exercise Date but not settled yet."
+        },
+        "exerciseDate": {
+            "identifier": "exerciseDate",
+            "group": "Settlement",
+            "name": "Exercise Date",
+            "acronym": "XD",
+            "type": "Timestamp",
+            "allowedValues": ["ISO8601 Datetime"],
+            "default": "",
+            "description": "Date of exercising a contingent event/obligation such as a forward condition, optionality etc. The Exercise date marks the observed timestamp of fixing the contingent event and respective payment obligation not necessarily the timestamp of settling the obligation."
+        },
         "feeAccrued": {
             "identifier": "feeAccrued",
             "group": "Fees",
@@ -1184,15 +1204,15 @@
             "default": "",
             "description": "The currency in which cash flows are settled. This currency can be different from the currency (CUR) in which cash flows or the contract, respectively, is denominated in which case the respective FX-rate applies at settlement time.\nIf no settlement currency is defined the cash flows are settled in the currency in which they are denominated."
         },
-        "settlementDate": {
-            "identifier": "settlementDate",
+        "settlementDays": {
+            "identifier": "settlementDays",
             "group": "Settlement",
-            "name": "Settlement Date",
+            "name": "Settlement Days",
             "acronym": "STD",
-            "type": "Timestamp",
-            "allowedValues": ["ISO8601 Datetime"],
-            "default": "",
-            "description": "Date where combined contracts are settled (cash or physical delivery). This can be after the actual fixing date (OPXED for OPTNS or MD for FXOUT).\nType of settlement, cash or physical delivery, is determined by the attribute DeliverySettlement."
+            "type": "Period",
+            "allowedValues": [],
+            "default": "0D",
+            "description": "Defines the period from fixing of a contingent event/obligation (Exercise Date) to settlement of the obligation.\n"
         },
         "statusDate": {
             "identifier": "statusDate",

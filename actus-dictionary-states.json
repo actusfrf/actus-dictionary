@@ -2,7 +2,7 @@
     "version": {
         "Version": "1.1",
         "Edition": "0",
-        "Date": "2019-10-16"
+        "Date": "2019-10-18"
     },
     "states": {
         "accruedInterest": {
@@ -33,6 +33,22 @@
                 "DQ",
                 "DF"
             ]
+        },
+        "exerciseAmount": {
+            "identifier": "exerciseAmount",
+            "name": "Exercise Amount",
+            "acronym": "XA",
+            "description": "The amount fixed for a the contingent event/obligation exercised at Exercise Date",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "exerciseDate": {
+            "identifier": "exerciseDate",
+            "name": "Exercise Date",
+            "acronym": "XD",
+            "description": "The timestamp at which a contingent event/obligation is exercised",
+            "type": "Timestamp",
+            "allowedValues": ["ISO8601 Datetime"]
         },
         "feeAccrued": {
             "identifier": "feeAccrued",
@@ -111,14 +127,6 @@
             "name": "Notional Scaling Multiplier",
             "acronym": "NSC",
             "description": "The multiplier being applied to principal cash flows",
-            "type": "Real",
-            "allowedValues": []
-        },
-        "payoffAtSettlement": {
-            "identifier": "payoffAtSettlement",
-            "name": "Payoff At Settlement",
-            "acronym": "POS",
-            "description": "The payoff of the contract if fixed at event time.",
             "type": "Real",
             "allowedValues": []
         },
