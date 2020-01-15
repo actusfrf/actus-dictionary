@@ -21,7 +21,7 @@
             "acronym": "CLM",
             "family": "Basic",
             "class": "Fixed Income",
-            "description": "Lonas that are rolled over as long as they are not called. Once called it has to be paid back after the stipulated notice period.",
+            "description": "Loans that are rolled over as long as they are not called. Once called it has to be paid back after the stipulated notice period.",
             "coverage": "Inerbank loans with call features.",
             "status": "Released"
         },
