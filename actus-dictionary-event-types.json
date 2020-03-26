@@ -26,11 +26,11 @@
             "description": "Scheduled dividend payment",
             "sequence": 13
         },
-        "execution": {
-            "identifier": "execution",
-            "name": "Execution",
+        "exercise": {
+            "identifier": "exercise",
+            "name": "Exercise",
             "acronym": "XD",
-            "description": "Execution of a contractual feature such as optionality",
+            "description": "Exercise of a contractual feature such as optionality",
             "sequence": 20
         },
         "feePayment": {

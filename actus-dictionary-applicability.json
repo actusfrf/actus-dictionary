@@ -563,7 +563,7 @@
             "terminationDate": "x(6,0,1)",
             "priceAtTerminationDate": "NN(6,1,1)",
             "marketValueObserved": "x",
-            "optionExecutionType": "NN",
+            "optionExerciseType": "NN",
             "optionExerciseEndDate": "NN",
             "optionStrike1": "NN",
             "optionStrike2": "x",

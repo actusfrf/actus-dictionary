@@ -809,7 +809,7 @@
             "type": "Cycle",
             "allowedValues": [],
             "default": "",
-            "description": "Cycle according to which the option execution date schedule will be calculated.\nOPCL can be NULL for American Options or Prepayment Optionality in which case the optionality period starts at OPANX and ends at OPXED (for american options) or MD (in case of prepayment optionality).\nThe interval will be adjusted yet by EOMC and BDC."
+            "description": "Cycle according to which the option exercise date schedule will be calculated.\nOPCL can be NULL for American Options or Prepayment Optionality in which case the optionality period starts at OPANX and ends at OPXED (for american options) or MD (in case of prepayment optionality).\nThe interval will be adjusted yet by EOMC and BDC."
         },
         "cycleOfPrincipalRedemption": {
             "identifier": "cycleOfPrincipalRedemption",
@@ -1261,20 +1261,6 @@
             "default": "",
             "description": "Notional amount of the second currency to be exchanged in an FXOUT CT."
         },
-        "optionExecutionType": {
-            "identifier": "optionExecutionType",
-            "group": "Optionality",
-            "name": "Option Execution Type",
-            "acronym": "OPXT",
-            "type": "Enum",
-            "allowedValues": [
-                "E",
-                "B",
-                "A"
-            ],
-            "default": "",
-            "description": "Defines whether the option is European (exercised at a specific date), American (exercised during a span of time) or Bermudan (exercised at certain points during a span of time)."
-        },
         "optionExerciseEndDate": {
             "identifier": "optionExerciseEndDate",
             "group": "Optionality",
@@ -1284,6 +1270,20 @@
             "allowedValues": ["ISO8601 Datetime"],
             "default": "",
             "description": "Final exercise date for American and Bermudan options, expiry date for European options."
+        },
+        "optionExerciseType": {
+            "identifier": "optionExerciseType",
+            "group": "Optionality",
+            "name": "Option Exercise Type",
+            "acronym": "OPXT",
+            "type": "Enum",
+            "allowedValues": [
+                "E",
+                "B",
+                "A"
+            ],
+            "default": "",
+            "description": "Defines whether the option is European (exercised at a specific date), American (exercised during a span of time) or Bermudan (exercised at certain points during a span of time)."
         },
         "optionStrike1": {
             "identifier": "optionStrike1",
@@ -2136,7 +2136,7 @@
             "terminationDate": "x(6,0,1)",
             "priceAtTerminationDate": "NN(6,1,1)",
             "marketValueObserved": "x",
-            "optionExecutionType": "NN",
+            "optionExerciseType": "NN",
             "optionExerciseEndDate": "NN",
             "optionStrike1": "NN",
             "optionStrike2": "x",
@@ -2382,11 +2382,11 @@
             "description": "Scheduled dividend payment",
             "sequence": 13
         },
-        "execution": {
-            "identifier": "execution",
-            "name": "Execution",
+        "exercise": {
+            "identifier": "exercise",
+            "name": "Exercise",
             "acronym": "XD",
-            "description": "Execution of a contractual feature such as optionality",
+            "description": "Exercise of a contractual feature such as optionality",
             "sequence": 20
         },
         "feePayment": {
