@@ -603,7 +603,7 @@
             "acronym": "CECV",
             "type": "Real",
             "allowedValues": ["(0,1)"],
-            "default": "1.0",
+            "default": "1",
             "description": "Defines which percentage of the exposure is covered"
         },
         "creatorID": {
@@ -902,7 +902,7 @@
             "acronym": "DQR",
             "type": "Real",
             "allowedValues": ["Positive"],
-            "default": "0.0",
+            "default": "0",
             "description": "Rate at which Delinquency Payments accrue on NT (in addition to the interest rate) during the DelinquencyPeriod"
         },
         "deliverySettlement": {
@@ -1055,7 +1055,7 @@
             "acronym": "MRIM",
             "type": "Real",
             "allowedValues": ["Positive"],
-            "default": "0.0",
+            "default": "0",
             "description": "Margin to cover losses which may be incurred as a result of market fluctuations. \nUpon contract closing or maturity, the MRIM is reimbursed."
         },
         "interestCalculationBase": {
@@ -1188,7 +1188,7 @@
             "acronym": "DVNP",
             "type": "Real",
             "allowedValues": ["Positive"],
-            "default": "0.0",
+            "default": "0",
             "description": "Defines the next dividend payment (amount) whereas the date of dividend payment is defined through the DVANX/DVCL pair. If DVCL is defined, then this amount will be used as dividend payment for each future dividend payment date."
         },
         "nextPrincipalRedemptionPayment": {
@@ -1326,7 +1326,7 @@
             "acronym": "PYRT",
             "type": "Real",
             "allowedValues": ["Positive"],
-            "default": "0.0",
+            "default": "0",
             "description": "Either the rate or the absolute amount of the prepayment."
         },
         "penaltyType": {
@@ -1371,7 +1371,7 @@
             "acronym": "PDIED",
             "type": "Real",
             "allowedValues": [],
-            "default": "0.0",
+            "default": "0",
             "description": "Total original premium or discount that has been set at CDD and will be added to the (notional) cash flow at IED (cash flow at IED = NT+PDIED, w.r.t. an RPA CT). \nNegative value for discount and positive for premium.\nNote, similar to interest the PDIED portion is part of P&L."
         },
         "prepaymentEffect": {
@@ -1435,7 +1435,7 @@
             "acronym": "QT",
             "type": "Real",
             "allowedValues": ["Positive"],
-            "default": "1.0",
+            "default": "1",
             "description": "This attribute relates either to physical contracts (COM) or underlyings of traded contracts. \nIn case of physical contracts it holds the number of underlying units of the specific good (e.g. number of barrels of oil). \nIn case of well defined traded contracts it holds the number of defined underlying instruments. Example: QT of STK CTs underlying a FUTUR indicates the number of those specific STK CTs which underlie the FUTUR."
         },
         "rateMultiplier": {
@@ -1445,7 +1445,7 @@
             "acronym": "RRMLT",
             "type": "Real",
             "allowedValues": [],
-            "default": "1.0",
+            "default": "1",
             "description": "Interest rate multiplier. A typical rate resetting rule is LIBOR plus x basis point where x represents the interest rate spread.\nHowever, in some cases like reverse or super floater contracts an additional rate multiplier applies. In this case, the new rate is determined as: IPNR after rate reset = Rate selected from the market object * RRMLT + RRSP."
         },
         "rateSpread": {
@@ -1455,7 +1455,7 @@
             "acronym": "RRSP",
             "type": "Real",
             "allowedValues": [],
-            "default": "0.0",
+            "default": "0",
             "description": "Interest rate spread. A typical rate resetting rule is LIBOR plus x basis point where x represents the interest rate spread.  \nThe following equation can be taken if RRMLT is not set: IPNR after rate reset = Rate selected from the market object  + RRSP."
         },
         "scalingEffect": {
@@ -2647,6 +2647,14 @@
             "name": "Status Date",
             "acronym": "SD",
             "description": "The timestamp as per which the state is captured at any point in time",
+            "type": "Timestamp",
+            "allowedValues": ["ISO8601 Datetime"]
+        },
+        "terminationDate": {
+            "identifier": "terminationDate",
+            "name": "Termination Date",
+            "acronym": "TD",
+            "description": "The timestamp of unscheduled termination of a contract",
             "type": "Timestamp",
             "allowedValues": ["ISO8601 Datetime"]
         }

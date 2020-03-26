@@ -137,6 +137,14 @@
             "description": "The timestamp as per which the state is captured at any point in time",
             "type": "Timestamp",
             "allowedValues": ["ISO8601 Datetime"]
+        },
+        "terminationDate": {
+            "identifier": "terminationDate",
+            "name": "Termination Date",
+            "acronym": "TD",
+            "description": "The timestamp of unscheduled termination of a contract",
+            "type": "Timestamp",
+            "allowedValues": ["ISO8601 Datetime"]
         }
     }
 }
