@@ -1434,7 +1434,7 @@
             "acronym": "MPFD",
             "type": "Real",
             "allowedValues": [],
-            "default": "NT",
+            "default": "[ the value of notionalPrincipal ]",
             "description": "Defines the notional amount which can be withdrawn before XDN without penalty"
         },
         "nextDividendPaymentAmount": {
