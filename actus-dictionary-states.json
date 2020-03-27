@@ -94,6 +94,14 @@
             "type": "Real",
             "allowedValues": []
         },
+        "maturityDate": {
+            "identifier": "maturityDate",
+            "name": "Maturity Date",
+            "acronym": "MD",
+            "description": "The timestamp as per which the contract matures according to the initial terms or as per unscheduled events",
+            "type": "Timestamp",
+            "allowedValues": []
+        },
         "nextPrincipalRedemptionPayment": {
             "identifier": "nextPrincipalRedemptionPayment",
             "name": "Next Principal Redemption Payment",
