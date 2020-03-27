@@ -57,7 +57,12 @@ dictionary[["taxonomy"]] = lapply(split(taxonomy,taxonomy$identifier),unbox)
 terms_sub=terms[,c("identifier", "group", "name", "acronym", "type", "allowedValues", "default", "description")]
 
 # -> convert enum values to json array
-terms_sub$allowedValues = sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+#terms_sub$allowedValues = sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+terms_sub$allowedValues = sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,", "),function(x) {
+  obj = sapply(x,strsplit,": ")
+  if(!is.null(dim(obj))) do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "description"); df } ))
+})
+
 
 # -> format NA strings
 terms_sub[which(is.na(terms_sub$default)),"default"]=""
@@ -81,7 +86,11 @@ dictionary[["eventType"]] = lapply(split(eventType,eventType$identifier),unbox)
 
 # add states
 # -> convert enum values to json array
-states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+#states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,", "),function(x) {
+  obj = sapply(x,strsplit,": ")
+  if(!is.null(dim(obj))) do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "description"); df } ))
+})
 
 # -> add to dictionary
 dictionary[["states"]] = lapply(split(states,states$identifier),unbox)
@@ -98,6 +107,9 @@ jsonDict = gsub("null", "[]", jsonDict, fixed=TRUE)
 jsonDict = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonDict,fixed=TRUE)
 jsonDict = gsub("\"(0,1)\"", "[\"(0,1)\"]", jsonDict,fixed=TRUE)
 jsonDict = gsub("\"Positive\"", "[\"Positive\"]", jsonDict,fixed=TRUE)
+jsonDict = gsub("{
+
+            }", "[]", jsonDict,fixed=TRUE)
 
 # write json dictionary
 jsonDict %>% write_lines(paste0(json_path,'actus-dictionary.json'))
@@ -119,6 +131,9 @@ jsonTerms = gsub("null", "[]", jsonTerms, fixed=TRUE)
 jsonTerms = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonTerms,fixed=TRUE)
 jsonTerms = gsub("\"(0,1)\"", "[\"(0,1)\"]", jsonTerms,fixed=TRUE)
 jsonTerms = gsub("\"Positive\"", "[\"Positive\"]", jsonTerms,fixed=TRUE)
+jsonTerms = gsub("{
+
+            }", "[]", jsonTerms,fixed=TRUE)
 
 # write json
 jsonTerms %>% write_lines(paste0(json_path,'actus-dictionary-terms.json'))
@@ -156,6 +171,9 @@ jsonEvent %>% write_lines(paste0(json_path,'actus-dictionary-event.json'))
 jsonStates = prettify(toJSON(dictionary[c("version","states")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
 jsonStates = gsub("null", "[]", jsonStates, fixed=TRUE)
 jsonStates = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonStates)
+jsonStates = gsub("{
+
+            }", "[]", jsonStates,fixed=TRUE)
 
 # write json
 jsonStates %>% write_lines(paste0(json_path,'actus-dictionary-states.json'))
