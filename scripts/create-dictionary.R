@@ -60,9 +60,8 @@ terms_sub=terms[,c("identifier", "group", "name", "acronym", "type", "allowedVal
 #terms_sub$allowedValues = sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
 terms_sub$allowedValues = sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,", "),function(x) {
   obj = sapply(x,strsplit,": ")
-  if(!is.null(dim(obj))) do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "description"); df } ))
+  if(!is.null(dim(obj))) do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "accronym", "description"); df } ))
 })
-
 
 # -> format NA strings
 terms_sub[which(is.na(terms_sub$default)),"default"]=""
@@ -89,7 +88,7 @@ dictionary[["eventType"]] = lapply(split(eventType,eventType$identifier),unbox)
 #states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
 states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,", "),function(x) {
   obj = sapply(x,strsplit,": ")
-  if(!is.null(dim(obj))) do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "description"); df } ))
+  if(!is.null(dim(obj))) do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "accronym", "description"); df } ))
 })
 
 # -> add to dictionary
