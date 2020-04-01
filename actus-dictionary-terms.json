@@ -392,7 +392,25 @@
                     "option": "9",
                     "identifier": "cno",
                     "name": "Close out Netting",
-                    "description": "Contract creator and counterparty agree on netting payment obligations of underlying instruments in case of default."
+                    "description": "Contract creator and counterparty agree on netting payment obligations of underlying instruments in case of default. "
+                },
+                {
+                    "option": "10",
+                    "identifier": "udl",
+                    "name": "Underlying",
+                    "description": "Contract represents the underlying to a composed contract. Role of the underlying is derived from the parent. "
+                },
+                {
+                    "option": "11",
+                    "identifier": "udlp",
+                    "name": "Underlying Plus",
+                    "description": "Contract represents the underlying to a composed contract. Role of the underlying is derived from the parent. When considered a standalone contract the underlying’s creator takes the asset side. "
+                },
+                {
+                    "option": "12",
+                    "identifier": "udlm",
+                    "name": "Underlying Minus",
+                    "description": "Contract represents the underlying to a composed contract. Role of the underlying is derived from the parent. When considered a standalone contract the underlying’s creator takes the liability side."
                 }
             ],
             "default": "",
