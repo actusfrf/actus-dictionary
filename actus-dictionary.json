@@ -3205,10 +3205,10 @@
             "type": "Real",
             "allowedValues": []
         },
-        "interestCalculationBase": {
-            "identifier": "interestCalculationBase",
-            "name": "Interest Calculation Base",
-            "acronym": "ICB",
+        "interestCalculationBaseAmount": {
+            "identifier": "interestCalculationBaseAmount",
+            "name": "Interest Calculation Base Amount",
+            "acronym": "ICBA",
             "description": "The basis at which interest is being accrued. Potentially different from NVL.",
             "type": "Real",
             "allowedValues": []
