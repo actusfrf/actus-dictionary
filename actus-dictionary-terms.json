@@ -477,7 +477,7 @@
             "group": "Contract identification",
             "name": "Contract Structure",
             "acronym": "CTS",
-            "type": "ContractStructure",
+            "type": "ContractReference[]",
             "allowedValues": [],
             "default": "",
             "description": "A structure identifying individual or sets of underlying contracts. E.g. for FUTUR, this structure identifies the single underlying contract, for SWAPS, the FirstLeg and SecondLeg are identified, or for CEG, CEC the structure identifies Covered and Covering contracts."

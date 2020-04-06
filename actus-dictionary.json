@@ -778,7 +778,7 @@
             "group": "Contract identification",
             "name": "Contract Structure",
             "acronym": "CTS",
-            "type": "ContractStructure",
+            "type": "ContractReference[]",
             "allowedValues": [],
             "default": "",
             "description": "A structure identifying individual or sets of underlying contracts. E.g. for FUTUR, this structure identifies the single underlying contract, for SWAPS, the FirstLeg and SecondLeg are identified, or for CEG, CEC the structure identifies Covered and Covering contracts."
@@ -3513,72 +3513,102 @@
             "allowedValues": []
         }
     },
-    "contractStructure": {
-        "contractReference": [
-            {
-                "object": "<a reference object>",
-                "type": "<the reference type>",
-                "role": "<the reference role>"
-            },
-            {
-                "object": "<a reference object>",
-                "type": "<the reference type>",
-                "role": "<the reference role>"
-            }
-        ],
-        "type": {
-            "contract": {
-                "identifier": "contract",
-                "name": "Contract",
-                "description": "The reference represents an actual contract"
-            },
-            "contractIdentifier": {
-                "identifier": "contractIdentifier",
-                "name": "Contract Identifier",
-                "description": "The reference represents an identifier of an actual contract"
-            },
-            "marketObjectIdentifier": {
-                "identifier": "marketObjectIdentifier",
-                "name": "Market Object Identifier",
-                "description": "The reference represents the identifier of a market object"
-            },
-            "legalEntityIdentifier": {
-                "identifier": "legalEntityIdentifier",
-                "name": "Legal Entity Identifier",
-                "description": "The reference represents the identifier of a legal entity"
-            },
-            "contractStructure": {
-                "identifier": "contractStructure",
-                "name": "Contract Structure",
-                "description": "The reference represents a ContractStructure"
-            }
+    "contractReference": {
+        "object": {
+            "identifier": "object",
+            "name": "Object",
+            "acronym": "OBJ",
+            "description": "The referencing object",
+            "type": "Varchar",
+            "allowedValues": []
         },
         "role": {
-            "underlying": {
-                "identifier": "underlying",
-                "name": "Underlying",
-                "description": "The reference represents a simple underlyer contract"
-            },
-            "firstLeg": {
-                "identifier": "firstLeg",
-                "name": "First Leg",
-                "description": "The reference represents the first leg contract"
-            },
-            "secondLeg": {
-                "identifier": "secondLeg",
-                "name": "Second Leg",
-                "description": "The reference represents the second leg contract"
-            },
-            "coveredContract": {
-                "identifier": "coveredContract",
-                "name": "Covered Contract",
-                "description": "The reference represents a contract that is covered under the parent contract"
-            },
-            "coveringContract": {
-                "identifier": "coveringContract",
-                "name": "Covering Contract",
-                "description": "The reference represents a contract that covers for covering contracts under the parent contract Contract"
-            }
+            "identifier": "role",
+            "name": "Reference Role",
+            "acronym": "RRL",
+            "description": "The role of the referencing object",
+            "type": "Enum",
+            "allowedValues": [
+                {
+                    "option": "0",
+                    "identifier": "underlying",
+                    "name": "Underlying",
+                    "acronym": "UDL",
+                    "description": "The reference represents a simple underlyer contract"
+                },
+                {
+                    "option": "1",
+                    "identifier": "firstLeg",
+                    "name": "First Leg",
+                    "acronym": "FIL",
+                    "description": "The reference represents the first leg contract"
+                },
+                {
+                    "option": "2",
+                    "identifier": "secondLeg",
+                    "name": "Second Leg",
+                    "acronym": "SEL",
+                    "description": "The reference represents the second leg contract"
+                },
+                {
+                    "option": "3",
+                    "identifier": "coveredContract",
+                    "name": "Covered Contract",
+                    "acronym": "COVE",
+                    "description": "The reference represents a contract that is covered under the parent contract"
+                },
+                {
+                    "option": "4",
+                    "identifier": "coveringContract",
+                    "name": "Covering Contract",
+                    "acronym": "COVI",
+                    "description": "The reference represents a contract that covers for covering contracts under the parent contract Contract"
+                }
+            ]
+        },
+        "type": {
+            "identifier": "type",
+            "name": "Reference Type",
+            "acronym": "RTP",
+            "description": "The type of the referencing object",
+            "type": "Enum",
+            "allowedValues": [
+                {
+                    "option": "0",
+                    "identifier": "contract",
+                    "name": "Contract",
+                    "acronym": "CNT",
+                    "description": "The reference represents an actual contract"
+                },
+                {
+                    "option": "1",
+                    "identifier": "contractIdentifier",
+                    "name": "Contract Identifier",
+                    "acronym": "CID",
+                    "description": "The reference represents an identifier of an actual contract"
+                },
+                {
+                    "option": "2",
+                    "identifier": "marketObjectIdentifier",
+                    "name": "Market Object Identifier",
+                    "acronym": "MOC",
+                    "description": "The reference represents the identifier of a market object"
+                },
+                {
+                    "option": "3",
+                    "identifier": "legalEntityIdentifier",
+                    "name": "Legal Entity Identifier",
+                    "acronym": "EID",
+                    "description": "The reference represents the identifier of a legal entity"
+                },
+                {
+                    "option": "4",
+                    "identifier": "contractStructure",
+                    "name": "Contract Structure",
+                    "acronym": "CST",
+                    "description": "The reference represents a ContractStructure"
+                }
+            ]
         }
     }
 }

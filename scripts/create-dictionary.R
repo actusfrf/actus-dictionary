@@ -17,7 +17,7 @@ version = read_excel(paste0(excel_path, "actus-dictionary.xlsx"), sheet="README"
 taxonomy = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Taxonomy")
 terms = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Terms")
 states = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="State")
-contractStruct = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="ContractStructure", col_types="text", col_names=FALSE)
+contractRef = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="ContractStructure")
 eventStruct = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Event")
 
 # format column names
@@ -39,6 +39,7 @@ colnames(taxonomy)=tocamel(colnames(taxonomy),delim=" ")
 colnames(terms)=tocamel(colnames(terms),delim=" ")
 colnames(states)=tocamel(colnames(states),delim=" ")
 colnames(eventStruct)=tocamel(colnames(eventStruct),delim=" ")
+colnames(contractRef)=tocamel(colnames(contractRef),delim=" ")
 
 # create dictionary base structure
 dictionary = list()
@@ -108,7 +109,18 @@ eventStruct$allowedValues = sapply(sapply(sapply(eventStruct$allowedValues,strsp
 dictionary[["event"]] = lapply(split(eventStruct,eventStruct$identifier),unbox)
 
 # add contract structure
-dictionary[["contractStructure"]] = fromJSON(as.character(contractStruct))
+# -> convert enum values to json array
+#states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+contractRef$allowedValues = sapply(sapply(sapply(contractRef$allowedValues,strsplit,"\n"),strsplit,", "),function(x) {
+  obj = sapply(x,strsplit,": ")
+  allowedValues = x
+  if(!is.null(dim(obj))) allowedValues = do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "acronym", "description"); df } ))
+  return(allowedValues)
+})
+
+# -> add to dictionary
+dictionary[["contractReference"]] = lapply(split(contractRef,contractRef$identifier),unbox)
+
 
 # write dictionary as single file
 # -------------------------------
@@ -186,8 +198,14 @@ jsonStates %>% write_lines(paste0(json_path,'actus-dictionary-states.json'))
 
 # 7. contract structure
 # parse to json and fix formatting
-jsonStruct = prettify(toJSON(dictionary[c("version","contractStructure")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonStruct = prettify(toJSON(dictionary[c("version","contractReference")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonStruct = gsub("{
 
+            }", "[]", jsonStruct,fixed=TRUE)
+
+jsonStruct = gsub("[
+                null
+            ]", "[]", jsonStruct,fixed=TRUE)
 # write json
-jsonStruct %>% write_lines(paste0(json_path,'actus-dictionary-contract-structure.json'))
+jsonStruct %>% write_lines(paste0(json_path,'actus-dictionary-contract-reference.json'))
 
