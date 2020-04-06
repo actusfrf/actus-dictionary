@@ -1436,7 +1436,7 @@
                     "option": "2",
                     "identifier": "relativePenalty",
                     "name": "Relative Penalty",
-                    "acronym": "N",
+                    "acronym": "R",
                     "description": "A penalty relative to the notional outstanding applies."
                 },
                 {
