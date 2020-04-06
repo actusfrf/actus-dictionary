@@ -72,7 +72,9 @@
             "acronym": "XD",
             "description": "The timestamp at which a contingent event/obligation is exercised",
             "type": "Timestamp",
-            "allowedValues": []
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
         },
         "feeAccrued": {
             "identifier": "feeAccrued",
@@ -104,7 +106,9 @@
             "acronym": "MD",
             "description": "The timestamp as per which the contract matures according to the initial terms or as per unscheduled events",
             "type": "Timestamp",
-            "allowedValues": []
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
         },
         "nextPrincipalRedemptionPayment": {
             "identifier": "nextPrincipalRedemptionPayment",
@@ -136,7 +140,9 @@
             "acronym": "NPD",
             "description": "The date of the (uncovered) payment event responsible for the current value of the Contract Performance state variable.",
             "type": "Timestamp",
-            "allowedValues": []
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
         },
         "notionalPrincipal": {
             "identifier": "notionalPrincipal",
@@ -168,7 +174,9 @@
             "acronym": "SD",
             "description": "The timestamp as per which the state is captured at any point in time",
             "type": "Timestamp",
-            "allowedValues": []
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
         },
         "terminationDate": {
             "identifier": "terminationDate",
@@ -176,7 +184,9 @@
             "acronym": "TD",
             "description": "The timestamp of unscheduled termination of a contract",
             "type": "Timestamp",
-            "allowedValues": []
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
         }
     }
 }
