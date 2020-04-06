@@ -32,28 +32,28 @@
                     "option": "0",
                     "identifier": "performant",
                     "name": "Performant",
-                    "accronym": "PF",
+                    "acronym": "PF",
                     "description": "Contract is performing according to terms and conditions."
                 },
                 {
                     "option": "1",
                     "identifier": "delayed",
                     "name": "Delayed",
-                    "accronym": "DL",
+                    "acronym": "DL",
                     "description": "Contractual payment obligations are delayed according to the Grace Period."
                 },
                 {
                     "option": "2",
                     "identifier": "delinquent",
                     "name": "Delinquent",
-                    "accronym": "DQ",
+                    "acronym": "DQ",
                     "description": "Contractual payment obligations are delinquent according to the Delinquency Period."
                 },
                 {
                     "option": "3",
                     "identifier": "default",
                     "name": "Default",
-                    "accronym": "DF",
+                    "acronym": "DF",
                     "description": "Contract defaulted on payment obligations according to Delinquency Period."
                 }
             ]

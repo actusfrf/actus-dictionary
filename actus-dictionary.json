@@ -397,14 +397,14 @@
                     "option": "0",
                     "identifier": "fixedRate",
                     "name": "Fixed Rate",
-                    "accronym": "F",
+                    "acronym": "F",
                     "description": "Rate spread represents a fixed rate."
                 },
                 {
                     "option": "1",
                     "identifier": "variableRate",
                     "name": "Variable Rate",
-                    "accronym": "V",
+                    "acronym": "V",
                     "description": "Rate spread represents the spread on top of a reference rate."
                 }
             ],
@@ -422,14 +422,14 @@
                     "option": "0",
                     "identifier": "increase",
                     "name": "Increase",
-                    "accronym": "INC",
+                    "acronym": "INC",
                     "description": "Notional is increased in this period."
                 },
                 {
                     "option": "1",
                     "identifier": "decrease",
                     "name": "Decrease",
-                    "accronym": "DEC",
+                    "acronym": "DEC",
                     "description": "Notional is decreased in this period."
                 }
             ],
@@ -467,63 +467,63 @@
                     "option": "0",
                     "identifier": "noShift",
                     "name": "No Shift",
-                    "accronym": "NOS",
+                    "acronym": "NOS",
                     "description": "No shift applied to non-business days."
                 },
                 {
                     "option": "1",
                     "identifier": "shiftCalculateFollowing",
                     "name": "Shift-Calculate Following",
-                    "accronym": "SCF",
+                    "acronym": "SCF",
                     "description": "Shift event dates first then calculate accruals etc. Strictly shift to the next following business day."
                 },
                 {
                     "option": "2",
                     "identifier": "shiftCalculateModifiedFollowing",
                     "name": "Shift-Calculate Modified-Following",
-                    "accronym": "SCMF",
+                    "acronym": "SCMF",
                     "description": "Shift event dates first then calculate accruals etc. Shift to the next following business day if this falls in the same month. Shift to the most recent preceding business day otherwise."
                 },
                 {
                     "option": "3",
                     "identifier": "calculateShiftFollowing",
                     "name": "Calculate-Shift Following",
-                    "accronym": "CSF",
+                    "acronym": "CSF",
                     "description": "Calculate accruals etc. first then shift event dates. Strictly shift to the next following business day."
                 },
                 {
                     "option": "4",
                     "identifier": "calculateShiftModifiedFollowing",
                     "name": "Calculate-Shift Modified-Following",
-                    "accronym": "CSMF",
+                    "acronym": "CSMF",
                     "description": "Calculate accruals etc. first then shift event dates. Shift to the next following business day if this falls in the same month. Shift to the most recent preceding business day otherwise."
                 },
                 {
                     "option": "5",
                     "identifier": "shiftCalculatePreceding",
                     "name": "Shift-Calculate Preceding",
-                    "accronym": "SCP",
+                    "acronym": "SCP",
                     "description": "Shift event dates first then calculate accruals etc. Strictly shift to the most recent preceding business day."
                 },
                 {
                     "option": "6",
                     "identifier": "shiftCalculateModifiedPreceding",
                     "name": "Shift-Calculate Modified-Preceding",
-                    "accronym": "SCMP",
+                    "acronym": "SCMP",
                     "description": "Shift event dates first then calculate accruals etc. Shift to the most recent preceding business day if this falls in the same month. Shift to the next following business day otherwise."
                 },
                 {
                     "option": "7",
                     "identifier": "calculateShiftPreceding",
                     "name": "Calculate-Shift Preceding",
-                    "accronym": "CSP",
+                    "acronym": "CSP",
                     "description": "Calculate accruals etc. first then shift event dates. Strictly shift to the most recent preceding business day."
                 },
                 {
                     "option": "8",
                     "identifier": "calculateShiftModifiedPreceding",
                     "name": "Calculate-Shift Modified-Preceding",
-                    "accronym": "SCMP",
+                    "acronym": "SCMP",
                     "description": "Calculate accruals etc. first then shift event dates. Shift to the most recent preceding business day if this falls in the same month. Shift to the next following business day otherwise."
                 }
             ],
@@ -541,14 +541,14 @@
                     "option": "0",
                     "identifier": "noCalendar",
                     "name": "No Calendar",
-                    "accronym": "NC",
+                    "acronym": "NC",
                     "description": "No holidays defined"
                 },
                 {
                     "option": "1",
                     "identifier": "mondayToFriday",
                     "name": "MondayToFriday",
-                    "accronym": "MF",
+                    "acronym": "MF",
                     "description": "Saturdays and Sundays are holidays"
                 }
             ],
@@ -576,14 +576,14 @@
                     "option": "0",
                     "identifier": "isClearingHouse",
                     "name": "Is Clearing House",
-                    "accronym": "Y",
+                    "acronym": "Y",
                     "description": "Contract creator is the clearing house."
                 },
                 {
                     "option": "1",
                     "identifier": "isNotClearingHouse",
                     "name": "Is Not Clearing House",
-                    "accronym": "N",
+                    "acronym": "N",
                     "description": "Contract creator is not the clearing house."
                 }
             ],
@@ -621,42 +621,42 @@
                     "option": "0",
                     "identifier": "performant",
                     "name": "Performant",
-                    "accronym": "PF",
+                    "acronym": "PF",
                     "description": "Contract is performing according to terms and conditions."
                 },
                 {
                     "option": "1",
                     "identifier": "delayed",
                     "name": "Delayed",
-                    "accronym": "DL",
+                    "acronym": "DL",
                     "description": "Contractual payment obligations are delayed according to the Grace Period."
                 },
                 {
                     "option": "2",
                     "identifier": "delinquent",
                     "name": "Delinquent",
-                    "accronym": "DQ",
+                    "acronym": "DQ",
                     "description": "Contractual payment obligations are delinquent according to the Delinquency Period."
                 },
                 {
                     "option": "3",
                     "identifier": "default",
                     "name": "Default",
-                    "accronym": "DF",
+                    "acronym": "DF",
                     "description": "Contract defaulted on payment obligations according to Delinquency Period."
                 },
                 {
                     "option": "4",
                     "identifier": "matured",
                     "name": "Matured",
-                    "accronym": "MA",
+                    "acronym": "MA",
                     "description": "Contract matured."
                 },
                 {
                     "option": "5",
                     "identifier": "terminated",
                     "name": "Terminated",
-                    "accronym": "TE",
+                    "acronym": "TE",
                     "description": "Contract has been terminated."
                 }
             ],
@@ -674,91 +674,91 @@
                     "option": "0",
                     "identifier": "realPositionAsset",
                     "name": "Real Position Asset",
-                    "accronym": "RPA",
+                    "acronym": "RPA",
                     "description": "Contract creator takes the asset or lender side."
                 },
                 {
                     "option": "1",
                     "identifier": "realPositionLiability",
                     "name": "Real Position Liability",
-                    "accronym": "RPL",
+                    "acronym": "RPL",
                     "description": "Contract creator takes the liability or borrower side. "
                 },
                 {
                     "option": "2",
                     "identifier": "receiveFirstLegl",
                     "name": "Receive First Leg",
-                    "accronym": "RFL",
+                    "acronym": "RFL",
                     "description": "Contract creator receives the first leg. "
                 },
                 {
                     "option": "3",
                     "identifier": "payFirstLeg",
                     "name": "Pay First Leg",
-                    "accronym": "PFL",
+                    "acronym": "PFL",
                     "description": "Contract creator pays the first leg."
                 },
                 {
                     "option": "4",
                     "identifier": "receiveFix",
                     "name": "Receive Fix",
-                    "accronym": "RF",
+                    "acronym": "RF",
                     "description": "Contract creator receives the fixed leg."
                 },
                 {
                     "option": "5",
                     "identifier": "payFix",
                     "name": "Pay Fix",
-                    "accronym": "PF",
+                    "acronym": "PF",
                     "description": "Contract creator pays the fixed leg."
                 },
                 {
                     "option": "6",
                     "identifier": "buyer",
                     "name": "Buyer",
-                    "accronym": "BUY",
+                    "acronym": "BUY",
                     "description": "Contract creator holds the right to buy the underlying / exercise the option. "
                 },
                 {
                     "option": "7",
                     "identifier": "seller",
                     "name": "Seller",
-                    "accronym": "SEL",
+                    "acronym": "SEL",
                     "description": "Contract creator holds the obligation to sell the underlying / deliver the option. "
                 },
                 {
                     "option": "8",
                     "identifier": "collateralPosition",
                     "name": "Collateral Position",
-                    "accronym": "COL",
+                    "acronym": "COL",
                     "description": "Contract represents a collateral to an underlying instrument"
                 },
                 {
                     "option": "9",
                     "identifier": "closeOutNetting",
                     "name": "Close out Netting",
-                    "accronym": "CNO",
+                    "acronym": "CNO",
                     "description": "Contract creator and counterparty agree on netting payment obligations of underlying instruments in case of default. "
                 },
                 {
                     "option": "10",
                     "identifier": "underlying",
                     "name": "Underlying",
-                    "accronym": "UDL",
+                    "acronym": "UDL",
                     "description": "Contract represents the underlying to a composed contract. Role of the underlying is derived from the parent. "
                 },
                 {
                     "option": "11",
                     "identifier": "underlyingPlus",
                     "name": "Underlying Plus",
-                    "accronym": "UDLP",
+                    "acronym": "UDLP",
                     "description": "Contract represents the underlying to a composed contract. Role of the underlying is derived from the parent. When considered a standalone contract the underlying’s creator takes the asset side. "
                 },
                 {
                     "option": "12",
                     "identifier": "underlyingMinus",
                     "name": "Underlying Minus",
-                    "accronym": "UDLM",
+                    "acronym": "UDLM",
                     "description": "Contract represents the underlying to a composed contract. Role of the underlying is derived from the parent. When considered a standalone contract the underlying’s creator takes the liability side."
                 }
             ],
@@ -826,21 +826,21 @@
                     "option": "0",
                     "identifier": "delayed",
                     "name": "Delayed",
-                    "accronym": "DL",
+                    "acronym": "DL",
                     "description": "Delay of the underlying represents a credit event."
                 },
                 {
                     "option": "1",
                     "identifier": "delinquent",
                     "name": "Delinquent",
-                    "accronym": "DQ",
+                    "acronym": "DQ",
                     "description": "Delinquency of the underlying represents a credit event."
                 },
                 {
                     "option": "2",
                     "identifier": "default",
                     "name": "Default",
-                    "accronym": "DF",
+                    "acronym": "DF",
                     "description": "Default of the underlying represents a credit event."
                 }
             ],
@@ -1068,14 +1068,14 @@
                     "option": "0",
                     "identifier": "beginning",
                     "name": "Beginning",
-                    "accronym": "B",
+                    "acronym": "B",
                     "description": "Interest is paid upfront of the interest period."
                 },
                 {
                     "option": "1",
                     "identifier": "end",
                     "name": "End",
-                    "accronym": "E",
+                    "acronym": "E",
                     "description": "Interest is paid at the end of the interest period."
                 }
             ],
@@ -1093,14 +1093,14 @@
                     "option": "0",
                     "identifier": "beginning",
                     "name": "Beginning",
-                    "accronym": "B",
+                    "acronym": "B",
                     "description": "The new rate is applied at the beginning of the reset period."
                 },
                 {
                     "option": "1",
                     "identifier": "end",
                     "name": "End",
-                    "accronym": "E",
+                    "acronym": "E",
                     "description": "The new rate is applied at the end of the reset period."
                 }
             ],
@@ -1118,42 +1118,42 @@
                     "option": "0",
                     "identifier": "actualActual",
                     "name": "Actual/Actual",
-                    "accronym": "AA",
+                    "acronym": "AA",
                     "description": "Year fractions accrue on the basis of the actual number of days per month and per year in the respective period."
                 },
                 {
                     "option": "1",
                     "identifier": "actualThreeSixty",
                     "name": "Actual Three Sixty",
-                    "accronym": "A360",
+                    "acronym": "A360",
                     "description": "Year fractions accrue on the basis of the actual number of days per month and 360 days per year in the respective period."
                 },
                 {
                     "option": "2",
                     "identifier": "actualThreeSixtyFive",
                     "name": "Actual Three Sixty Five",
-                    "accronym": "A365",
+                    "acronym": "A365",
                     "description": "Year fractions accrue on the basis of the actual number of days per month and 365 days per year in the respective period."
                 },
                 {
                     "option": "3",
                     "identifier": "thirtyEThreeSixtyISDA",
                     "name": "Thirty E Three Sixty ISDA",
-                    "accronym": "30E360ISDA",
+                    "acronym": "30E360ISDA",
                     "description": "Year fractions accrue on the basis of 30 days per month and 360 days per year in the respective period (ISDA method)."
                 },
                 {
                     "option": "4",
                     "identifier": "thirtyEThreeSixty",
                     "name": "Thirty E Three Sixty",
-                    "accronym": "30E360",
+                    "acronym": "30E360",
                     "description": "Year fractions accrue on the basis of 30 days per month and 360 days per year in the respective period."
                 },
                 {
                     "option": "5",
                     "identifier": "twentyEightEThreeThirtySix",
                     "name": "Twenty Eight E Three Thirty Six",
-                    "accronym": "28E336",
+                    "acronym": "28E336",
                     "description": "Year fractions accrue on the basis of 28 days per month and 336 days per year in the respective period."
                 }
             ],
@@ -1191,14 +1191,14 @@
                     "option": "0",
                     "identifier": "cashSettlement",
                     "name": "Cash Settlement",
-                    "accronym": "S",
+                    "acronym": "S",
                     "description": "The market value of the underlying is settled."
                 },
                 {
                     "option": "1",
                     "identifier": "physicalSettlement",
                     "name": "Physical Settlement",
-                    "accronym": "D",
+                    "acronym": "D",
                     "description": "The underlying is delivered physically."
                 }
             ],
@@ -1216,14 +1216,14 @@
                     "option": "0",
                     "identifier": "sameDay",
                     "name": "Same Day",
-                    "accronym": "SD",
+                    "acronym": "SD",
                     "description": "Schedule times always fall on the schedule anchor date day of the month."
                 },
                 {
                     "option": "1",
                     "identifier": "endOfMonth",
                     "name": "End of Month",
-                    "accronym": "EOM",
+                    "acronym": "EOM",
                     "description": "Schedule times fall on the end of every month if the anchor date represents the last day of the respective month."
                 }
             ],
@@ -1281,14 +1281,14 @@
                     "option": "0",
                     "identifier": "absoluteValue",
                     "name": "Absolute Value",
-                    "accronym": "A",
+                    "acronym": "A",
                     "description": "The fee rate represents an absolute value."
                 },
                 {
                     "option": "1",
                     "identifier": "nonimalValueOfTheUnderlying",
                     "name": "Nominal Value of the Underlying",
-                    "accronym": "N",
+                    "acronym": "N",
                     "description": "The fee rate represents a rate that accrues fees on the basis of the nominal value of the underlying."
                 }
             ],
@@ -1346,21 +1346,21 @@
                     "option": "0",
                     "identifier": "nominalValue",
                     "name": "Nominal Value",
-                    "accronym": "NO",
+                    "acronym": "NO",
                     "description": "Nominal value of the exposure is covered."
                 },
                 {
                     "option": "1",
                     "identifier": "nominalValuePlusInterest",
                     "name": "Nominal Value plus Interest",
-                    "accronym": "NI",
+                    "acronym": "NI",
                     "description": "Nominal value of the exposure plus interest accrued is covered."
                 },
                 {
                     "option": "2",
                     "identifier": "marketValue",
                     "name": "Market Value",
-                    "accronym": "MV",
+                    "acronym": "MV",
                     "description": "Market value of the exposure is covered."
                 }
             ],
@@ -1398,21 +1398,21 @@
                     "option": "0",
                     "identifier": "notioalOutstanding",
                     "name": "Notional Outstanding",
-                    "accronym": "NT",
+                    "acronym": "NT",
                     "description": "Interest accrues on the basis of the notional outstanding."
                 },
                 {
                     "option": "1",
                     "identifier": "notionalAtInitialExchange",
                     "name": "Notional at Initial Exchange",
-                    "accronym": "NTIED",
+                    "acronym": "NTIED",
                     "description": "Interest accrues on the basis of the notional value at initial exchange."
                 },
                 {
                     "option": "2",
                     "identifier": "notionalLagged",
                     "name": "Notional Outstanding Lagged",
-                    "accronym": "NTL",
+                    "acronym": "NTL",
                     "description": "Interest accrues on the basis of the lagged notional outstanding."
                 }
             ],
@@ -1629,21 +1629,21 @@
                     "option": "0",
                     "identifier": "european",
                     "name": "European",
-                    "accronym": "E",
+                    "acronym": "E",
                     "description": "European-type exercise."
                 },
                 {
                     "option": "1",
                     "identifier": "bermudan",
                     "name": "Bermudan",
-                    "accronym": "B",
+                    "acronym": "B",
                     "description": "Bermudan-type exercise."
                 },
                 {
                     "option": "2",
                     "identifier": "american",
                     "name": "American",
-                    "accronym": "A",
+                    "acronym": "A",
                     "description": "American-type exercise."
                 }
             ],
@@ -1681,21 +1681,21 @@
                     "option": "0",
                     "identifier": "call",
                     "name": "Call",
-                    "accronym": "C",
+                    "acronym": "C",
                     "description": "Call option."
                 },
                 {
                     "option": "1",
                     "identifier": "put",
                     "name": "Put",
-                    "accronym": "P",
+                    "acronym": "P",
                     "description": "Put option."
                 },
                 {
                     "option": "2",
                     "identifier": "callPut",
                     "name": "Call-Put",
-                    "accronym": "CP",
+                    "acronym": "CP",
                     "description": "Combination of call and put option."
                 }
             ],
@@ -1723,28 +1723,28 @@
                     "option": "0",
                     "identifier": "noPenalty",
                     "name": "No Penalty",
-                    "accronym": "N",
+                    "acronym": "N",
                     "description": "No penalty applies."
                 },
                 {
                     "option": "1",
                     "identifier": "fixedPenalty",
                     "name": "Fixed Penalty",
-                    "accronym": "A",
+                    "acronym": "A",
                     "description": "A fixed amount applies as penalty."
                 },
                 {
                     "option": "2",
                     "identifier": "relativePenalty",
                     "name": "Relative Penalty",
-                    "accronym": "N",
+                    "acronym": "N",
                     "description": "A penalty relative to the notional outstanding applies."
                 },
                 {
                     "option": "3",
                     "identifier": "interestRateDifferential",
                     "name": "Interest Rate Differential",
-                    "accronym": "I",
+                    "acronym": "I",
                     "description": "A penalty based on the current interest rate differential relative to the notional outstanding applies."
                 }
             ],
@@ -1792,21 +1792,21 @@
                     "option": "0",
                     "identifier": "noPrepayment",
                     "name": "No Prepayment",
-                    "accronym": "N",
+                    "acronym": "N",
                     "description": "Prepayment is not allowed under the agreement."
                 },
                 {
                     "option": "1",
                     "identifier": "prepaymentReducesRedemptionAmount",
                     "name": "Prepayment Reduces Redemption Amount",
-                    "accronym": "A",
+                    "acronym": "A",
                     "description": "Prepayment is allowed and reduces the redemption amount for the remaining period up to maturity."
                 },
                 {
                     "option": "2",
                     "identifier": "prepaymentReducesMaturity",
                     "name": "Prepayment Reduces Maturity",
-                    "accronym": "M",
+                    "acronym": "M",
                     "description": "Prepayment is allowed and reduces the maturity."
                 }
             ],
@@ -1894,28 +1894,28 @@
                     "option": "0",
                     "identifier": "noScaling",
                     "name": "No Scaling",
-                    "accronym": "000",
+                    "acronym": "000",
                     "description": "No scaling applies."
                 },
                 {
                     "option": "1",
                     "identifier": "interestIsScaled",
                     "name": "Interest is Scaled",
-                    "accronym": "I00",
+                    "acronym": "I00",
                     "description": "Scaling applies only to interest."
                 },
                 {
                     "option": "2",
                     "identifier": "principalIsScaled",
                     "name": "Principal is Scaled",
-                    "accronym": "0N0",
+                    "acronym": "0N0",
                     "description": "Scaling applies only to principal."
                 },
                 {
                     "option": "3",
                     "identifier": "interestAndPrincipalIsScaled",
                     "name": "Interest and Principal is Scaled",
-                    "accronym": "IN0",
+                    "acronym": "IN0",
                     "description": "Scaling applies to interest and principal."
                 }
             ],
@@ -1942,14 +1942,14 @@
                     "option": "0",
                     "identifier": "senior",
                     "name": "Senior",
-                    "accronym": "S",
+                    "acronym": "S",
                     "description": "Contract represents senior debt."
                 },
                 {
                     "option": "1",
                     "identifier": "junior",
                     "name": "Junior",
-                    "accronym": "J",
+                    "acronym": "J",
                     "description": "Contract represents junior debt."
                 }
             ],
@@ -2007,63 +2007,63 @@
                     "option": "0",
                     "identifier": "barrel",
                     "name": "Barrel",
-                    "accronym": "BRL",
+                    "acronym": "BRL",
                     "description": "Physical unit of the contract is Barrels."
                 },
                 {
                     "option": "1",
                     "identifier": "bushel",
                     "name": "Bushel",
-                    "accronym": "BSH",
+                    "acronym": "BSH",
                     "description": "Physical unit of the contract is Bushel."
                 },
                 {
                     "option": "2",
                     "identifier": "gallon",
                     "name": "Gallon",
-                    "accronym": "GLN",
+                    "acronym": "GLN",
                     "description": "Physical unit of the contract is Gallons."
                 },
                 {
                     "option": "3",
                     "identifier": "currencyUnit",
                     "name": "Currency Unit",
-                    "accronym": "CUU",
+                    "acronym": "CUU",
                     "description": "Physical unit of the contract is Currency Units."
                 },
                 {
                     "option": "4",
                     "identifier": "megaWattHours",
                     "name": "Mega Watt Hours",
-                    "accronym": "MWH",
+                    "acronym": "MWH",
                     "description": "Physical unit of the contract is Mega Watt Hours."
                 },
                 {
                     "option": "5",
                     "identifier": "pounds",
                     "name": "Pounds",
-                    "accronym": "PND",
+                    "acronym": "PND",
                     "description": "Physical unit of the contract is Pounds."
                 },
                 {
                     "option": "6",
                     "identifier": "shortTons",
                     "name": "Short Tons",
-                    "accronym": "STN",
+                    "acronym": "STN",
                     "description": "Physical unit of the contract is Short Tons."
                 },
                 {
                     "option": "7",
                     "identifier": "tons",
                     "name": "Tons",
-                    "accronym": "TON",
+                    "acronym": "TON",
                     "description": "Physical unit of the contract is Tons."
                 },
                 {
                     "option": "8",
                     "identifier": "troyOunce",
                     "name": "Troy Ounce",
-                    "accronym": "TRO",
+                    "acronym": "TRO",
                     "description": "Physical unit of the contract is Troy Ounces."
                 }
             ],
@@ -3058,28 +3058,28 @@
                     "option": "0",
                     "identifier": "performant",
                     "name": "Performant",
-                    "accronym": "PF",
+                    "acronym": "PF",
                     "description": "Contract is performing according to terms and conditions."
                 },
                 {
                     "option": "1",
                     "identifier": "delayed",
                     "name": "Delayed",
-                    "accronym": "DL",
+                    "acronym": "DL",
                     "description": "Contractual payment obligations are delayed according to the Grace Period."
                 },
                 {
                     "option": "2",
                     "identifier": "delinquent",
                     "name": "Delinquent",
-                    "accronym": "DQ",
+                    "acronym": "DQ",
                     "description": "Contractual payment obligations are delinquent according to the Delinquency Period."
                 },
                 {
                     "option": "3",
                     "identifier": "default",
                     "name": "Default",
-                    "accronym": "DF",
+                    "acronym": "DF",
                     "description": "Contract defaulted on payment obligations according to Delinquency Period."
                 }
             ]
