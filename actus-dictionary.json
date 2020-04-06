@@ -781,7 +781,134 @@
             "name": "Contract Type",
             "acronym": "CT",
             "type": "Enum",
-            "allowedValues": [],
+            "allowedValues": [
+                {
+                    "option": "0",
+                    "identifier": "principalAtMaturity",
+                    "name": "Principal at Maturity",
+                    "acronym": "PAM",
+                    "description": "Lending agreements with full amortization at maturity."
+                },
+                {
+                    "option": "1",
+                    "identifier": "annuity",
+                    "name": "Annuity",
+                    "acronym": "ANN",
+                    "description": "Lending agreements with fixed periodic payments consisting of an interest and principal portion. The periodic payments are adjusted for variable rate instruments such that maturity remains fixed."
+                },
+                {
+                    "option": "2",
+                    "identifier": "negativeAmortizer",
+                    "name": "Negative Amortizer",
+                    "acronym": "NAM",
+                    "description": "Lending agreements with fixed periodic payments consisting of an interest and principal portion. Maturity changes for variable rate instruments. "
+                },
+                {
+                    "option": "3",
+                    "identifier": "linearAmortizer",
+                    "name": "Linear Amortizer",
+                    "acronym": "LAM",
+                    "description": "Lending agreements with fixed principal repayment amounts and variable interest payments."
+                },
+                {
+                    "option": "4",
+                    "identifier": "exoticLinearAmortizer",
+                    "name": "Exotic Linear Amortizer",
+                    "acronym": "LAX",
+                    "description": "Lending agreements with exotic repayment schedules."
+                },
+                {
+                    "option": "5",
+                    "identifier": "callMoney",
+                    "name": "Call Money",
+                    "acronym": "CLM",
+                    "description": "Lonas that are rolled over as long as they are not called. Once called it has to be paid back after the stipulated notice period."
+                },
+                {
+                    "option": "6",
+                    "identifier": "undefinedMaturityProfile",
+                    "name": "Undefined Maturity Profile",
+                    "acronym": "UMP",
+                    "description": "Interest paying cash accounts (current / savings / etc.). "
+                },
+                {
+                    "option": "7",
+                    "identifier": "cash",
+                    "name": "Cash",
+                    "acronym": "CSH",
+                    "description": "Represents cash holdings. "
+                },
+                {
+                    "option": "8",
+                    "identifier": "stock",
+                    "name": "Stock",
+                    "acronym": "STK",
+                    "description": "Represents stocks/shares/equity. "
+                },
+                {
+                    "option": "9",
+                    "identifier": "commodity",
+                    "name": "Commodity",
+                    "acronym": "COM",
+                    "description": "Represents commodities. "
+                },
+                {
+                    "option": "10",
+                    "identifier": "swap",
+                    "name": "Swap",
+                    "acronym": "SWAPS",
+                    "description": "An agreement of swapping two legs such as fixed against variable or currency 1 against currency 2 etc. "
+                },
+                {
+                    "option": "11",
+                    "identifier": "plainVanillaSwap",
+                    "name": "Plain Vanilla Swap",
+                    "acronym": "SWPPV",
+                    "description": "Plain vanilla interest rate swaps. "
+                },
+                {
+                    "option": "12",
+                    "identifier": "foreignExchangeOutright",
+                    "name": "Foreign Exchange Outright",
+                    "acronym": "FXOUT",
+                    "description": "An agreement of swapping two cash flows in different currencies at a future point in time. "
+                },
+                {
+                    "option": "13",
+                    "identifier": "capFloor",
+                    "name": "Cap and Floor",
+                    "acronym": "CAPFL",
+                    "description": "An agreement of paying the differential (cap or floor) of a reference rate versus a fixed rate. "
+                },
+                {
+                    "option": "14",
+                    "identifier": "future",
+                    "name": "Future",
+                    "acronym": "FUTUR",
+                    "description": "An agreement of exchanging an underlying instrument against a fixed price in the future. "
+                },
+                {
+                    "option": "15",
+                    "identifier": "option",
+                    "name": "Option",
+                    "acronym": "OPTNS",
+                    "description": "Different types of options on buying an underlying instrument at a fixed price in the future. "
+                },
+                {
+                    "option": "16",
+                    "identifier": "creditEnhancementGuarantee",
+                    "name": "Credit Enhancement Guarantee",
+                    "acronym": "CEG",
+                    "description": "A guarantee / letter of credit by a third party on the scheduled payment obligations of an underlying instrument "
+                },
+                {
+                    "option": "17",
+                    "identifier": "creditEnhancementCollateral",
+                    "name": "Credit Enhancement Collateral",
+                    "acronym": "CEC",
+                    "description": "A collateral securing the scheduled payment obligations of an underlying instrument"
+                }
+            ],
             "default": "",
             "description": "The ContractType is the most important information. It defines the cash flow generating pattern of a contract. The ContractType information in combination with a given state of the risk factors will produce a deterministic sequence of cash flows which are the basis of any financial analysis."
         },
