@@ -1137,8 +1137,10 @@
             "group": "Dividend",
             "name": "Cycle Of Dividend",
             "acronym": "DVCL",
-            "type": "Period",
-            "allowedValues": [],
+            "type": "Cycle",
+            "allowedValues": [
+                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+            ],
             "default": "",
             "description": "Defines in combination with DVANX the payment points of dividends. The dividend payment schedule will start at DVANX and end at MaximumProjectionPeriod (cf. sheet Modeling Parameters)."
         },
@@ -1148,7 +1150,9 @@
             "name": "Cycle Of Fee",
             "acronym": "FECL",
             "type": "Cycle",
-            "allowedValues": [],
+            "allowedValues": [
+                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+            ],
             "default": "",
             "description": "Defines in combination with FEANX the payment points of fees"
         },
@@ -1158,7 +1162,9 @@
             "name": "Cycle Of Interest Calculation Base",
             "acronym": "IPCBCL",
             "type": "Cycle",
-            "allowedValues": [],
+            "allowedValues": [
+                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+            ],
             "default": "",
             "description": "Concerning the format see PRCL. \nDefines the subsequent adjustment points to NT of the interest payment calculation base."
         },
@@ -1168,7 +1174,9 @@
             "name": "Cycle Of Interest Payment",
             "acronym": "IPCL",
             "type": "Cycle",
-            "allowedValues": [],
+            "allowedValues": [
+                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+            ],
             "default": "",
             "description": "Cycle according to which the interest payment date schedule will be calculated.\nIn case IPCL is not set, then there will only be an interest payment event at MD (and possibly at IPANX if set).\nThe interval will be adjusted yet by EOMC and BDC."
         },
@@ -1178,7 +1186,9 @@
             "name": "Cycle Of Margining",
             "acronym": "MRCL",
             "type": "Cycle",
-            "allowedValues": [],
+            "allowedValues": [
+                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+            ],
             "default": "",
             "description": "Defines together with MRANX the points where margins can be called."
         },
@@ -1188,7 +1198,9 @@
             "name": "Cycle Of Optionality",
             "acronym": "OPCL",
             "type": "Cycle",
-            "allowedValues": [],
+            "allowedValues": [
+                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+            ],
             "default": "",
             "description": "Cycle according to which the option exercise date schedule will be calculated.\nOPCL can be NULL for American Options or Prepayment Optionality in which case the optionality period starts at OPANX and ends at OPXED (for american options) or MD (in case of prepayment optionality).\nThe interval will be adjusted yet by EOMC and BDC."
         },
@@ -1198,7 +1210,9 @@
             "name": "Cycle Of Principal Redemption",
             "acronym": "PRCL",
             "type": "Cycle",
-            "allowedValues": [],
+            "allowedValues": [
+                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+            ],
             "default": "",
             "description": "Cycle according to which the interest payment date schedule will be calculated.\nIn case PRCL is not set, then there will only be one principal payment event at MD (and possibly at PRANX if set).\nThe interval will be adjusted yet by EOMC and BDC."
         },
@@ -1208,7 +1222,9 @@
             "name": "Cycle Of Rate Reset",
             "acronym": "RRCL",
             "type": "Cycle",
-            "allowedValues": [],
+            "allowedValues": [
+                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+            ],
             "default": "",
             "description": "Cycle according to which the rate reset date schedule will be calculated.\nIn case RRCL is not set, then there will only be one rate reset event at RRANX given RRANX if set.\nThe interval will be adjusted yet by EOMC and BDC."
         },
@@ -1218,7 +1234,9 @@
             "name": "Cycle Of Scaling Index",
             "acronym": "SCCL",
             "type": "Cycle",
-            "allowedValues": [],
+            "allowedValues": [
+                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+            ],
             "default": "",
             "description": "Cycle according to which the scaling date schedule will be calculated.\nIn case SCCL is not set, then there will only be one scaling event at SCANX given SCANX is set.\nThe interval will be adjusted yet by EOMC and BDC."
         },
@@ -1331,8 +1349,10 @@
             "name": "Delinquency Period",
             "acronym": "DQP",
             "type": "Period",
-            "allowedValues": [],
-            "default": "0D",
+            "allowedValues": [
+                "ISO8601 Duration"
+            ],
+            "default": "P0D",
             "description": "If real payment happens after scheduled payment date plus DLP, then the counterparty is in technical default. This means that the creditor legally has the right to declare default of the debtor."
         },
         "delinquencyRate": {
@@ -1482,8 +1502,10 @@
             "name": "Fixing Days",
             "acronym": "RRFIX",
             "type": "Period",
-            "allowedValues": [],
-            "default": "0D",
+            "allowedValues": [
+                "ISO8601 Duration"
+            ],
+            "default": "P0D",
             "description": "Interest rate resets (adjustments) are usually fixed one or two days (usually Business Days) before the new rate applies (defined by the rate reset schedule). This field holds the period between fixing and application of a rate."
         },
         "futuresPrice": {
@@ -1502,8 +1524,10 @@
             "name": "Grace Period",
             "acronym": "GRP",
             "type": "Period",
-            "allowedValues": [],
-            "default": "0D",
+            "allowedValues": [
+                "ISO8601 Duration"
+            ],
+            "default": "P0D",
             "description": "If real payment happens after scheduled payment date plus GRP, then the payment is in delay."
         },
         "guaranteedExposure": {
@@ -2026,8 +2050,10 @@
             "name": "Prepayment Period",
             "acronym": "PPP",
             "type": "Period",
-            "allowedValues": [],
-            "default": "0D",
+            "allowedValues": [
+                "ISO8601 Duration"
+            ],
+            "default": "P0D",
             "description": "If real payment happens before scheduled payment date minus PPP, then it is considered a prepayment. Effect of prepayments are further described in PPEF and related fields."
         },
         "priceAtPurchaseDate": {
@@ -2187,8 +2213,10 @@
             "name": "Settlement Days",
             "acronym": "STD",
             "type": "Period",
-            "allowedValues": [],
-            "default": "0D",
+            "allowedValues": [
+                "ISO8601 Duration"
+            ],
+            "default": "P0D",
             "description": "Defines the period from fixing of a contingent event/obligation (Exercise Date) to settlement of the obligation.\n"
         },
         "statusDate": {
@@ -2307,7 +2335,9 @@
             "name": "X Day Notice",
             "acronym": "XDN",
             "type": "Period",
-            "allowedValues": [],
+            "allowedValues": [
+                "ISO8601 Duration"
+            ],
             "default": "",
             "description": "Used as rolling attribute with the callable CT's UMP and CLM uniquely. CLM's and UMP's will not be settled (MD not set) until the client uses his option to call the contract X_Day_Notice after Current Date. As long as MD or TD is not set, the client postpones his right to call to the future. The cycle is normally defined in number of business days."
         }
