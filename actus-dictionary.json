@@ -3176,6 +3176,20 @@
                     "name": "Default",
                     "acronym": "DF",
                     "description": "Contract defaulted on payment obligations according to Delinquency Period."
+                },
+                {
+                    "option": "4",
+                    "identifier": "matured",
+                    "name": "Matured",
+                    "acronym": "MA",
+                    "description": "Contract matured."
+                },
+                {
+                    "option": "5",
+                    "identifier": "terminated",
+                    "name": "Terminated",
+                    "acronym": "TE",
+                    "description": "Contract has been terminated."
                 }
             ]
         },
