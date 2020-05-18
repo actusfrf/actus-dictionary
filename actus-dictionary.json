@@ -1139,7 +1139,7 @@
             "acronym": "DVCL",
             "type": "Cycle",
             "allowedValues": [
-                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+                "[ISO8601 Duration]L[s={‘+’,’-’}]"
             ],
             "default": "",
             "description": "Defines in combination with DVANX the payment points of dividends. The dividend payment schedule will start at DVANX and end at MaximumProjectionPeriod (cf. sheet Modeling Parameters)."
@@ -1151,7 +1151,7 @@
             "acronym": "FECL",
             "type": "Cycle",
             "allowedValues": [
-                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+                "[ISO8601 Duration]L[s={‘+’,’-’}]"
             ],
             "default": "",
             "description": "Defines in combination with FEANX the payment points of fees"
@@ -1163,7 +1163,7 @@
             "acronym": "IPCBCL",
             "type": "Cycle",
             "allowedValues": [
-                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+                "[ISO8601 Duration]L[s={‘+’,’-’}]"
             ],
             "default": "",
             "description": "Concerning the format see PRCL. \nDefines the subsequent adjustment points to NT of the interest payment calculation base."
@@ -1175,7 +1175,7 @@
             "acronym": "IPCL",
             "type": "Cycle",
             "allowedValues": [
-                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+                "[ISO8601 Duration]L[s={‘+’,’-’}]"
             ],
             "default": "",
             "description": "Cycle according to which the interest payment date schedule will be calculated.\nIn case IPCL is not set, then there will only be an interest payment event at MD (and possibly at IPANX if set).\nThe interval will be adjusted yet by EOMC and BDC."
@@ -1187,7 +1187,7 @@
             "acronym": "MRCL",
             "type": "Cycle",
             "allowedValues": [
-                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+                "[ISO8601 Duration]L[s={‘+’,’-’}]"
             ],
             "default": "",
             "description": "Defines together with MRANX the points where margins can be called."
@@ -1199,7 +1199,7 @@
             "acronym": "OPCL",
             "type": "Cycle",
             "allowedValues": [
-                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+                "[ISO8601 Duration]L[s={‘+’,’-’}]"
             ],
             "default": "",
             "description": "Cycle according to which the option exercise date schedule will be calculated.\nOPCL can be NULL for American Options or Prepayment Optionality in which case the optionality period starts at OPANX and ends at OPXED (for american options) or MD (in case of prepayment optionality).\nThe interval will be adjusted yet by EOMC and BDC."
@@ -1211,7 +1211,7 @@
             "acronym": "PRCL",
             "type": "Cycle",
             "allowedValues": [
-                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+                "[ISO8601 Duration]L[s={‘+’,’-’}]"
             ],
             "default": "",
             "description": "Cycle according to which the interest payment date schedule will be calculated.\nIn case PRCL is not set, then there will only be one principal payment event at MD (and possibly at PRANX if set).\nThe interval will be adjusted yet by EOMC and BDC."
@@ -1223,7 +1223,7 @@
             "acronym": "RRCL",
             "type": "Cycle",
             "allowedValues": [
-                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+                "[ISO8601 Duration]L[s={‘+’,’-’}]"
             ],
             "default": "",
             "description": "Cycle according to which the rate reset date schedule will be calculated.\nIn case RRCL is not set, then there will only be one rate reset event at RRANX given RRANX if set.\nThe interval will be adjusted yet by EOMC and BDC."
@@ -1235,7 +1235,7 @@
             "acronym": "SCCL",
             "type": "Cycle",
             "allowedValues": [
-                "[ISO8601 Duration]I[s={‘+’,’-’}]"
+                "[ISO8601 Duration]L[s={‘+’,’-’}]"
             ],
             "default": "",
             "description": "Cycle according to which the scaling date schedule will be calculated.\nIn case SCCL is not set, then there will only be one scaling event at SCANX given SCANX is set.\nThe interval will be adjusted yet by EOMC and BDC."
