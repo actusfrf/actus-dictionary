@@ -1496,10 +1496,10 @@
             "default": "",
             "description": "Rate of Fee which is a percentage of the underlying or FER is an absolute amount. For all contracts where FEB does not apply (cf. business rules), FER is interpreted as an absolute amount."
         },
-        "fixingDays": {
-            "identifier": "fixingDays",
+        "fixingPeriod": {
+            "identifier": "fixingPeriod",
             "group": "Rate Reset",
-            "name": "Fixing Days",
+            "name": "Fixing Period",
             "acronym": "RRFIX",
             "type": "Period",
             "allowedValues": [
@@ -2207,11 +2207,11 @@
             "default": "",
             "description": "The currency in which cash flows are settled. This currency can be different from the currency (CUR) in which cash flows or the contract, respectively, is denominated in which case the respective FX-rate applies at settlement time.\nIf no settlement currency is defined the cash flows are settled in the currency in which they are denominated."
         },
-        "settlementDays": {
-            "identifier": "settlementDays",
+        "settlementPeriod": {
+            "identifier": "settlementPeriod",
             "group": "Settlement",
-            "name": "Settlement Days",
-            "acronym": "STD",
+            "name": "Settlement Period",
+            "acronym": "STP",
             "type": "Period",
             "allowedValues": [
                 "ISO8601 Duration"
@@ -2412,7 +2412,7 @@
             "lifeFloor": "x(9,1,)",
             "periodCap": "x(9,1,)",
             "periodFloor": "x(9,1,)",
-            "fixingDays": "x(9,1,)",
+            "fixingPeriod": "x(9,1,)",
             "nextResetRate": "x(9,1,)",
             "rateMultiplier": "x(9,1,)",
             "settlementCurrency": "x"
@@ -2455,7 +2455,7 @@
             "cycleOfRateReset": "x(9,0,)",
             "rateSpread": "NN(9,1,)",
             "marketObjectCodeRateReset": "NN(9,1,)",
-            "fixingDays": "x(9,1,)",
+            "fixingPeriod": "x(9,1,)",
             "nextResetRate": "x(9,1,)",
             "rateMultiplier": "x(9,1,)",
             "settlementCurrency": "x"
@@ -2515,7 +2515,7 @@
             "contractDealDate": "NN",
             "exerciseDate": "x(7,0,)",
             "exerciseAmount": "NN(7,1,)\n",
-            "settlementDays": "x"
+            "settlementPeriod": "x"
         },
         "commodity": {
             "contract": "commodity",
@@ -2607,7 +2607,7 @@
             "periodCap": "x(9,1,)",
             "periodFloor": "x(9,1,)",
             "cyclePointOfRateReset": "x(9,1,)1",
-            "fixingDays": "x(9,1,)",
+            "fixingPeriod": "x(9,1,)",
             "nextResetRate": "x(9,1,)",
             "rateMultiplier": "x(9,1,)",
             "settlementCurrency": "x"
@@ -2643,7 +2643,7 @@
             "marketValueObserved": "x",
             "exerciseDate": "x(7,0,)",
             "exerciseAmount": "NN(7,1,)\n",
-            "settlementDays": "x",
+            "settlementPeriod": "x",
             "deliverySettlement": "x(,,1)",
             "settlementCurrency": "x"
         },
@@ -2683,7 +2683,7 @@
             "marketValueObserved": "x",
             "exerciseDate": "x(7,0,)",
             "exerciseAmount": "NN(7,1,)\n",
-            "settlementDays": "x",
+            "settlementPeriod": "x",
             "deliverySettlement": "x(,,1)",
             "futuresPrice": "NN",
             "settlementCurrency": "x"
@@ -2723,7 +2723,7 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "exerciseDate": "x(7,0,)",
             "exerciseAmount": "NN(7,1,)\n",
-            "settlementDays": "x",
+            "settlementPeriod": "x",
             "settlementCurrency": "x"
         },
         "linearAmortizer": {
@@ -2796,7 +2796,7 @@
             "periodCap": "x(9,1,)",
             "periodFloor": "x(9,1,)",
             "cyclePointOfRateReset": "x(9,1,)1",
-            "fixingDays": "x(9,1,)",
+            "fixingPeriod": "x(9,1,)",
             "nextResetRate": "x(9,1,)",
             "rateMultiplier": "x(9,1,)",
             "settlementCurrency": "x"
@@ -2869,7 +2869,7 @@
             "lifeFloor": "x(9,1,)",
             "periodCap": "x(9,1,)",
             "periodFloor": "x(9,1,)",
-            "fixingDays": "x(9,1,)",
+            "fixingPeriod": "x(9,1,)",
             "nextResetRate": "x(9,1,)",
             "rateMultiplier": "x(9,1,)",
             "settlementCurrency": "x"
@@ -2910,7 +2910,7 @@
             "cycleOfOptionality": "x",
             "exerciseDate": "x(7,0,)",
             "exerciseAmount": "NN(7,1,)\n",
-            "settlementDays": "x",
+            "settlementPeriod": "x",
             "deliverySettlement": "x(,,1)",
             "settlementCurrency": "x"
         },
@@ -2952,7 +2952,7 @@
             "rateSpread": "NN",
             "marketObjectCodeRateReset": "NN",
             "cyclePointOfRateReset": "x(9,1,)1",
-            "fixingDays": "x(9,1,)",
+            "fixingPeriod": "x(9,1,)",
             "nextResetRate": "x(9,1,)",
             "rateMultiplier": "x(9,1,)",
             "deliverySettlement": "x(,,1)",
@@ -3021,7 +3021,7 @@
             "periodCap": "x(9,1,)",
             "periodFloor": "x(9,1,)",
             "cyclePointOfRateReset": "x(9,1,)1",
-            "fixingDays": "x(9,1,)",
+            "fixingPeriod": "x(9,1,)",
             "nextResetRate": "x(9,1,)",
             "rateMultiplier": "x(9,1,)",
             "settlementCurrency": "x"

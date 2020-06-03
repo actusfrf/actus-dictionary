@@ -1195,10 +1195,10 @@
             "default": "",
             "description": "Rate of Fee which is a percentage of the underlying or FER is an absolute amount. For all contracts where FEB does not apply (cf. business rules), FER is interpreted as an absolute amount."
         },
-        "fixingDays": {
-            "identifier": "fixingDays",
+        "fixingPeriod": {
+            "identifier": "fixingPeriod",
             "group": "Rate Reset",
-            "name": "Fixing Days",
+            "name": "Fixing Period",
             "acronym": "RRFIX",
             "type": "Period",
             "allowedValues": [
@@ -1906,11 +1906,11 @@
             "default": "",
             "description": "The currency in which cash flows are settled. This currency can be different from the currency (CUR) in which cash flows or the contract, respectively, is denominated in which case the respective FX-rate applies at settlement time.\nIf no settlement currency is defined the cash flows are settled in the currency in which they are denominated."
         },
-        "settlementDays": {
-            "identifier": "settlementDays",
+        "settlementPeriod": {
+            "identifier": "settlementPeriod",
             "group": "Settlement",
-            "name": "Settlement Days",
-            "acronym": "STD",
+            "name": "Settlement Period",
+            "acronym": "STP",
             "type": "Period",
             "allowedValues": [
                 "ISO8601 Duration"
