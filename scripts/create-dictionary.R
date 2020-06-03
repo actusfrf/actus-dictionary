@@ -17,9 +17,8 @@ version = read_excel(paste0(excel_path, "actus-dictionary.xlsx"), sheet="README"
 taxonomy = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Taxonomy")
 terms = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Terms")
 states = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="State")
-eventType = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="EventType")
-contractStruct = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="ContractStructure", col_types="text", col_names=FALSE)
-eventStruct = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Event", col_types="text", col_names=FALSE)
+contractRef = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="ContractStructure")
+eventStruct = read_excel(paste0(excel_path,"actus-dictionary.xlsx"), sheet="Event")
 
 # format column names
 tocamel=function(x,delim=" ") {
@@ -39,7 +38,8 @@ tocamel=function(x,delim=" ") {
 colnames(taxonomy)=tocamel(colnames(taxonomy),delim=" ")
 colnames(terms)=tocamel(colnames(terms),delim=" ")
 colnames(states)=tocamel(colnames(states),delim=" ")
-colnames(eventType)=tocamel(colnames(eventType),delim=" ")
+colnames(eventStruct)=tocamel(colnames(eventStruct),delim=" ")
+colnames(contractRef)=tocamel(colnames(contractRef),delim=" ")
 
 # create dictionary base structure
 dictionary = list()
@@ -57,7 +57,13 @@ dictionary[["taxonomy"]] = lapply(split(taxonomy,taxonomy$identifier),unbox)
 terms_sub=terms[,c("identifier", "group", "name", "acronym", "type", "allowedValues", "default", "description")]
 
 # -> convert enum values to json array
-terms_sub$allowedValues = sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+#terms_sub$allowedValues = sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+terms_sub$allowedValues = sapply(sapply(sapply(terms_sub$allowedValues,strsplit,"\n"),strsplit,", "),function(x) {
+  obj = sapply(x,strsplit,": ")
+  allowedValues = x
+  if(!is.null(dim(obj))) allowedValues = do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "acronym", "description"); df } ))
+  return(allowedValues)
+})
 
 # -> format NA strings
 terms_sub[which(is.na(terms_sub$default)),"default"]=""
@@ -76,28 +82,58 @@ rownames(applic_sub) = NULL
 # -> add to dictionary
 dictionary[["applicability"]] = lapply(split(applic_sub,applic_sub$contract),unbox)
 
-# add events
-dictionary[["eventType"]] = lapply(split(eventType,eventType$identifier),unbox)
-
 # add states
 # -> convert enum values to json array
-states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+#states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,", "),function(x) {
+  obj = sapply(x,strsplit,": ")
+  allowedValues = x
+  if(!is.null(dim(obj))) allowedValues = do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "acronym", "description"); df } ))
+  return(allowedValues)
+})
 
 # -> add to dictionary
 dictionary[["states"]] = lapply(split(states,states$identifier),unbox)
 
+# add event
+# -> convert enum values to json array
+#states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+eventStruct$allowedValues = sapply(sapply(sapply(eventStruct$allowedValues,strsplit,"\n"),strsplit,", "),function(x) {
+  obj = sapply(x,strsplit,": ")
+  allowedValues = x
+  if(!is.null(dim(obj))) allowedValues = do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "acronym", "description", "sequence"); df } ))
+  return(allowedValues)
+})
+
+# -> add to dictionary
+dictionary[["event"]] = lapply(split(eventStruct,eventStruct$identifier),unbox)
+
 # add contract structure
-dictionary[["contractStructure"]] = fromJSON(as.character(contractStruct))
+# -> convert enum values to json array
+#states$allowedValues = sapply(sapply(sapply(states$allowedValues,strsplit,"\n"),strsplit,"="),function(x) sapply(x,function(y) trimws(y[1])))
+contractRef$allowedValues = sapply(sapply(sapply(contractRef$allowedValues,strsplit,"\n"),strsplit,", "),function(x) {
+  obj = sapply(x,strsplit,": ")
+  allowedValues = x
+  if(!is.null(dim(obj))) allowedValues = do.call("rbind",apply(obj,2,function(x) { df = as.data.frame(x)[2,]; colnames(df)=c("option", "identifier", "name", "acronym", "description"); df } ))
+  return(allowedValues)
+})
+
+# -> add to dictionary
+dictionary[["contractReference"]] = lapply(split(contractRef,contractRef$identifier),unbox)
+
 
 # write dictionary as single file
 # -------------------------------
 
 # parse to json and fix formatting
 jsonDict = prettify(toJSON(dictionary,auto_unbox=TRUE,pretty=TRUE,digits=NA))
-jsonDict = gsub("null", "[]", jsonDict, fixed=TRUE)
-jsonDict = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonDict,fixed=TRUE)
-jsonDict = gsub("\"(0,1)\"", "[\"(0,1)\"]", jsonDict,fixed=TRUE)
-jsonDict = gsub("\"Positive\"", "[\"Positive\"]", jsonDict,fixed=TRUE)
+jsonDict = gsub("{
+
+            }", "[]", jsonDict,fixed=TRUE)
+
+jsonDict = gsub("[
+                null
+            ]", "[]", jsonDict,fixed=TRUE)
 
 # write json dictionary
 jsonDict %>% write_lines(paste0(json_path,'actus-dictionary.json'))
@@ -115,10 +151,13 @@ jsonTaxon %>% write_lines(paste0(json_path,'actus-dictionary-taxonomy.json'))
 # 2. terms
 # parse to json and fix formatting
 jsonTerms = prettify(toJSON(dictionary[c("version","terms")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
-jsonTerms = gsub("null", "[]", jsonTerms, fixed=TRUE)
-jsonTerms = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonTerms,fixed=TRUE)
-jsonTerms = gsub("\"(0,1)\"", "[\"(0,1)\"]", jsonTerms,fixed=TRUE)
-jsonTerms = gsub("\"Positive\"", "[\"Positive\"]", jsonTerms,fixed=TRUE)
+jsonTerms = gsub("{
+
+            }", "[]", jsonTerms,fixed=TRUE)
+
+jsonTerms = gsub("[
+                null
+            ]", "[]", jsonTerms,fixed=TRUE)
 
 # write json
 jsonTerms %>% write_lines(paste0(json_path,'actus-dictionary-terms.json'))
@@ -130,23 +169,15 @@ jsonApplic = prettify(toJSON(dictionary[c("version","applicability")],auto_unbox
 # write json
 jsonApplic %>% write_lines(paste0(json_path,'actus-dictionary-applicability.json'))
 
-# 4. event types
-# parse to json and fix formatting
-jsonEventTypes = prettify(toJSON(dictionary[c("version","eventType")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
-
-# write json
-jsonEventTypes %>% write_lines(paste0(json_path,'actus-dictionary-event-types.json'))
-
 # 5. event
-# read json event structure
-jsonEvent = fromJSON(as.character(eventStruct))
+jsonEvent = prettify(toJSON(dictionary[c("version","event")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonEvent = gsub("{
 
-# add allowed values for event type
-jsonEvent$eventType$allowedValues = sapply(dictionary$eventType,function(x) x$acronym)
+            }", "[]", jsonEvent,fixed=TRUE)
 
-# convert back to json and fix formatting
-jsonEvent = prettify(toJSON(list(version=dictionary$version,event=jsonEvent),auto_unbox=TRUE,pretty=TRUE,digits=NA))
-jsonEvent = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonEvent,fixed=TRUE)
+jsonEvent = gsub("[
+                null
+            ]", "[]", jsonEvent,fixed=TRUE)
 
 # write json
 jsonEvent %>% write_lines(paste0(json_path,'actus-dictionary-event.json'))
@@ -154,16 +185,27 @@ jsonEvent %>% write_lines(paste0(json_path,'actus-dictionary-event.json'))
 # 6. states
 # parse to json and fix formatting
 jsonStates = prettify(toJSON(dictionary[c("version","states")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
-jsonStates = gsub("null", "[]", jsonStates, fixed=TRUE)
-jsonStates = gsub("\"ISO8601 Datetime\"", "[\"ISO8601 Datetime\"]", jsonStates)
+jsonStates = gsub("{
+
+            }", "[]", jsonStates,fixed=TRUE)
+
+jsonStates = gsub("[
+                null
+            ]", "[]", jsonStates,fixed=TRUE)
 
 # write json
 jsonStates %>% write_lines(paste0(json_path,'actus-dictionary-states.json'))
 
 # 7. contract structure
 # parse to json and fix formatting
-jsonStruct = prettify(toJSON(dictionary[c("version","contractStructure")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonStruct = prettify(toJSON(dictionary[c("version","contractReference")],auto_unbox=TRUE,pretty=TRUE,digits=NA))
+jsonStruct = gsub("{
 
+            }", "[]", jsonStruct,fixed=TRUE)
+
+jsonStruct = gsub("[
+                null
+            ]", "[]", jsonStruct,fixed=TRUE)
 # write json
-jsonStruct %>% write_lines(paste0(json_path,'actus-dictionary-contract-structure.json'))
+jsonStruct %>% write_lines(paste0(json_path,'actus-dictionary-contract-reference.json'))
 

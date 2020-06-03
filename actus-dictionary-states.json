@@ -28,10 +28,48 @@
             "description": "Indicates the current Contract Performance status. Different states of the contract range from performing to default.",
             "type": "Enum",
             "allowedValues": [
-                "PF",
-                "DL",
-                "DQ",
-                "DF"
+                {
+                    "option": "0",
+                    "identifier": "performant",
+                    "name": "Performant",
+                    "acronym": "PF",
+                    "description": "Contract is performing according to terms and conditions."
+                },
+                {
+                    "option": "1",
+                    "identifier": "delayed",
+                    "name": "Delayed",
+                    "acronym": "DL",
+                    "description": "Contractual payment obligations are delayed according to the Grace Period."
+                },
+                {
+                    "option": "2",
+                    "identifier": "delinquent",
+                    "name": "Delinquent",
+                    "acronym": "DQ",
+                    "description": "Contractual payment obligations are delinquent according to the Delinquency Period."
+                },
+                {
+                    "option": "3",
+                    "identifier": "default",
+                    "name": "Default",
+                    "acronym": "DF",
+                    "description": "Contract defaulted on payment obligations according to Delinquency Period."
+                },
+                {
+                    "option": "4",
+                    "identifier": "matured",
+                    "name": "Matured",
+                    "acronym": "MA",
+                    "description": "Contract matured."
+                },
+                {
+                    "option": "5",
+                    "identifier": "terminated",
+                    "name": "Terminated",
+                    "acronym": "TE",
+                    "description": "Contract has been terminated."
+                }
             ]
         },
         "exerciseAmount": {
@@ -48,7 +86,9 @@
             "acronym": "XD",
             "description": "The timestamp at which a contingent event/obligation is exercised",
             "type": "Timestamp",
-            "allowedValues": ["ISO8601 Datetime"]
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
         },
         "feeAccrued": {
             "identifier": "feeAccrued",
@@ -58,10 +98,10 @@
             "type": "Real",
             "allowedValues": []
         },
-        "interestCalculationBase": {
-            "identifier": "interestCalculationBase",
-            "name": "Interest Calculation Base",
-            "acronym": "ICB",
+        "interestCalculationBaseAmount": {
+            "identifier": "interestCalculationBaseAmount",
+            "name": "Interest Calculation Base Amount",
+            "acronym": "ICBA",
             "description": "The basis at which interest is being accrued. Potentially different from NVL.",
             "type": "Real",
             "allowedValues": []
@@ -73,6 +113,16 @@
             "description": "The multiplier being applied to interest cash flows",
             "type": "Real",
             "allowedValues": []
+        },
+        "maturityDate": {
+            "identifier": "maturityDate",
+            "name": "Maturity Date",
+            "acronym": "MD",
+            "description": "The timestamp as per which the contract matures according to the initial terms or as per unscheduled events",
+            "type": "Timestamp",
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
         },
         "nextPrincipalRedemptionPayment": {
             "identifier": "nextPrincipalRedemptionPayment",
@@ -102,9 +152,11 @@
             "identifier": "nonPerformingDate",
             "name": "Non Performing Date",
             "acronym": "NPD",
-            "description": "The date of the (uncovered) payment event responsible for the current value of the \"Contract Performance\" state variable.",
+            "description": "The date of the (uncovered) payment event responsible for the current value of the Contract Performance state variable.",
             "type": "Timestamp",
-            "allowedValues": ["ISO8601 Datetime"]
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
         },
         "notionalPrincipal": {
             "identifier": "notionalPrincipal",
@@ -136,7 +188,19 @@
             "acronym": "SD",
             "description": "The timestamp as per which the state is captured at any point in time",
             "type": "Timestamp",
-            "allowedValues": ["ISO8601 Datetime"]
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
+        },
+        "terminationDate": {
+            "identifier": "terminationDate",
+            "name": "Termination Date",
+            "acronym": "TD",
+            "description": "The timestamp of unscheduled termination of a contract",
+            "type": "Timestamp",
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
         }
     }
 }

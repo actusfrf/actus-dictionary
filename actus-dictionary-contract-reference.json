@@ -1,0 +1,106 @@
+{
+    "version": {
+        "Version": "1.0",
+        "Edition": "0",
+        "Date": "2019-10-23"
+    },
+    "contractReference": {
+        "object": {
+            "identifier": "object",
+            "name": "Object",
+            "acronym": "OBJ",
+            "description": "The referencing object",
+            "type": "Varchar",
+            "allowedValues": []
+        },
+        "role": {
+            "identifier": "role",
+            "name": "Reference Role",
+            "acronym": "RRL",
+            "description": "The role of the referencing object",
+            "type": "Enum",
+            "allowedValues": [
+                {
+                    "option": "0",
+                    "identifier": "underlying",
+                    "name": "Underlying",
+                    "acronym": "UDL",
+                    "description": "The reference represents a simple underlyer contract"
+                },
+                {
+                    "option": "1",
+                    "identifier": "firstLeg",
+                    "name": "First Leg",
+                    "acronym": "FIL",
+                    "description": "The reference represents the first leg contract"
+                },
+                {
+                    "option": "2",
+                    "identifier": "secondLeg",
+                    "name": "Second Leg",
+                    "acronym": "SEL",
+                    "description": "The reference represents the second leg contract"
+                },
+                {
+                    "option": "3",
+                    "identifier": "coveredContract",
+                    "name": "Covered Contract",
+                    "acronym": "COVE",
+                    "description": "The reference represents a contract that is covered under the parent contract"
+                },
+                {
+                    "option": "4",
+                    "identifier": "coveringContract",
+                    "name": "Covering Contract",
+                    "acronym": "COVI",
+                    "description": "The reference represents a contract that covers for covering contracts under the parent contract Contract"
+                }
+            ]
+        },
+        "type": {
+            "identifier": "type",
+            "name": "Reference Type",
+            "acronym": "RTP",
+            "description": "The type of the referencing object",
+            "type": "Enum",
+            "allowedValues": [
+                {
+                    "option": "0",
+                    "identifier": "contract",
+                    "name": "Contract",
+                    "acronym": "CNT",
+                    "description": "The reference represents an actual contract"
+                },
+                {
+                    "option": "1",
+                    "identifier": "contractIdentifier",
+                    "name": "Contract Identifier",
+                    "acronym": "CID",
+                    "description": "The reference represents an identifier of an actual contract"
+                },
+                {
+                    "option": "2",
+                    "identifier": "marketObjectIdentifier",
+                    "name": "Market Object Identifier",
+                    "acronym": "MOC",
+                    "description": "The reference represents the identifier of a market object"
+                },
+                {
+                    "option": "3",
+                    "identifier": "legalEntityIdentifier",
+                    "name": "Legal Entity Identifier",
+                    "acronym": "EID",
+                    "description": "The reference represents the identifier of a legal entity"
+                },
+                {
+                    "option": "4",
+                    "identifier": "contractStructure",
+                    "name": "Contract Structure",
+                    "acronym": "CST",
+                    "description": "The reference represents a ContractStructure"
+                }
+            ]
+        }
+    }
+}
+

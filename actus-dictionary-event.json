@@ -5,70 +5,236 @@
         "Date": "2019-10-23"
     },
     "event": {
+        "currency": {
+            "identifier": "currency",
+            "name": "Currency",
+            "acronym": "CUR",
+            "description": "The currency in which the event payoff is scheduled",
+            "type": "Varchar",
+            "allowedValues": [
+                "ISO4217"
+            ]
+        },
         "eventTime": {
             "identifier": "eventTime",
             "name": "Event Time",
+            "acronym": "TEV",
+            "description": "The timestamp of the event",
             "type": "Timestamp",
-            "allowedValues": ["ISO8601 Datetime"]
-        },
-        "scheduleTime": {
-            "identifier": "scheduleTime",
-            "name": "Schedule Time",
-            "type": "Timestamp",
-            "allowedValues": ["ISO8601 Datetime"]
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ]
         },
         "eventType": {
             "identifier": "eventType",
             "name": "Event Type",
+            "acronym": "EVT",
+            "description": "The type of the event. Different types have their own business logic in terms of payoff and state transition functions",
             "type": "Enum",
             "allowedValues": [
-                "AD",
-                "CE",
-                "DV",
-                "XD",
-                "FP",
-                "IED",
-                "IPCB",
-                "IPCI",
-                "IP",
-                "MR",
-                "MD",
-                "PY",
-                "PD",
-                "PRF",
-                "PP",
-                "PR",
-                "PRD",
-                "RRF",
-                "RR",
-                "SC",
-                "STD",
-                "TD"
-            ]
-        },
-        "currency": {
-            "identifier": "currency",
-            "name": "Currency",
-            "type": "Varchar",
-            "allowedValues": [
-
+                {
+                    "option": "0",
+                    "identifier": "monitoring",
+                    "name": "Monitoring",
+                    "acronym": "AD",
+                    "description": "Monitoring of contract. Evaluates all contract states",
+                    "sequence": "22"
+                },
+                {
+                    "option": "1",
+                    "identifier": "initialExchange",
+                    "name": "Initial Exchange",
+                    "acronym": "IED",
+                    "description": "Scheduled date of initial exchange of e.g. principal value in fixed income products",
+                    "sequence": "1"
+                },
+                {
+                    "option": "2",
+                    "identifier": "feePayment",
+                    "name": "Fee Payment",
+                    "acronym": "FP",
+                    "description": "Scheduled fee payments",
+                    "sequence": "2"
+                },
+                {
+                    "option": "3",
+                    "identifier": "principalRedemption",
+                    "name": "Principal Redemption",
+                    "acronym": "PR",
+                    "description": "Scheduled principal redemption payment",
+                    "sequence": "3"
+                },
+                {
+                    "option": "4",
+                    "identifier": "principalDrawing",
+                    "name": "Principal Drawing",
+                    "acronym": "PD",
+                    "description": "Drawing of principal amount e.g. in a credit line",
+                    "sequence": "4"
+                },
+                {
+                    "option": "5",
+                    "identifier": "principalPaymentAmountFixing",
+                    "name": "Principal Payment Amount Fixing",
+                    "acronym": "PRF",
+                    "description": "Scheduled fixing of principal payment amount",
+                    "sequence": "5"
+                },
+                {
+                    "option": "6",
+                    "identifier": "penalytPayment",
+                    "name": "Penalty Payment",
+                    "acronym": "PY",
+                    "description": "Scheduled payment of a penalty",
+                    "sequence": "6"
+                },
+                {
+                    "option": "7",
+                    "identifier": "principalPrepayment",
+                    "name": "Principal Prepayment",
+                    "acronym": "PP",
+                    "description": "Unscheduled early repayment of principal",
+                    "sequence": "7"
+                },
+                {
+                    "option": "8",
+                    "identifier": "interestPayment",
+                    "name": "Interest Payment",
+                    "acronym": "IP",
+                    "description": "Scheduled interest payment",
+                    "sequence": "8"
+                },
+                {
+                    "option": "9",
+                    "identifier": "interestCapitalization",
+                    "name": "Interest Capitalization",
+                    "acronym": "IPCI",
+                    "description": "Scheduled capitalization of accrued interest",
+                    "sequence": "9"
+                },
+                {
+                    "option": "10",
+                    "identifier": "creditEvent",
+                    "name": "Credit Event",
+                    "acronym": "CE",
+                    "description": "Credit event of counterparty to a contract",
+                    "sequence": "10"
+                },
+                {
+                    "option": "11",
+                    "identifier": "rateResetFixed",
+                    "name": "Rate Reset Fixing with Known Rate",
+                    "acronym": "RRF",
+                    "description": "Scheduled fixing of variable rate with known new rate",
+                    "sequence": "11 "
+                },
+                {
+                    "option": "12",
+                    "identifier": "rateResetVariable",
+                    "name": "Rate Reset Fixing with Unknown Rate",
+                    "acronym": "RR",
+                    "description": "Scheduled fixing of variable rate with unknown new rate",
+                    "sequence": "12"
+                },
+                {
+                    "option": "13",
+                    "identifier": "dividendPayment",
+                    "name": "Dividend Payment",
+                    "acronym": "DV",
+                    "description": "Payment of dividends",
+                    "sequence": "13"
+                },
+                {
+                    "option": "14",
+                    "identifier": "purchase",
+                    "name": "Purchase",
+                    "acronym": "PRD",
+                    "description": "Purchase of a contract",
+                    "sequence": "14"
+                },
+                {
+                    "option": "15",
+                    "identifier": "marginCall",
+                    "name": "Margin Call",
+                    "acronym": "MR",
+                    "description": "Scheduled margin call",
+                    "sequence": "15"
+                },
+                {
+                    "option": "16",
+                    "identifier": "termination",
+                    "name": "Termination",
+                    "acronym": "TD",
+                    "description": "Termination of a contract",
+                    "sequence": "16"
+                },
+                {
+                    "option": "17",
+                    "identifier": "scalingIndexFixing",
+                    "name": "Scaling Index Fixing",
+                    "acronym": "SC",
+                    "description": "Scheduled fixing of a scaling index",
+                    "sequence": "17"
+                },
+                {
+                    "option": "18",
+                    "identifier": "interestCalculationBaseFixing",
+                    "name": "Interest Calculation Base Fixing",
+                    "acronym": "IPCB",
+                    "description": "Scheduled fixing of the interest calculation base",
+                    "sequence": "18"
+                },
+                {
+                    "option": "19",
+                    "identifier": "maturity",
+                    "name": "Maturity",
+                    "acronym": "MD",
+                    "description": "Maturity of a contract",
+                    "sequence": "19"
+                },
+                {
+                    "option": "20",
+                    "identifier": "exercise",
+                    "name": "Exercise",
+                    "acronym": "XD",
+                    "description": "Exercise of a contractual feature such as an optionality",
+                    "sequence": "20"
+                },
+                {
+                    "option": "21",
+                    "identifier": "settlement",
+                    "name": "Settlement",
+                    "acronym": "STD",
+                    "description": "Settlement of an exercised contractual claim",
+                    "sequence": "21"
+                }
             ]
         },
         "payoff": {
             "identifier": "payoff",
             "name": "Payoff",
-            "type": "number",
+            "acronym": "PYO",
+            "description": "The event payoff (if any). Is zero if no payoff needs be settled for the event",
+            "type": "Real",
+            "allowedValues": []
+        },
+        "scheduleTime": {
+            "identifier": "scheduleTime",
+            "name": "Schedule Time",
+            "acronym": "TSC",
+            "description": "The scheduled timestamp for updating event payoff and post-event state",
+            "type": "Timestamp",
             "allowedValues": [
-
+                "ISO8601 Datetime"
             ]
         },
         "state": {
             "identifier": "state",
             "name": "State",
+            "acronym": "EVS",
+            "description": "The post-event state. Results from applying the event’s state transition function to the pre-event state",
             "type": "State",
-            "allowedValues": [
-
-            ]
+            "allowedValues": []
         }
     }
 }
