@@ -1383,6 +1383,16 @@
             "default": "",
             "description": "Is pointing to the market value at SD (MarketObject).\nUnique codes for market objects must be used."
         },
+        "marketObjectCodeOfRateReset": {
+            "identifier": "marketObjectCodeOfRateReset",
+            "group": "Rate Reset",
+            "name": "Market Object Code Of Rate Reset",
+            "acronym": "RRMO",
+            "type": "Varchar",
+            "allowedValues": [],
+            "default": "",
+            "description": "Is pointing to the interest rate driver (MarketObject) used for rate reset uniquely.\nUnique codes for market objects must be used."
+        },
         "marketObjectCodeOfScalingIndex": {
             "identifier": "marketObjectCodeOfScalingIndex",
             "group": "Notional Principal",
@@ -1391,16 +1401,6 @@
             "type": "Varchar",
             "allowedValues": [],
             "default": ""
-        },
-        "marketObjectCodeRateReset": {
-            "identifier": "marketObjectCodeRateReset",
-            "group": "Rate Reset",
-            "name": "Market Object Code Rate Reset",
-            "acronym": "RRMO",
-            "type": "Varchar",
-            "allowedValues": [],
-            "default": "",
-            "description": "Is pointing to the interest rate driver (MarketObject) used for rate reset uniquely.\nUnique codes for market objects must be used."
         },
         "marketValueObserved": {
             "identifier": "marketValueObserved",
