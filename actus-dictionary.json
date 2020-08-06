@@ -3248,7 +3248,7 @@
         "nextPrincipalRedemptionPayment": {
             "identifier": "nextPrincipalRedemptionPayment",
             "name": "Next Principal Redemption Payment",
-            "acronym": "NPR",
+            "acronym": "PRNXT",
             "description": "The value at which principal is being repaid. This may be including or excluding of interest depending on the Contract Type",
             "type": "Real",
             "allowedValues": []
