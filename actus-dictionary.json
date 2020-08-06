@@ -3325,6 +3325,14 @@
         }
     },
     "event": {
+        "contractID": {
+            "identifier": "contractID",
+            "name": "Contract ID",
+            "acronym": "CID",
+            "description": "The Contract ID of the contract which created the event.",
+            "type": "Varchar",
+            "allowedValues": []
+        },
         "currency": {
             "identifier": "currency",
             "name": "Currency",
