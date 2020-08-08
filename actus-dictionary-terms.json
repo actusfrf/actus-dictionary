@@ -1329,6 +1329,16 @@
             "default": "",
             "description": "This is the amount used for the calculation of interest. Calculation base per SD."
         },
+        "interestScalingMultiplier": {
+            "identifier": "interestScalingMultiplier",
+            "group": "Notional Principal",
+            "name": "Interest Scaling Multiplier",
+            "acronym": "SCIP",
+            "type": "Real",
+            "allowedValues": [],
+            "default": "1",
+            "description": "The multiplier being applied to interest cash flows"
+        },
         "lifeCap": {
             "identifier": "lifeCap",
             "group": "Rate Reset",
@@ -1525,6 +1535,16 @@
             ],
             "default": "",
             "description": "Notional amount of the second currency to be exchanged in an FXOUT CT."
+        },
+        "notionalScalingMultiplier": {
+            "identifier": "notionalScalingMultiplier",
+            "group": "Notional Principal",
+            "name": "Notional Scaling Multiplier",
+            "acronym": "SCNT",
+            "type": "Real",
+            "allowedValues": [],
+            "default": "1",
+            "description": "The multiplier being applied to principal cash flows"
         },
         "optionExerciseEndDate": {
             "identifier": "optionExerciseEndDate",
@@ -1858,16 +1878,15 @@
             "default": "000\n",
             "description": "Indicates which payments are scaled. I = Interest payments, N = Nominal payments and M = Maximum deferred interest amount. They can be scaled in any combination."
         },
-        "scalingIndexAtStatusDate": {
-            "identifier": "scalingIndexAtStatusDate",
+        "scalingIndexAtContractDealDate": {
+            "identifier": "scalingIndexAtContractDealDate",
             "group": "Notional Principal",
-            "name": "Scaling Index At Status Date",
-            "acronym": "SCIED",
+            "name": "Scaling Index At Contract Deal Date",
+            "acronym": "SCCDD",
             "type": "Real",
-            "allowedValues": [
-                "Positive"
-            ],
-            "default": ""
+            "allowedValues": [],
+            "default": "",
+            "description": "The value of the Scaling Index as per Contract Deal Date."
         },
         "seniority": {
             "identifier": "seniority",

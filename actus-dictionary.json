@@ -1630,6 +1630,16 @@
             "default": "",
             "description": "This is the amount used for the calculation of interest. Calculation base per SD."
         },
+        "interestScalingMultiplier": {
+            "identifier": "interestScalingMultiplier",
+            "group": "Notional Principal",
+            "name": "Interest Scaling Multiplier",
+            "acronym": "SCIP",
+            "type": "Real",
+            "allowedValues": [],
+            "default": "1",
+            "description": "The multiplier being applied to interest cash flows"
+        },
         "lifeCap": {
             "identifier": "lifeCap",
             "group": "Rate Reset",
@@ -1826,6 +1836,16 @@
             ],
             "default": "",
             "description": "Notional amount of the second currency to be exchanged in an FXOUT CT."
+        },
+        "notionalScalingMultiplier": {
+            "identifier": "notionalScalingMultiplier",
+            "group": "Notional Principal",
+            "name": "Notional Scaling Multiplier",
+            "acronym": "SCNT",
+            "type": "Real",
+            "allowedValues": [],
+            "default": "1",
+            "description": "The multiplier being applied to principal cash flows"
         },
         "optionExerciseEndDate": {
             "identifier": "optionExerciseEndDate",
@@ -2159,16 +2179,15 @@
             "default": "000\n",
             "description": "Indicates which payments are scaled. I = Interest payments, N = Nominal payments and M = Maximum deferred interest amount. They can be scaled in any combination."
         },
-        "scalingIndexAtStatusDate": {
-            "identifier": "scalingIndexAtStatusDate",
+        "scalingIndexAtContractDealDate": {
+            "identifier": "scalingIndexAtContractDealDate",
             "group": "Notional Principal",
-            "name": "Scaling Index At Status Date",
-            "acronym": "SCIED",
+            "name": "Scaling Index At Contract Deal Date",
+            "acronym": "SCCDD",
             "type": "Real",
-            "allowedValues": [
-                "Positive"
-            ],
-            "default": ""
+            "allowedValues": [],
+            "default": "",
+            "description": "The value of the Scaling Index as per Contract Deal Date."
         },
         "seniority": {
             "identifier": "seniority",
@@ -2393,7 +2412,9 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "creditLineAmount": "x",
             "marketObjectCodeOfScalingIndex": "NN(7,1,)",
-            "scalingIndexAtStatusDate": "NN(7,1,)",
+            "scalingIndexAtContractDealDate": "NN(7,1,)",
+            "notionalScalingMultiplier": "NN(7,1,)",
+            "interestScalingMultiplier": "NN(7,1,)",
             "cycleAnchorDateOfScalingIndex": "x(7,2,)",
             "cycleOfScalingIndex": "x(7,2,)",
             "scalingEffect": "x(7,0,)",
@@ -2586,7 +2607,9 @@
             "terminationDate": "x(6,0,1)",
             "priceAtTerminationDate": "NN(6,1,1)",
             "marketObjectCodeOfScalingIndex": "NN(7,1,)",
-            "scalingIndexAtStatusDate": "NN(7,1,)",
+            "scalingIndexAtContractDealDate": "NN(7,1,)",
+            "notionalScalingMultiplier": "NN(7,1,)",
+            "interestScalingMultiplier": "NN(7,1,)",
             "cycleAnchorDateOfScalingIndex": "x(7,2,)",
             "cycleOfScalingIndex": "x(7,2,)",
             "scalingEffect": "x(7,0,)",
@@ -2776,7 +2799,9 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "creditLineAmount": "x",
             "marketObjectCodeOfScalingIndex": "NN(7,1,)",
-            "scalingIndexAtStatusDate": "NN(7,1,)",
+            "scalingIndexAtContractDealDate": "NN(7,1,)",
+            "notionalScalingMultiplier": "NN(7,1,)",
+            "interestScalingMultiplier": "NN(7,1,)",
             "cycleAnchorDateOfScalingIndex": "x(7,2,)",
             "cycleOfScalingIndex": "x(7,2,)",
             "scalingEffect": "x(7,0,)",
@@ -2850,7 +2875,9 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "creditLineAmount": "x",
             "marketObjectCodeOfScalingIndex": "NN(7,1,)",
-            "scalingIndexAtStatusDate": "NN(7,1,)",
+            "scalingIndexAtContractDealDate": "NN(7,1,)",
+            "notionalScalingMultiplier": "NN(7,1,)",
+            "interestScalingMultiplier": "NN(7,1,)",
             "cycleAnchorDateOfScalingIndex": "x(7,2,)",
             "cycleOfScalingIndex": "x(7,2,)",
             "scalingEffect": "x(7,0,)",
@@ -3001,7 +3028,9 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "creditLineAmount": "x",
             "marketObjectCodeOfScalingIndex": "NN(7,1,)",
-            "scalingIndexAtStatusDate": "NN(7,1,)",
+            "scalingIndexAtContractDealDate": "NN(7,1,)",
+            "notionalScalingMultiplier": "NN(7,1,)",
+            "interestScalingMultiplier": "NN(7,1,)",
             "cycleAnchorDateOfScalingIndex": "x(7,2,)",
             "cycleOfScalingIndex": "x(7,2,)",
             "scalingEffect": "x(7,0,)",
@@ -3230,7 +3259,7 @@
         "interestScalingMultiplier": {
             "identifier": "interestScalingMultiplier",
             "name": "Interest Scaling Multiplier",
-            "acronym": "ISC",
+            "acronym": "SCIP",
             "description": "The multiplier being applied to interest cash flows",
             "type": "Real",
             "allowedValues": []
@@ -3298,7 +3327,7 @@
         "notionalScalingMultiplier": {
             "identifier": "notionalScalingMultiplier",
             "name": "Notional Scaling Multiplier",
-            "acronym": "NSC",
+            "acronym": "SCNT",
             "description": "The multiplier being applied to principal cash flows",
             "type": "Real",
             "allowedValues": []
