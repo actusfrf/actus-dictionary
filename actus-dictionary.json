@@ -1630,6 +1630,16 @@
             "default": "",
             "description": "This is the amount used for the calculation of interest. Calculation base per SD."
         },
+        "interestScalingMultiplier": {
+            "identifier": "interestScalingMultiplier",
+            "group": "Notional Principal",
+            "name": "Interest Scaling Multiplier",
+            "acronym": "SCIP",
+            "type": "Real",
+            "allowedValues": [],
+            "default": "1",
+            "description": "The multiplier being applied to interest cash flows"
+        },
         "lifeCap": {
             "identifier": "lifeCap",
             "group": "Rate Reset",
@@ -1684,6 +1694,16 @@
             "default": "",
             "description": "Is pointing to the market value at SD (MarketObject).\nUnique codes for market objects must be used."
         },
+        "marketObjectCodeOfRateReset": {
+            "identifier": "marketObjectCodeOfRateReset",
+            "group": "Rate Reset",
+            "name": "Market Object Code Of Rate Reset",
+            "acronym": "RRMO",
+            "type": "Varchar",
+            "allowedValues": [],
+            "default": "",
+            "description": "Is pointing to the interest rate driver (MarketObject) used for rate reset uniquely.\nUnique codes for market objects must be used."
+        },
         "marketObjectCodeOfScalingIndex": {
             "identifier": "marketObjectCodeOfScalingIndex",
             "group": "Notional Principal",
@@ -1692,16 +1712,6 @@
             "type": "Varchar",
             "allowedValues": [],
             "default": ""
-        },
-        "marketObjectCodeRateReset": {
-            "identifier": "marketObjectCodeRateReset",
-            "group": "Rate Reset",
-            "name": "Market Object Code Rate Reset",
-            "acronym": "RRMO",
-            "type": "Varchar",
-            "allowedValues": [],
-            "default": "",
-            "description": "Is pointing to the interest rate driver (MarketObject) used for rate reset uniquely.\nUnique codes for market objects must be used."
         },
         "marketValueObserved": {
             "identifier": "marketValueObserved",
@@ -1826,6 +1836,16 @@
             ],
             "default": "",
             "description": "Notional amount of the second currency to be exchanged in an FXOUT CT."
+        },
+        "notionalScalingMultiplier": {
+            "identifier": "notionalScalingMultiplier",
+            "group": "Notional Principal",
+            "name": "Notional Scaling Multiplier",
+            "acronym": "SCNT",
+            "type": "Real",
+            "allowedValues": [],
+            "default": "1",
+            "description": "The multiplier being applied to principal cash flows"
         },
         "optionExerciseEndDate": {
             "identifier": "optionExerciseEndDate",
@@ -2159,16 +2179,15 @@
             "default": "000\n",
             "description": "Indicates which payments are scaled. I = Interest payments, N = Nominal payments and M = Maximum deferred interest amount. They can be scaled in any combination."
         },
-        "scalingIndexAtStatusDate": {
-            "identifier": "scalingIndexAtStatusDate",
+        "scalingIndexAtContractDealDate": {
+            "identifier": "scalingIndexAtContractDealDate",
             "group": "Notional Principal",
-            "name": "Scaling Index At Status Date",
-            "acronym": "SCIED",
+            "name": "Scaling Index At Contract Deal Date",
+            "acronym": "SCCDD",
             "type": "Real",
-            "allowedValues": [
-                "Positive"
-            ],
-            "default": ""
+            "allowedValues": [],
+            "default": "",
+            "description": "The value of the Scaling Index as per Contract Deal Date."
         },
         "seniority": {
             "identifier": "seniority",
@@ -2393,7 +2412,9 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "creditLineAmount": "x",
             "marketObjectCodeOfScalingIndex": "NN(7,1,)",
-            "scalingIndexAtStatusDate": "NN(7,1,)",
+            "scalingIndexAtContractDealDate": "NN(7,1,)",
+            "notionalScalingMultiplier": "NN(7,1,)",
+            "interestScalingMultiplier": "NN(7,1,)",
             "cycleAnchorDateOfScalingIndex": "x(7,2,)",
             "cycleOfScalingIndex": "x(7,2,)",
             "scalingEffect": "x(7,0,)",
@@ -2407,7 +2428,7 @@
             "cycleAnchorDateOfRateReset": "x(9,0,)2",
             "cycleOfRateReset": "x(9,0,)2",
             "rateSpread": "NN(9,1,)",
-            "marketObjectCodeRateReset": "NN(9,1,)",
+            "marketObjectCodeOfRateReset": "NN(9,1,)",
             "lifeCap": "x(9,1,)",
             "lifeFloor": "x(9,1,)",
             "periodCap": "x(9,1,)",
@@ -2454,7 +2475,7 @@
             "cycleAnchorDateOfRateReset": "x(9,0,)",
             "cycleOfRateReset": "x(9,0,)",
             "rateSpread": "NN(9,1,)",
-            "marketObjectCodeRateReset": "NN(9,1,)",
+            "marketObjectCodeOfRateReset": "NN(9,1,)",
             "fixingPeriod": "x(9,1,)",
             "nextResetRate": "x(9,1,)",
             "rateMultiplier": "x(9,1,)",
@@ -2586,7 +2607,9 @@
             "terminationDate": "x(6,0,1)",
             "priceAtTerminationDate": "NN(6,1,1)",
             "marketObjectCodeOfScalingIndex": "NN(7,1,)",
-            "scalingIndexAtStatusDate": "NN(7,1,)",
+            "scalingIndexAtContractDealDate": "NN(7,1,)",
+            "notionalScalingMultiplier": "NN(7,1,)",
+            "interestScalingMultiplier": "NN(7,1,)",
             "cycleAnchorDateOfScalingIndex": "x(7,2,)",
             "cycleOfScalingIndex": "x(7,2,)",
             "scalingEffect": "x(7,0,)",
@@ -2601,7 +2624,7 @@
             "arrayCycleOfRateReset": "x(9,1,)",
             "arrayRate": "NN(9,1,)",
             "arrayFixedVariable": "NN(9,1,)",
-            "marketObjectCodeRateReset": "NN(9,1,)",
+            "marketObjectCodeOfRateReset": "NN(9,1,)",
             "lifeCap": "x(9,1,)",
             "lifeFloor": "x(9,1,)",
             "periodCap": "x(9,1,)",
@@ -2776,7 +2799,9 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "creditLineAmount": "x",
             "marketObjectCodeOfScalingIndex": "NN(7,1,)",
-            "scalingIndexAtStatusDate": "NN(7,1,)",
+            "scalingIndexAtContractDealDate": "NN(7,1,)",
+            "notionalScalingMultiplier": "NN(7,1,)",
+            "interestScalingMultiplier": "NN(7,1,)",
             "cycleAnchorDateOfScalingIndex": "x(7,2,)",
             "cycleOfScalingIndex": "x(7,2,)",
             "scalingEffect": "x(7,0,)",
@@ -2790,7 +2815,7 @@
             "cycleAnchorDateOfRateReset": "x(9,0,)",
             "cycleOfRateReset": "x(9,0,)",
             "rateSpread": "NN(9,1,)",
-            "marketObjectCodeRateReset": "NN(9,1,)",
+            "marketObjectCodeOfRateReset": "NN(9,1,)",
             "lifeCap": "x(9,1,)",
             "lifeFloor": "x(9,1,)",
             "periodCap": "x(9,1,)",
@@ -2850,7 +2875,9 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "creditLineAmount": "x",
             "marketObjectCodeOfScalingIndex": "NN(7,1,)",
-            "scalingIndexAtStatusDate": "NN(7,1,)",
+            "scalingIndexAtContractDealDate": "NN(7,1,)",
+            "notionalScalingMultiplier": "NN(7,1,)",
+            "interestScalingMultiplier": "NN(7,1,)",
             "cycleAnchorDateOfScalingIndex": "x(7,2,)",
             "cycleOfScalingIndex": "x(7,2,)",
             "scalingEffect": "x(7,0,)",
@@ -2864,7 +2891,7 @@
             "cycleAnchorDateOfRateReset": "x(9,2,)",
             "cycleOfRateReset": "x(9,2,)",
             "rateSpread": "NN",
-            "marketObjectCodeRateReset": "NN",
+            "marketObjectCodeOfRateReset": "NN",
             "lifeCap": "x(9,1,)",
             "lifeFloor": "x(9,1,)",
             "periodCap": "x(9,1,)",
@@ -2950,7 +2977,7 @@
             "cycleAnchorDateOfRateReset": "x(9,2,)",
             "cycleOfRateReset": "x(9,2,)",
             "rateSpread": "NN",
-            "marketObjectCodeRateReset": "NN",
+            "marketObjectCodeOfRateReset": "NN",
             "cyclePointOfRateReset": "x(9,1,)1",
             "fixingPeriod": "x(9,1,)",
             "nextResetRate": "x(9,1,)",
@@ -3001,7 +3028,9 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "creditLineAmount": "x",
             "marketObjectCodeOfScalingIndex": "NN(7,1,)",
-            "scalingIndexAtStatusDate": "NN(7,1,)",
+            "scalingIndexAtContractDealDate": "NN(7,1,)",
+            "notionalScalingMultiplier": "NN(7,1,)",
+            "interestScalingMultiplier": "NN(7,1,)",
             "cycleAnchorDateOfScalingIndex": "x(7,2,)",
             "cycleOfScalingIndex": "x(7,2,)",
             "scalingEffect": "x(7,0,)",
@@ -3015,7 +3044,7 @@
             "cycleAnchorDateOfRateReset": "x(9,0,)",
             "cycleOfRateReset": "x(9,0,)",
             "rateSpread": "NN(9,1,)",
-            "marketObjectCodeRateReset": "NN(9,1,)",
+            "marketObjectCodeOfRateReset": "NN(9,1,)",
             "lifeCap": "x(9,1,)",
             "lifeFloor": "x(9,1,)",
             "periodCap": "x(9,1,)",
@@ -3121,7 +3150,7 @@
             "cycleAnchorDateOfRateReset": "x(9,0,)",
             "cycleOfRateReset": "x(9,0,)",
             "rateSpread": "NN(9,1,)",
-            "marketObjectCodeRateReset": "NN(9,1,)",
+            "marketObjectCodeOfRateReset": "NN(9,1,)",
             "settlementCurrency": "x"
         }
     },
@@ -3230,7 +3259,7 @@
         "interestScalingMultiplier": {
             "identifier": "interestScalingMultiplier",
             "name": "Interest Scaling Multiplier",
-            "acronym": "ISC",
+            "acronym": "SCIP",
             "description": "The multiplier being applied to interest cash flows",
             "type": "Real",
             "allowedValues": []
@@ -3248,7 +3277,7 @@
         "nextPrincipalRedemptionPayment": {
             "identifier": "nextPrincipalRedemptionPayment",
             "name": "Next Principal Redemption Payment",
-            "acronym": "NPR",
+            "acronym": "PRNXT",
             "description": "The value at which principal is being repaid. This may be including or excluding of interest depending on the Contract Type",
             "type": "Real",
             "allowedValues": []
@@ -3298,7 +3327,7 @@
         "notionalScalingMultiplier": {
             "identifier": "notionalScalingMultiplier",
             "name": "Notional Scaling Multiplier",
-            "acronym": "NSC",
+            "acronym": "SCNT",
             "description": "The multiplier being applied to principal cash flows",
             "type": "Real",
             "allowedValues": []
@@ -3325,6 +3354,14 @@
         }
     },
     "event": {
+        "contractID": {
+            "identifier": "contractID",
+            "name": "Contract ID",
+            "acronym": "CID",
+            "description": "The Contract ID of the contract which created the event.",
+            "type": "Varchar",
+            "allowedValues": []
+        },
         "currency": {
             "identifier": "currency",
             "name": "Currency",
