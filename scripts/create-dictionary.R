@@ -46,7 +46,6 @@ dictionary = list()
 
 # add version
 version_details = data.frame(Version=as.character(version[which(version[,1]=="Version"),2]),
-				Edition=as.character(version[which(version[,1]=="Edition"),2]),
 				Date=as.character(version[which(version[,1]=="Date"),2]))
 dictionary[["version"]] = unbox(version_details)
 
