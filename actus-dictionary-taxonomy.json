@@ -14,6 +14,16 @@
             "coverage": "Classical level payment mortgages, leasing contracts etc.",
             "status": "Released"
         },
+        "boundaryControlledSwitch": {
+            "identifier": "boundaryControlledSwitch",
+            "name": "Boundary Controlled Switch",
+            "acronym": "BRCSW",
+            "family": "Combined",
+            "class": "Asymmetric",
+            "description": "A barrier option is a derivative contract that is activated (knocked in) or extinguished (knocked out) when the asset price reaches a barrier. The underlying asset may be a stock, index, or exchange-traded fund.Two boundary switches can be controlled.",
+            "coverage": "Knock-in and Knock-out options with maximum two boundaries",
+            "status": "Implemented"
+        },
         "callMoney": {
             "identifier": "callMoney",
             "name": "Call Money",

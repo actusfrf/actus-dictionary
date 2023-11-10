@@ -4,6 +4,16 @@
         "Date": "2020-08-10"
     },
     "applicability": {
+        "...29": {
+            "contract": "...29",
+            "creatorID": "dbd with Francis under the new contractStructure",
+            "counterpartyID": "dbd with Francis under the new contractStructure",
+            "quantity": "Tbd with Francis",
+            "terminationDate": "The parent child relationship needs to be discussed",
+            "boundaryValue": "tbd is this a third attribute or the same as Boundary 1 Value? Also needs a new conditionality saying it has to be set in case where it exists.",
+            "boundaryDirection": "We do not see the attributes on the code level",
+            "boundaryEffect": "Is there for example no knockOutFirst leg? What is \"current\" leg."
+        },
         "annuity": {
             "contract": "annuity",
             "calendar": "x",
@@ -79,6 +89,37 @@
             "nextResetRate": "x(9,1,)",
             "rateMultiplier": "x(9,1,)",
             "settlementCurrency": "x"
+        },
+        "boundaryControlledSwitch": {
+            "contract": "boundaryControlledSwitch",
+            "calendar": "x",
+            "businessDayConvention": "x",
+            "endOfMonthConvention": "x",
+            "contractType": "NN",
+            "statusDate": "NN",
+            "contractRole": "NN",
+            "creatorID": "NN?",
+            "contractID": "NN",
+            "marketObjectCode": "x",
+            "contractStructure": "NN",
+            "counterpartyID": "NN?",
+            "contractPerformance": "This entire group is under discussion with respect to the new conractStructure",
+            "contractDealDate": "NN",
+            "maturityDate": "NN",
+            "quantity": "x?",
+            "purchaseDate": "NN",
+            "priceAtPurchaseDate": "NN",
+            "terminationDate": "x(1,0,1)",
+            "priceAtTerminationDate": "NN(1,1,1)",
+            "marketValueObserved": "x",
+            "settlementPeriod": "x",
+            "deliverySettlement": "x",
+            "boundaryValue": "NN(2,???",
+            "boundaryDirection": "NN(3,???",
+            "boundaryLegInitiallyActive": "x",
+            "boundaryMonitoringAnchorDate": "NN",
+            "boundaryMonitoringEndDate": "NN",
+            "boundaryMonitoringCycle": "NN"
         },
         "callMoney": {
             "contract": "callMoney",
@@ -177,7 +218,7 @@
             "creditEventTypeCovered": "x",
             "contractDealDate": "NN",
             "exerciseDate": "x(7,0,)",
-            "exerciseAmount": "NN(7,1,)\n",
+            "exerciseAmount": "NN(7,1,)\r\n",
             "settlementPeriod": "x"
         },
         "commodity": {
@@ -307,7 +348,7 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "marketValueObserved": "x",
             "exerciseDate": "x(7,0,)",
-            "exerciseAmount": "NN(7,1,)\n",
+            "exerciseAmount": "NN(7,1,)\r\n",
             "settlementPeriod": "x",
             "deliverySettlement": "x(,,1)",
             "settlementCurrency": "x"
@@ -347,7 +388,7 @@
             "priceAtTerminationDate": "NN(6,1,1)",
             "marketValueObserved": "x",
             "exerciseDate": "x(7,0,)",
-            "exerciseAmount": "NN(7,1,)\n",
+            "exerciseAmount": "NN(7,1,)\r\n",
             "settlementPeriod": "x",
             "deliverySettlement": "x(,,1)",
             "futuresPrice": "NN",
@@ -387,7 +428,7 @@
             "terminationDate": "x(6,0,1)",
             "priceAtTerminationDate": "NN(6,1,1)",
             "exerciseDate": "x(7,0,)",
-            "exerciseAmount": "NN(7,1,)\n",
+            "exerciseAmount": "NN(7,1,)\r\n",
             "settlementPeriod": "x",
             "settlementCurrency": "x"
         },
@@ -578,7 +619,7 @@
             "cycleAnchorDateOfOptionality": "x",
             "cycleOfOptionality": "x",
             "exerciseDate": "x(7,0,)",
-            "exerciseAmount": "NN(7,1,)\n",
+            "exerciseAmount": "NN(7,1,)\r\n",
             "settlementPeriod": "x",
             "deliverySettlement": "x(,,1)",
             "settlementCurrency": "x"
