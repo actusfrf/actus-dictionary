@@ -476,22 +476,23 @@
             "acronym": "BDR",
             "type": "Enum",
             "allowedValues": [
-                [
-                    "option: 0",
-                    "identifier: fromBelow",
-                    "name: From Below",
-                    "acronym: INCR",
-                    "description: Boundary action if observed market object value greater than or equal to boundary value at a monitor time.\r"
-                ],
-                [
-                    "option: 1  identifier: fromAbove",
-                    "name: From Above",
-                    "acronym: DECR",
-                    "description: Boundary action if observed market object value less than or equal to boundary value at a monitor time."
-                ]
+                {
+                    "option": "0",
+                    "identifier": "fromBelow",
+                    "name": "From Below",
+                    "acronym": "INCR",
+                    "description": "Boundary effect is trigerred if the observed underlying asset value is greater than or equal to the boundary value at a monitor time.\r"
+                },
+                {
+                    "option": "1",
+                    "identifier": "fromAbove",
+                    "name": "From Above",
+                    "acronym": "DECR",
+                    "description": "Boundary action if observed market object value less than or equal to boundary value at a monitor time."
+                }
             ],
             "default": "",
-            "description": "Boundary direction refers to the movement of the underlying asset's price. The direction/trend in which the underlying asset's price is expected to move concerning the boundary value can be set as \"INCR\" (increasing) or \"DECR\" (decreasing).\r\n\r\nEg: The boundary direction set to INCR suggests that the ExternalReferenceIndex could increase and arrive at the boundary value during the monitoring period and Viz-a-viz."
+            "description": "Boundary direction specifies the direction of motion in the underlying asset's price which will be considered a valid crossing of the boundary and trigger the boundary effect changing which, if any, of the boundary legs is  active."
         },
         "boundaryEffect": {
             "identifier": "boundaryEffect",
@@ -500,33 +501,30 @@
             "acronym": "BEF",
             "type": "Enum",
             "allowedValues": [
-                [
-                    "option: 0",
-                    "identifier: knockINFirstLeg",
-                    "name: KnockIN First Leg",
-                    "acronym: INFIL",
-                    "description: effect of boundary crossing is to knock IN the first leg making this the active contract; monitoring of the boundary stops.\r"
-                ],
-                [
-                    "option: 1",
-                    "identifier: knockINSecondLeg",
-                    "name: KnockIN Second Leg",
-                    "acronym: INSEL",
-                    "description: effect of boundary crossing os to knock IN the Second Leg making this the active contract; monitoring of the boundary stops.\r"
-                ],
-                [
-                    "option: 2",
-                    "identifier: knockOUTCurrentLeg",
-                    "name: KnockOUT Current Leg",
-                    "acronym:\r"
-                ],
-                [
-                    "OUT",
-                    "description: effect of boundary crossing is to knockOUT any active contractso there is no active contract after the boundary crossing; monitoring of the boundary stops."
-                ]
+                {
+                    "option": "0",
+                    "identifier": "knockINFirstLeg",
+                    "name": "KnockIN First Leg",
+                    "acronym": "INFIL",
+                    "description": "effect of boundary crossing is to knock IN the first leg making this the active contract; monitoring of the boundary stops.\r"
+                },
+                {
+                    "option": "1",
+                    "identifier": "knockINSecondLeg",
+                    "name": "KnockIN Second Leg",
+                    "acronym": "INSEL",
+                    "description": "effect of boundary crossing is to knock IN the Second Leg making this the active contract; monitoring of the boundary stops.\r"
+                },
+                {
+                    "option": "2",
+                    "identifier": "knockOUTCurrentLeg",
+                    "name": "KnockOUT Current Leg",
+                    "acronym": "OUT",
+                    "description": "effect of boundary crossing is to knockOUT any active contract so there is no active contract after the boundary crossing; monitoring of the boundary stops."
+                }
             ],
             "default": "",
-            "description": "This term refers to the impact or changes in the contract when the underlying asset's price crosses a specified boundary value. The boundary effect specifies how the option contract will be adjusted or triggered in response to this event.\r\n\r\nKnockINFirstLeg:\r\nThis term indicates that if the underlying asset's price crosses the boundary value, it triggers the activation of the contract within the first leg. \r\n\r\nKnockINSecondLeg:\r\nSimilar to KnockINFirstLeg, this term suggests that the crossing of the boundary value triggers the activation of the contract within the second leg.\r\n \r\nKnockOUTCurrentLeg:\r\nThis term implies that if the underlying asset's price crosses the boundary value, it deactivates the contract on the active leg. In other words, the option associated with the current leg is terminated or knocked out."
+            "description": "This term specifies which leg - if any-  becomes the active subcontract  when the underlying asset's price crosses the specified boundary value in the specified direction triggerring a boundary crossing event."
         },
         "boundaryLegInitiallyActive": {
             "identifier": "boundaryLegInitiallyActive",
@@ -540,7 +538,7 @@
                     "identifier": "firstLeg",
                     "name": "First Leg",
                     "acronym": "FIL",
-                    "description": "the first leg is active when boundary controlled switch contract starts.\r"
+                    "description": "the first leg is active when the boundary controlled switch contract is initialized.\r"
                 },
                 {
                     "option": "1",
@@ -554,11 +552,11 @@
                     "identifier": "Null",
                     "name": "Null",
                     "acronym": "Null",
-                    "description": "there is nnactive subcontract when the boundary controlled switch starts subcontract when the boundary controlled switch starts."
+                    "description": "there is no active subcontract when the boundary controlled switch contract starts."
                 }
             ],
             "default": "Neither first nor second leg activ",
-            "description": "On a given Boundary Monitoring Date, this condition specifies \r\n\r\nFirst Leg Active (FIL):\r\nIf this condition is set to FIL on a given Boundary Monitoring Date, it indicates that the first leg of the option structure is active.\r\n\r\nSecond Leg Active (SEL):\r\nIf this condition is set to SEL on a given Boundary Monitoring Date, it implies that the second leg of the option structure is active.\r\n\r\nNeither First Leg nor Second Leg Active (Null):\r\nIf the condition is set to Null on a given Boundary Monitoring Date, it suggests that neither the first leg nor the second leg is active. In this case, the option structure does not trigger based on the specified criteria or market conditions, and both legs remain inactive."
+            "description": "Specifies which leg - if any - is the active contract  in effect when the boundary controlled switch contract starts."
         },
         "boundaryMonitoringAnchorDate": {
             "identifier": "boundaryMonitoringAnchorDate",
@@ -570,19 +568,19 @@
                 "ISO8601 Datetime"
             ],
             "default": "",
-            "description": "Boundary monitoring starts on this date"
+            "description": "The first Boundary monitoring event occurs on this date"
         },
         "boundaryMonitoringCycle": {
             "identifier": "boundaryMonitoringCycle",
             "group": "Barrier",
             "name": "Boundary Monitoring Cycle",
             "acronym": "BMCL",
-            "type": "Cycle",
+            "type": "Period",
             "allowedValues": [
-                "[ISO8601 Duration]L[s={0,1}]"
+                "ISO8601 Duration"
             ],
             "default": "",
-            "description": "The frequency with which boundary monitoring events occur. It defines how often the system checks or evaluates the conditions related to boundary values. For example, if the cycle is set to a day, the monitoring events might occur daily."
+            "description": "The frequency with which boundary monitoring events occur. It defines how often the system checks to test whether the  market value of the underlying asset has crossed the boundary in the specified direction triggerring  a boundary crossing event."
         },
         "boundaryMonitoringEndDate": {
             "identifier": "boundaryMonitoringEndDate",
@@ -2618,8 +2616,7 @@
             "boundaryDirection": "NN(3,???",
             "boundaryLegInitiallyActive": "x",
             "boundaryMonitoringAnchorDate": "NN",
-            "boundaryMonitoringEndDate": "NN",
-            "boundaryMonitoringCycle": "NN"
+            "boundaryMonitoringEndDate": "NN"
         },
         "callMoney": {
             "contract": "callMoney",

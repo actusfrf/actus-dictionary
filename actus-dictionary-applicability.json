@@ -118,8 +118,7 @@
             "boundaryDirection": "NN(3,???",
             "boundaryLegInitiallyActive": "x",
             "boundaryMonitoringAnchorDate": "NN",
-            "boundaryMonitoringEndDate": "NN",
-            "boundaryMonitoringCycle": "NN"
+            "boundaryMonitoringEndDate": "NN"
         },
         "callMoney": {
             "contract": "callMoney",
