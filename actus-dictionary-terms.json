@@ -244,7 +244,7 @@
                     "description": "there is no active subcontract when the boundary controlled switch contract starts."
                 }
             ],
-            "default": "Neither first nor second leg activ",
+            "default": "",
             "description": "Specifies which leg - if any - is the active contract  in effect when the boundary controlled switch contract starts."
         },
         "boundaryMonitoringAnchorDate": {

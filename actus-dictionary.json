@@ -20,8 +20,8 @@
             "acronym": "BRCSW",
             "family": "Combined",
             "class": "Asymmetric",
-            "description": "A barrier option is a derivative contract that is activated (knocked in) or extinguished (knocked out) when the asset price reaches a barrier. The underlying asset may be a stock, index, or exchange-traded fund.Two boundary switches can be controlled.",
-            "coverage": "Knock-in and Knock-out options with maximum two boundaries",
+            "description": "A boundary controlled switch is a derivative contract with subcontract legs which can be activated (knocked in) or extinguished (knocked out) when the underlying asset price reaches a specified value.  The underlying asset may be a stock, index, or exchange-traded fund. Boundary controlled switch contracts with a single boundary are currently defined.",
+            "coverage": "Knock-in and Knock-out barrier options with a single boundary. Bonus contracts with payout when underlying asset price remains above or below a specified level for specified period.",
             "status": "Implemented"
         },
         "callMoney": {
@@ -555,7 +555,7 @@
                     "description": "there is no active subcontract when the boundary controlled switch contract starts."
                 }
             ],
-            "default": "Neither first nor second leg activ",
+            "default": "",
             "description": "Specifies which leg - if any - is the active contract  in effect when the boundary controlled switch contract starts."
         },
         "boundaryMonitoringAnchorDate": {
@@ -3351,11 +3351,19 @@
             "type": "Real",
             "allowedValues": []
         },
+        "boundaryCrossedFlag": {
+            "identifier": "boundaryCrossedFlag",
+            "name": "Boundary Crossed Flag",
+            "acronym": "BCF",
+            "description": "TRUE value indicates that a boundary crossing event has already occurred; boundary monitoring is no longer in effect.",
+            "type": "Boolean",
+            "allowedValues": []
+        },
         "boundaryLeg1ActiveFlag": {
             "identifier": "boundaryLeg1ActiveFlag",
             "name": "Boundary Leg1 Active Flag",
             "acronym": "BLAF1",
-            "description": "A boolean state variable boundaryMonitoringFlag with values {TRUE, FALSE} denotes whether boundary monitoring is currently active on the Leg1of BRCSW contract",
+            "description": "TRUE value indicates that boundaryLeg1 is currently active and generating cashflow events.",
             "type": "Boolean",
             "allowedValues": []
         },
@@ -3363,7 +3371,7 @@
             "identifier": "boundaryLeg2ActiveFlag",
             "name": "Boundary Leg2 Active Flag",
             "acronym": "BLAF2",
-            "description": "A boolean state variable boundaryMonitoringFlag with values {TRUE, FALSE} denotes whether boundary monitoring is currently active on the Leg1of BRCSW contract.",
+            "description": "TRUE value indicates that boundaryLeg2 is currently active and generating cashflow events.",
             "type": "Boolean",
             "allowedValues": []
         },
@@ -3759,7 +3767,23 @@
                     "name": "Settlement",
                     "acronym": "STD",
                     "description": "Settlement of an exercised contractual claim",
-                    "sequence": "21"
+                    "sequence": "21\r"
+                },
+                {
+                    "option": "22",
+                    "identifier": "boundaryMonitor",
+                    "name": "Boundary Monitor",
+                    "acronym": "BDM",
+                    "description": "Compare asset price with boundary value",
+                    "sequence": "22 \r"
+                },
+                {
+                    "option": "23",
+                    "identifier": "boundary",
+                    "name": "Boundary",
+                    "acronym": "BDC",
+                    "description": "Underlying asset price crossed boundary",
+                    "sequence": "sequence 23"
                 }
             ]
         },
