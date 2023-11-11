@@ -213,7 +213,23 @@
                     "name": "Settlement",
                     "acronym": "STD",
                     "description": "Settlement of an exercised contractual claim",
-                    "sequence": "21"
+                    "sequence": "21\r"
+                },
+                {
+                    "option": "22",
+                    "identifier": "boundaryMonitor",
+                    "name": "Boundary Monitor",
+                    "acronym": "BDM",
+                    "description": "Compare asset price with boundary value",
+                    "sequence": "22 \r"
+                },
+                {
+                    "option": "23",
+                    "identifier": "boundary",
+                    "name": "Boundary",
+                    "acronym": "BDC",
+                    "description": "Underlying asset price crossed boundary",
+                    "sequence": "sequence 23"
                 }
             ]
         },
