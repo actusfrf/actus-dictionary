@@ -20,11 +20,19 @@
             "type": "Real",
             "allowedValues": []
         },
+        "boundaryCrossedFlag": {
+            "identifier": "boundaryCrossedFlag",
+            "name": "Boundary Crossed Flag",
+            "acronym": "BCF",
+            "description": "TRUE value indicates that a boundary crossing event has already occurred; boundary monitoring is no longer in effect.",
+            "type": "Boolean",
+            "allowedValues": []
+        },
         "boundaryLeg1ActiveFlag": {
             "identifier": "boundaryLeg1ActiveFlag",
             "name": "Boundary Leg1 Active Flag",
             "acronym": "BLAF1",
-            "description": "A boolean state variable boundaryMonitoringFlag with values {TRUE, FALSE} denotes whether boundary monitoring is currently active on the Leg1of BRCSW contract",
+            "description": "TRUE value indicates that boundaryLeg1 is currently active and generating cashflow events.",
             "type": "Boolean",
             "allowedValues": []
         },
@@ -32,7 +40,7 @@
             "identifier": "boundaryLeg2ActiveFlag",
             "name": "Boundary Leg2 Active Flag",
             "acronym": "BLAF2",
-            "description": "A boolean state variable boundaryMonitoringFlag with values {TRUE, FALSE} denotes whether boundary monitoring is currently active on the Leg1of BRCSW contract.",
+            "description": "TRUE value indicates that boundaryLeg2 is currently active and generating cashflow events.",
             "type": "Boolean",
             "allowedValues": []
         },

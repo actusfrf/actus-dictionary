@@ -20,8 +20,8 @@
             "acronym": "BRCSW",
             "family": "Combined",
             "class": "Asymmetric",
-            "description": "A barrier option is a derivative contract that is activated (knocked in) or extinguished (knocked out) when the asset price reaches a barrier. The underlying asset may be a stock, index, or exchange-traded fund.Two boundary switches can be controlled.",
-            "coverage": "Knock-in and Knock-out options with maximum two boundaries",
+            "description": "A boundary controlled switch is a derivative contract with subcontract legs which can be activated (knocked in) or extinguished (knocked out) when the underlying asset price reaches a specified value.  The underlying asset may be a stock, index, or exchange-traded fund. Boundary controlled switch contracts with a single boundary are currently defined.",
+            "coverage": "Knock-in and Knock-out barrier options with a single boundary. Bonus contracts with payout when underlying asset price remains above or below a specified level for specified period.",
             "status": "Implemented"
         },
         "callMoney": {
