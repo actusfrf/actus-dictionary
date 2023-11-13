@@ -1736,7 +1736,7 @@
             "identifier": "optionStrike2",
             "group": "Optionality",
             "name": "Option Strike 2",
-            "acronym": "OPS2",
+            "acronym": "sss",
             "type": "Real",
             "allowedValues": [
                 "Positive"
