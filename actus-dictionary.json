@@ -471,7 +471,7 @@
         },
         "boundaryDirection": {
             "identifier": "boundaryDirection",
-            "group": "Barrier",
+            "group": "Boundary",
             "name": "Boundary Direction",
             "acronym": "BDR",
             "type": "Enum",
@@ -496,7 +496,7 @@
         },
         "boundaryEffect": {
             "identifier": "boundaryEffect",
-            "group": "Barrier",
+            "group": "Boundary",
             "name": "Boundary Effect",
             "acronym": "BEF",
             "type": "Enum",
@@ -528,7 +528,7 @@
         },
         "boundaryLegInitiallyActive": {
             "identifier": "boundaryLegInitiallyActive",
-            "group": "Barrier",
+            "group": "Boundary",
             "name": "Boundary Leg Initially Active",
             "acronym": "BLIA",
             "type": "Enum",
@@ -555,12 +555,12 @@
                     "description": "there is no active subcontract when the boundary controlled switch contract starts."
                 }
             ],
-            "default": "",
+            "default": "there is no active subcontract",
             "description": "Specifies which leg - if any - is the active contract  in effect when the boundary controlled switch contract starts."
         },
         "boundaryMonitoringAnchorDate": {
             "identifier": "boundaryMonitoringAnchorDate",
-            "group": "Barrier",
+            "group": "Boundary",
             "name": "Boundary Monitoring Anchor Date",
             "acronym": "BMANX",
             "type": "Timestamp",
@@ -572,10 +572,10 @@
         },
         "boundaryMonitoringCycle": {
             "identifier": "boundaryMonitoringCycle",
-            "group": "Barrier",
+            "group": "Boundary",
             "name": "Boundary Monitoring Cycle",
             "acronym": "BMCL",
-            "type": "Period",
+            "type": "Cycle",
             "allowedValues": [
                 "ISO8601 Duration"
             ],
@@ -596,7 +596,7 @@
         },
         "boundaryValue": {
             "identifier": "boundaryValue",
-            "group": "Barrier",
+            "group": "Boundary",
             "name": "Boundary Value",
             "acronym": "BV",
             "type": "Real",
@@ -2510,7 +2510,12 @@
             "terminationDate": "The parent child relationship needs to be discussed",
             "boundaryValue": "tbd is this a third attribute or the same as Boundary 1 Value? Also needs a new conditionality saying it has to be set in case where it exists.",
             "boundaryDirection": "We do not see the attributes on the code level",
-            "boundaryEffect": "Is there for example no knockOutFirst leg? What is \"current\" leg."
+            "boundaryEffect": "Is there for example no knockOutFirst leg? What is \"current\" leg.",
+            "boundaryMonitoringCycle": "This is a cycle not a period"
+        },
+        "...30": {
+            "contract": "...30",
+            "boundaryValue": "Group can be called boundary?"
         },
         "annuity": {
             "contract": "annuity",
@@ -2612,11 +2617,13 @@
             "marketValueObserved": "x",
             "settlementPeriod": "x",
             "deliverySettlement": "x",
-            "boundaryValue": "NN(2,???",
-            "boundaryDirection": "NN(3,???",
-            "boundaryLegInitiallyActive": "x",
+            "boundaryValue": "NN",
+            "boundaryDirection": "NN",
+            "boundaryEffect": "NN",
+            "boundaryLegInitiallyActive": "NN",
             "boundaryMonitoringAnchorDate": "NN",
-            "boundaryMonitoringEndDate": "NN"
+            "boundaryMonitoringEndDate": "NN",
+            "boundaryMonitoringCycle": "NN"
         },
         "callMoney": {
             "contract": "callMoney",

@@ -12,7 +12,12 @@
             "terminationDate": "The parent child relationship needs to be discussed",
             "boundaryValue": "tbd is this a third attribute or the same as Boundary 1 Value? Also needs a new conditionality saying it has to be set in case where it exists.",
             "boundaryDirection": "We do not see the attributes on the code level",
-            "boundaryEffect": "Is there for example no knockOutFirst leg? What is \"current\" leg."
+            "boundaryEffect": "Is there for example no knockOutFirst leg? What is \"current\" leg.",
+            "boundaryMonitoringCycle": "This is a cycle not a period"
+        },
+        "...30": {
+            "contract": "...30",
+            "boundaryValue": "Group can be called boundary?"
         },
         "annuity": {
             "contract": "annuity",
@@ -114,11 +119,13 @@
             "marketValueObserved": "x",
             "settlementPeriod": "x",
             "deliverySettlement": "x",
-            "boundaryValue": "NN(2,???",
-            "boundaryDirection": "NN(3,???",
-            "boundaryLegInitiallyActive": "x",
+            "boundaryValue": "NN",
+            "boundaryDirection": "NN",
+            "boundaryEffect": "NN",
+            "boundaryLegInitiallyActive": "NN",
             "boundaryMonitoringAnchorDate": "NN",
-            "boundaryMonitoringEndDate": "NN"
+            "boundaryMonitoringEndDate": "NN",
+            "boundaryMonitoringCycle": "NN"
         },
         "callMoney": {
             "contract": "callMoney",
