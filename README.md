@@ -7,6 +7,8 @@ ACTUS Dictionary
 
 The ACTUS Dictionary provides the definition of terms of the ACTUS standard for the algorithmic representation of financial contracts.
 
+Copyright  2018 - present ACTUS Financial Research Foundation
+
 It comes in two forms; Excel for human readability and JSON for programmatic integration.
 
 ## Generate JSON dictionary
