@@ -1,7 +1,7 @@
 {
     "version": {
-        "Version": "1.3",
-        "Date": "2020-08-10"
+        "Version": "1.4",
+        "Date": "2023-12-08"
     },
     "states": {
         "accruedInterest": {
@@ -20,6 +20,30 @@
             "type": "Real",
             "allowedValues": []
         },
+        "boundaryCrossedFlag": {
+            "identifier": "boundaryCrossedFlag",
+            "name": "Boundary Crossed Flag",
+            "acronym": "BCF",
+            "description": "TRUE value indicates that a boundary crossing event has already occurred; boundary monitoring is no longer in effect.",
+            "type": "Boolean",
+            "allowedValues": []
+        },
+        "boundaryLeg1ActiveFlag": {
+            "identifier": "boundaryLeg1ActiveFlag",
+            "name": "Boundary Leg1 Active Flag",
+            "acronym": "BLAF1",
+            "description": "TRUE value indicates that boundaryLeg1 is currently active and generating cashflow events.",
+            "type": "Boolean",
+            "allowedValues": []
+        },
+        "boundaryLeg2ActiveFlag": {
+            "identifier": "boundaryLeg2ActiveFlag",
+            "name": "Boundary Leg2 Active Flag",
+            "acronym": "BLAF2",
+            "description": "TRUE value indicates that boundaryLeg2 is currently active and generating cashflow events.",
+            "type": "Boolean",
+            "allowedValues": []
+        },
         "contractPerformance": {
             "identifier": "contractPerformance",
             "name": "Contract Performance",
@@ -32,35 +56,35 @@
                     "identifier": "performant",
                     "name": "Performant",
                     "acronym": "PF",
-                    "description": "Contract is performing according to terms and conditions."
+                    "description": "Contract is performing according to terms and conditions.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "delayed",
                     "name": "Delayed",
                     "acronym": "DL",
-                    "description": "Contractual payment obligations are delayed according to the Grace Period."
+                    "description": "Contractual payment obligations are delayed according to the Grace Period.\r"
                 },
                 {
                     "option": "2",
                     "identifier": "delinquent",
                     "name": "Delinquent",
                     "acronym": "DQ",
-                    "description": "Contractual payment obligations are delinquent according to the Delinquency Period."
+                    "description": "Contractual payment obligations are delinquent according to the Delinquency Period.\r"
                 },
                 {
                     "option": "3",
                     "identifier": "default",
                     "name": "Default",
                     "acronym": "DF",
-                    "description": "Contract defaulted on payment obligations according to Delinquency Period."
+                    "description": "Contract defaulted on payment obligations according to Delinquency Period.\r"
                 },
                 {
                     "option": "4",
                     "identifier": "matured",
                     "name": "Matured",
                     "acronym": "MA",
-                    "description": "Contract matured."
+                    "description": "Contract matured.\r"
                 },
                 {
                     "option": "5",

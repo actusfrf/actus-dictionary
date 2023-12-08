@@ -1,7 +1,7 @@
 {
     "version": {
-        "Version": "1.3",
-        "Date": "2020-08-10"
+        "Version": "1.4",
+        "Date": "2023-12-08"
     },
     "terms": {
         "accruedInterest": {
@@ -100,7 +100,7 @@
                     "identifier": "fixedRate",
                     "name": "Fixed Rate",
                     "acronym": "F",
-                    "description": "Rate spread represents a fixed rate."
+                    "description": "Rate spread represents a fixed rate.\r"
                 },
                 {
                     "option": "1",
@@ -125,7 +125,7 @@
                     "identifier": "increase",
                     "name": "Increase",
                     "acronym": "INC",
-                    "description": "Notional is increased in this period."
+                    "description": "Notional is increased in this period.\r"
                 },
                 {
                     "option": "1",
@@ -136,7 +136,7 @@
                 }
             ],
             "default": "",
-            "description": "Indicates whether a certain PRNXT element in ARPRNX increases the principal (NT) or decreases it.\nApplies only for ANX, NAX, LAX Maturity CTs. For all other Maturity CTs the first principal payment is always in the opposite direction of all other (following) payments."
+            "description": "Indicates whether a certain PRNXT element in ARPRNX increases the principal (NT) or decreases it.\r\nApplies only for ANX, NAX, LAX Maturity CTs. For all other Maturity CTs the first principal payment is always in the opposite direction of all other (following) payments."
         },
         "arrayNextPrincipalRedemptionPayment": {
             "identifier": "arrayNextPrincipalRedemptionPayment",
@@ -158,6 +158,151 @@
             "default": "",
             "description": "For array-type rate reset schedules, this attribute represents either an interest rate (corresponding to IPNR) or a spread (corresponding to RRSP). Which case applies depends on the attribute ARFIXVAR: if ARFIXVAR=FIX then it represents the new IPNR and if ARFIXVAR=VAR then the applicable RRSP."
         },
+        "boundaryCrossedFlag": {
+            "identifier": "boundaryCrossedFlag",
+            "group": "Boundary",
+            "name": "Boundary Crossed Flag",
+            "acronym": "BCF",
+            "type": "Boolean",
+            "allowedValues": [],
+            "default": "FALSE",
+            "description": "Initializes the value of Boundary Crossed Flag state variable at statusDate"
+        },
+        "boundaryDirection": {
+            "identifier": "boundaryDirection",
+            "group": "Boundary",
+            "name": "Boundary Direction",
+            "acronym": "BDR",
+            "type": "Enum",
+            "allowedValues": [
+                {
+                    "option": "0",
+                    "identifier": "fromBelow",
+                    "name": "From Below",
+                    "acronym": "INCR",
+                    "description": "Boundary effect is trigerred if the observed underlying asset value is greater than or equal to the boundary value at a monitor time.\r"
+                },
+                {
+                    "option": "1",
+                    "identifier": "fromAbove",
+                    "name": "From Above",
+                    "acronym": "DECR",
+                    "description": "Boundary action if observed market object value less than or equal to boundary value at a monitor time."
+                }
+            ],
+            "default": "",
+            "description": "Boundary direction specifies the direction of motion in the underlying asset's price which will be considered a valid crossing of the boundary and trigger the boundary effect changing which, if any, of the boundary legs is  active."
+        },
+        "boundaryEffect": {
+            "identifier": "boundaryEffect",
+            "group": "Boundary",
+            "name": "Boundary Effect",
+            "acronym": "BEF",
+            "type": "Enum",
+            "allowedValues": [
+                {
+                    "option": "0",
+                    "identifier": "knockINFirstLeg",
+                    "name": "KnockIN First Leg",
+                    "acronym": "INFIL",
+                    "description": "effect of boundary crossing is to knock IN the first leg making this the active contract; monitoring of the boundary stops.\r"
+                },
+                {
+                    "option": "1",
+                    "identifier": "knockINSecondLeg",
+                    "name": "KnockIN Second Leg",
+                    "acronym": "INSEL",
+                    "description": "effect of boundary crossing is to knock IN the Second Leg making this the active contract; monitoring of the boundary stops.\r"
+                },
+                {
+                    "option": "2",
+                    "identifier": "knockOUTCurrentLeg",
+                    "name": "KnockOUT Current Leg",
+                    "acronym": "OUT",
+                    "description": "effect of boundary crossing is to knockOUT any active contract so there is no active contract after the boundary crossing; monitoring of the boundary stops."
+                }
+            ],
+            "default": "",
+            "description": "This term specifies which leg - if any-  becomes the active subcontract  when the underlying asset's price crosses the specified boundary value in the specified direction triggerring a boundary crossing event."
+        },
+        "boundaryLegInitiallyActive": {
+            "identifier": "boundaryLegInitiallyActive",
+            "group": "Boundary",
+            "name": "Boundary Leg Initially Active",
+            "acronym": "BLIA",
+            "type": "Enum",
+            "allowedValues": [
+                {
+                    "option": "0",
+                    "identifier": "firstLeg",
+                    "name": "First Leg",
+                    "acronym": "FIL",
+                    "description": "the first leg is active when the boundary controlled switch contract is initialized.\r"
+                },
+                {
+                    "option": "1",
+                    "identifier": "secondLeg",
+                    "name": "Second Leg",
+                    "acronym": "SEL",
+                    "description": "the second leg is active when the boundary controlled switch contract starts.\r"
+                },
+                {
+                    "option": "2",
+                    "identifier": "Null",
+                    "name": "Null",
+                    "acronym": "Null",
+                    "description": "there is no active subcontract when the boundary controlled switch contract starts."
+                }
+            ],
+            "default": "there is no active subcontract",
+            "description": "Specifies which leg - if any - is the active contract  in effect when the boundary controlled switch contract starts."
+        },
+        "boundaryMonitoringAnchorDate": {
+            "identifier": "boundaryMonitoringAnchorDate",
+            "group": "Boundary",
+            "name": "Boundary Monitoring Anchor Date",
+            "acronym": "BMANX",
+            "type": "Timestamp",
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ],
+            "default": "",
+            "description": "The first Boundary monitoring event occurs on this date"
+        },
+        "boundaryMonitoringCycle": {
+            "identifier": "boundaryMonitoringCycle",
+            "group": "Boundary",
+            "name": "Boundary Monitoring Cycle",
+            "acronym": "BMCL",
+            "type": "Cycle",
+            "allowedValues": [
+                "ISO8601 Duration"
+            ],
+            "default": "",
+            "description": "The frequency with which boundary monitoring events occur. It defines how often the system checks to test whether the  market value of the underlying asset has crossed the boundary in the specified direction triggerring  a boundary crossing event."
+        },
+        "boundaryMonitoringEndDate": {
+            "identifier": "boundaryMonitoringEndDate",
+            "group": "Barrier",
+            "name": "Boundary Monitoring End Date",
+            "acronym": "BMED",
+            "type": "Timestamp",
+            "allowedValues": [
+                "ISO8601 Datetime"
+            ],
+            "default": "",
+            "description": "Boundary monitoring ends on this date"
+        },
+        "boundaryValue": {
+            "identifier": "boundaryValue",
+            "group": "Boundary",
+            "name": "Boundary Value",
+            "acronym": "BV",
+            "type": "Real",
+            "allowedValues": [],
+            "default": "",
+            "description": "Boundary value in a barrier options contract, when reached, triggers the boundary effect specified e.g. Knock-In or Knock-out"
+        },
         "businessDayConvention": {
             "identifier": "businessDayConvention",
             "group": "Calendar",
@@ -170,56 +315,56 @@
                     "identifier": "noShift",
                     "name": "No Shift",
                     "acronym": "NOS",
-                    "description": "No shift applied to non-business days."
+                    "description": "No shift applied to non-business days.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "shiftCalculateFollowing",
                     "name": "Shift-Calculate Following",
                     "acronym": "SCF",
-                    "description": "Shift event dates first then calculate accruals etc. Strictly shift to the next following business day."
+                    "description": "Shift event dates first then calculate accruals etc. Strictly shift to the next following business day.\r"
                 },
                 {
                     "option": "2",
                     "identifier": "shiftCalculateModifiedFollowing",
                     "name": "Shift-Calculate Modified-Following",
                     "acronym": "SCMF",
-                    "description": "Shift event dates first then calculate accruals etc. Shift to the next following business day if this falls in the same month. Shift to the most recent preceding business day otherwise."
+                    "description": "Shift event dates first then calculate accruals etc. Shift to the next following business day if this falls in the same month. Shift to the most recent preceding business day otherwise.\r"
                 },
                 {
                     "option": "3",
                     "identifier": "calculateShiftFollowing",
                     "name": "Calculate-Shift Following",
                     "acronym": "CSF",
-                    "description": "Calculate accruals etc. first then shift event dates. Strictly shift to the next following business day."
+                    "description": "Calculate accruals etc. first then shift event dates. Strictly shift to the next following business day.\r"
                 },
                 {
                     "option": "4",
                     "identifier": "calculateShiftModifiedFollowing",
                     "name": "Calculate-Shift Modified-Following",
                     "acronym": "CSMF",
-                    "description": "Calculate accruals etc. first then shift event dates. Shift to the next following business day if this falls in the same month. Shift to the most recent preceding business day otherwise."
+                    "description": "Calculate accruals etc. first then shift event dates. Shift to the next following business day if this falls in the same month. Shift to the most recent preceding business day otherwise.\r"
                 },
                 {
                     "option": "5",
                     "identifier": "shiftCalculatePreceding",
                     "name": "Shift-Calculate Preceding",
                     "acronym": "SCP",
-                    "description": "Shift event dates first then calculate accruals etc. Strictly shift to the most recent preceding business day."
+                    "description": "Shift event dates first then calculate accruals etc. Strictly shift to the most recent preceding business day.\r"
                 },
                 {
                     "option": "6",
                     "identifier": "shiftCalculateModifiedPreceding",
                     "name": "Shift-Calculate Modified-Preceding",
                     "acronym": "SCMP",
-                    "description": "Shift event dates first then calculate accruals etc. Shift to the most recent preceding business day if this falls in the same month. Shift to the next following business day otherwise."
+                    "description": "Shift event dates first then calculate accruals etc. Shift to the most recent preceding business day if this falls in the same month. Shift to the next following business day otherwise.\r"
                 },
                 {
                     "option": "7",
                     "identifier": "calculateShiftPreceding",
                     "name": "Calculate-Shift Preceding",
                     "acronym": "CSP",
-                    "description": "Calculate accruals etc. first then shift event dates. Strictly shift to the most recent preceding business day."
+                    "description": "Calculate accruals etc. first then shift event dates. Strictly shift to the most recent preceding business day.\r"
                 },
                 {
                     "option": "8",
@@ -230,7 +375,7 @@
                 }
             ],
             "default": "nos",
-            "description": "BDC's are linked to a calendar. Calendars have working and non-working days. A BDC value other than N means that cash flows cannot fall on non-working days, they must be shifted to the next business day (following) or the previous on (preceding).\nThese two simple rules get refined twofold:\n- Following modified (preceding): Same like following (preceding), however if a cash flow gets shifted into a new month, then  it is shifted to preceding (following) business day.\n- Shift/calculate (SC) and calculate/shift (CS). Accrual, principal, and possibly other calculations are affected by this choice. In the case of SC first the dates are shifted and after the shift cash flows are calculated. In the case of CS it is the other way round.\nAttention: Does not affect non-cyclical dates such as PRD, MD, TD, IPCED since they can be set to the correct date directly."
+            "description": "BDC's are linked to a calendar. Calendars have working and non-working days. A BDC value other than N means that cash flows cannot fall on non-working days, they must be shifted to the next business day (following) or the previous on (preceding).\r\nThese two simple rules get refined twofold:\r\n- Following modified (preceding): Same like following (preceding), however if a cash flow gets shifted into a new month, then  it is shifted to preceding (following) business day.\r\n- Shift/calculate (SC) and calculate/shift (CS). Accrual, principal, and possibly other calculations are affected by this choice. In the case of SC first the dates are shifted and after the shift cash flows are calculated. In the case of CS it is the other way round.\r\nAttention: Does not affect non-cyclical dates such as PRD, MD, TD, IPCED since they can be set to the correct date directly."
         },
         "calendar": {
             "identifier": "calendar",
@@ -244,7 +389,7 @@
                     "identifier": "noCalendar",
                     "name": "No Calendar",
                     "acronym": "NC",
-                    "description": "No holidays defined"
+                    "description": "No holidays defined\r"
                 },
                 {
                     "option": "1",
@@ -281,7 +426,7 @@
                     "identifier": "isClearingHouse",
                     "name": "Is Clearing House",
                     "acronym": "Y",
-                    "description": "Contract creator is the clearing house."
+                    "description": "Contract creator is the clearing house.\r"
                 },
                 {
                     "option": "1",
@@ -314,7 +459,7 @@
             "type": "Varchar",
             "allowedValues": [],
             "default": "",
-            "description": "Unique identifier of a contract.  \nIf the system is used on a single firm level, an internal unique ID can be generated. If used on a national or globally level, a globally unique ID is required."
+            "description": "Unique identifier of a contract.  \r\nIf the system is used on a single firm level, an internal unique ID can be generated. If used on a national or globally level, a globally unique ID is required."
         },
         "contractPerformance": {
             "identifier": "contractPerformance",
@@ -328,35 +473,35 @@
                     "identifier": "performant",
                     "name": "Performant",
                     "acronym": "PF",
-                    "description": "Contract is performing according to terms and conditions."
+                    "description": "Contract is performing according to terms and conditions.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "delayed",
                     "name": "Delayed",
                     "acronym": "DL",
-                    "description": "Contractual payment obligations are delayed according to the Grace Period."
+                    "description": "Contractual payment obligations are delayed according to the Grace Period.\r"
                 },
                 {
                     "option": "2",
                     "identifier": "delinquent",
                     "name": "Delinquent",
                     "acronym": "DQ",
-                    "description": "Contractual payment obligations are delinquent according to the Delinquency Period."
+                    "description": "Contractual payment obligations are delinquent according to the Delinquency Period.\r"
                 },
                 {
                     "option": "3",
                     "identifier": "default",
                     "name": "Default",
                     "acronym": "DF",
-                    "description": "Contract defaulted on payment obligations according to Delinquency Period."
+                    "description": "Contract defaulted on payment obligations according to Delinquency Period.\r"
                 },
                 {
                     "option": "4",
                     "identifier": "matured",
                     "name": "Matured",
                     "acronym": "MA",
-                    "description": "Contract matured."
+                    "description": "Contract matured.\r"
                 },
                 {
                     "option": "5",
@@ -381,84 +526,84 @@
                     "identifier": "realPositionAsset",
                     "name": "Real Position Asset",
                     "acronym": "RPA",
-                    "description": "Contract creator takes the asset or lender side."
+                    "description": "Contract creator takes the asset or lender side.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "realPositionLiability",
                     "name": "Real Position Liability",
                     "acronym": "RPL",
-                    "description": "Contract creator takes the liability or borrower side. "
+                    "description": "Contract creator takes the liability or borrower side. \r"
                 },
                 {
                     "option": "2",
                     "identifier": "receiveFirstLegl",
                     "name": "Receive First Leg",
                     "acronym": "RFL",
-                    "description": "Contract creator receives the first leg. "
+                    "description": "Contract creator receives the first leg. \r"
                 },
                 {
                     "option": "3",
                     "identifier": "payFirstLeg",
                     "name": "Pay First Leg",
                     "acronym": "PFL",
-                    "description": "Contract creator pays the first leg."
+                    "description": "Contract creator pays the first leg.\r"
                 },
                 {
                     "option": "4",
                     "identifier": "receiveFix",
                     "name": "Receive Fix",
                     "acronym": "RF",
-                    "description": "Contract creator receives the fixed leg."
+                    "description": "Contract creator receives the fixed leg.\r"
                 },
                 {
                     "option": "5",
                     "identifier": "payFix",
                     "name": "Pay Fix",
                     "acronym": "PF",
-                    "description": "Contract creator pays the fixed leg."
+                    "description": "Contract creator pays the fixed leg.\r"
                 },
                 {
                     "option": "6",
                     "identifier": "buyer",
                     "name": "Buyer",
                     "acronym": "BUY",
-                    "description": "Contract creator holds the right to buy the underlying / exercise the option. "
+                    "description": "Contract creator holds the right to buy the underlying / exercise the option. \r"
                 },
                 {
                     "option": "7",
                     "identifier": "seller",
                     "name": "Seller",
                     "acronym": "SEL",
-                    "description": "Contract creator holds the obligation to sell the underlying / deliver the option. "
+                    "description": "Contract creator holds the obligation to sell the underlying / deliver the option. \r"
                 },
                 {
                     "option": "8",
                     "identifier": "collateralPosition",
                     "name": "Collateral Position",
                     "acronym": "COL",
-                    "description": "Contract represents a collateral to an underlying instrument"
+                    "description": "Contract represents a collateral to an underlying instrument\r"
                 },
                 {
                     "option": "9",
                     "identifier": "closeOutNetting",
                     "name": "Close out Netting",
                     "acronym": "CNO",
-                    "description": "Contract creator and counterparty agree on netting payment obligations of underlying instruments in case of default. "
+                    "description": "Contract creator and counterparty agree on netting payment obligations of underlying instruments in case of default. \r"
                 },
                 {
                     "option": "10",
                     "identifier": "underlying",
                     "name": "Underlying",
                     "acronym": "UDL",
-                    "description": "Contract represents the underlying to a composed contract. Role of the underlying is derived from the parent. "
+                    "description": "Contract represents the underlying to a composed contract. Role of the underlying is derived from the parent. \r"
                 },
                 {
                     "option": "11",
                     "identifier": "underlyingPlus",
                     "name": "Underlying Plus",
                     "acronym": "UDLP",
-                    "description": "Contract represents the underlying to a composed contract. Role of the underlying is derived from the parent. When considered a standalone contract the underlying’s creator takes the asset side. "
+                    "description": "Contract represents the underlying to a composed contract. Role of the underlying is derived from the parent. When considered a standalone contract the underlying’s creator takes the asset side. \r"
                 },
                 {
                     "option": "12",
@@ -469,7 +614,7 @@
                 }
             ],
             "default": "",
-            "description": "CNTRL defines which position the CRID ( the creator of the contract record ) takes in a contract. For example, whether the contract is an asset or liability, a long or short position for the CRID. \nMost contracts are simple on or off balance sheet positions which are assets, liabilities. Such contracts can also play a secondary role as a collateral. \nThe attribute is highly significant since it determines the direction of all cash flows. The exact meaning is given with each CT in the ACTUS High Level Specification document."
+            "description": "CNTRL defines which position the CRID ( the creator of the contract record ) takes in a contract. For example, whether the contract is an asset or liability, a long or short position for the CRID. \r\nMost contracts are simple on or off balance sheet positions which are assets, liabilities. Such contracts can also play a secondary role as a collateral. \r\nThe attribute is highly significant since it determines the direction of all cash flows. The exact meaning is given with each CT in the ACTUS High Level Specification document."
         },
         "contractStructure": {
             "identifier": "contractStructure",
@@ -493,119 +638,119 @@
                     "identifier": "principalAtMaturity",
                     "name": "Principal at Maturity",
                     "acronym": "PAM",
-                    "description": "Lending agreements with full amortization at maturity."
+                    "description": "Lending agreements with full amortization at maturity.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "annuity",
                     "name": "Annuity",
                     "acronym": "ANN",
-                    "description": "Lending agreements with fixed periodic payments consisting of an interest and principal portion. The periodic payments are adjusted for variable rate instruments such that maturity remains fixed."
+                    "description": "Lending agreements with fixed periodic payments consisting of an interest and principal portion. The periodic payments are adjusted for variable rate instruments such that maturity remains fixed.\r"
                 },
                 {
                     "option": "2",
                     "identifier": "negativeAmortizer",
                     "name": "Negative Amortizer",
                     "acronym": "NAM",
-                    "description": "Lending agreements with fixed periodic payments consisting of an interest and principal portion. Maturity changes for variable rate instruments. "
+                    "description": "Lending agreements with fixed periodic payments consisting of an interest and principal portion. Maturity changes for variable rate instruments. \r"
                 },
                 {
                     "option": "3",
                     "identifier": "linearAmortizer",
                     "name": "Linear Amortizer",
                     "acronym": "LAM",
-                    "description": "Lending agreements with fixed principal repayment amounts and variable interest payments."
+                    "description": "Lending agreements with fixed principal repayment amounts and variable interest payments.\r"
                 },
                 {
                     "option": "4",
                     "identifier": "exoticLinearAmortizer",
                     "name": "Exotic Linear Amortizer",
                     "acronym": "LAX",
-                    "description": "Lending agreements with exotic repayment schedules."
+                    "description": "Lending agreements with exotic repayment schedules.\r"
                 },
                 {
                     "option": "5",
                     "identifier": "callMoney",
                     "name": "Call Money",
                     "acronym": "CLM",
-                    "description": "Lonas that are rolled over as long as they are not called. Once called it has to be paid back after the stipulated notice period."
+                    "description": "Lonas that are rolled over as long as they are not called. Once called it has to be paid back after the stipulated notice period.\r"
                 },
                 {
                     "option": "6",
                     "identifier": "undefinedMaturityProfile",
                     "name": "Undefined Maturity Profile",
                     "acronym": "UMP",
-                    "description": "Interest paying cash accounts (current / savings / etc.). "
+                    "description": "Interest paying cash accounts (current / savings / etc.). \r"
                 },
                 {
                     "option": "7",
                     "identifier": "cash",
                     "name": "Cash",
                     "acronym": "CSH",
-                    "description": "Represents cash holdings. "
+                    "description": "Represents cash holdings. \r"
                 },
                 {
                     "option": "8",
                     "identifier": "stock",
                     "name": "Stock",
                     "acronym": "STK",
-                    "description": "Represents stocks/shares/equity. "
+                    "description": "Represents stocks/shares/equity. \r"
                 },
                 {
                     "option": "9",
                     "identifier": "commodity",
                     "name": "Commodity",
                     "acronym": "COM",
-                    "description": "Represents commodities. "
+                    "description": "Represents commodities. \r"
                 },
                 {
                     "option": "10",
                     "identifier": "swap",
                     "name": "Swap",
                     "acronym": "SWAPS",
-                    "description": "An agreement of swapping two legs such as fixed against variable or currency 1 against currency 2 etc. "
+                    "description": "An agreement of swapping two legs such as fixed against variable or currency 1 against currency 2 etc. \r"
                 },
                 {
                     "option": "11",
                     "identifier": "plainVanillaSwap",
                     "name": "Plain Vanilla Swap",
                     "acronym": "SWPPV",
-                    "description": "Plain vanilla interest rate swaps. "
+                    "description": "Plain vanilla interest rate swaps. \r"
                 },
                 {
                     "option": "12",
                     "identifier": "foreignExchangeOutright",
                     "name": "Foreign Exchange Outright",
                     "acronym": "FXOUT",
-                    "description": "An agreement of swapping two cash flows in different currencies at a future point in time. "
+                    "description": "An agreement of swapping two cash flows in different currencies at a future point in time. \r"
                 },
                 {
                     "option": "13",
                     "identifier": "capFloor",
                     "name": "Cap and Floor",
                     "acronym": "CAPFL",
-                    "description": "An agreement of paying the differential (cap or floor) of a reference rate versus a fixed rate. "
+                    "description": "An agreement of paying the differential (cap or floor) of a reference rate versus a fixed rate. \r"
                 },
                 {
                     "option": "14",
                     "identifier": "future",
                     "name": "Future",
                     "acronym": "FUTUR",
-                    "description": "An agreement of exchanging an underlying instrument against a fixed price in the future. "
+                    "description": "An agreement of exchanging an underlying instrument against a fixed price in the future. \r"
                 },
                 {
                     "option": "15",
                     "identifier": "option",
                     "name": "Option",
                     "acronym": "OPTNS",
-                    "description": "Different types of options on buying an underlying instrument at a fixed price in the future. "
+                    "description": "Different types of options on buying an underlying instrument at a fixed price in the future. \r"
                 },
                 {
                     "option": "16",
                     "identifier": "creditEnhancementGuarantee",
                     "name": "Credit Enhancement Guarantee",
                     "acronym": "CEG",
-                    "description": "A guarantee / letter of credit by a third party on the scheduled payment obligations of an underlying instrument "
+                    "description": "A guarantee / letter of credit by a third party on the scheduled payment obligations of an underlying instrument \r"
                 },
                 {
                     "option": "17",
@@ -626,7 +771,7 @@
             "type": "Varchar",
             "allowedValues": [],
             "default": "",
-            "description": "CPID identifies the counterparty to the CRID in this contract.\nCPID is ideally the official LEI which can be a firm, a government body, even a single person etc. However, this can also refer to a annonymous group in which case this information is not to be disclosed. CPID may also refer to a group taking a joint risk or more generally, CPID is the main counterparty, against which the contract has been settled."
+            "description": "CPID identifies the counterparty to the CRID in this contract.\r\nCPID is ideally the official LEI which can be a firm, a government body, even a single person etc. However, this can also refer to a annonymous group in which case this information is not to be disclosed. CPID may also refer to a group taking a joint risk or more generally, CPID is the main counterparty, against which the contract has been settled."
         },
         "coverageOfCreditEnhancement": {
             "identifier": "coverageOfCreditEnhancement",
@@ -646,13 +791,9 @@
             "name": "Creator Identifier",
             "acronym": "CRID",
             "type": "Varchar",
-            "allowedValues": [
-                [
-
-                ]
-            ],
+            "allowedValues": [],
             "default": "",
-            "description": "This identifies the legal entity creating the contract record. The counterparty of the contract is tracked in CPID.\nCRID is ideally the official LEI which can be a firm, a government body, even a single person etc. However, this can also refer to a annonymous group in which case this information is not to be disclosed. CRID may also refer to a group taking a joint risk."
+            "description": "This identifies the legal entity creating the contract record. The counterparty of the contract is tracked in CPID.\r\nCRID is ideally the official LEI which can be a firm, a government body, even a single person etc. However, this can also refer to a annonymous group in which case this information is not to be disclosed. CRID may also refer to a group taking a joint risk."
         },
         "creditEventTypeCovered": {
             "identifier": "creditEventTypeCovered",
@@ -666,14 +807,14 @@
                     "identifier": "delayed",
                     "name": "Delayed",
                     "acronym": "DL",
-                    "description": "Delay of the underlying represents a credit event."
+                    "description": "Delay of the underlying represents a credit event.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "delinquent",
                     "name": "Delinquent",
                     "acronym": "DQ",
-                    "description": "Delinquency of the underlying represents a credit event."
+                    "description": "Delinquency of the underlying represents a credit event.\r"
                 },
                 {
                     "option": "2",
@@ -696,7 +837,7 @@
                 "Positive"
             ],
             "default": "",
-            "description": "If defined, gives the total amount that can be drawn from a credit line. The remaining amount that can still be drawn is given by CLA-NT.\nFor ANN, NAM, the credit line can only be drawn prior to PRANX-1PRCL.\nFor CRL, the remaining amount that can still be drawn is given by CLA-Sum(NT of attached contracts)."
+            "description": "If defined, gives the total amount that can be drawn from a credit line. The remaining amount that can still be drawn is given by CLA-NT.\r\nFor ANN, NAM, the credit line can only be drawn prior to PRANX-1PRCL.\r\nFor CRL, the remaining amount that can still be drawn is given by CLA-Sum(NT of attached contracts)."
         },
         "currency": {
             "identifier": "currency",
@@ -720,7 +861,7 @@
                 "ISO4217"
             ],
             "default": "",
-            "description": "The currency of the cash flows of the second leg (if not defined, main currency applies)\n"
+            "description": "The currency of the cash flows of the second leg (if not defined, main currency applies)\r\n"
         },
         "cycleAnchorDateOfDividend": {
             "identifier": "cycleAnchorDateOfDividend",
@@ -792,7 +933,7 @@
                 "ISO8601 Datetime"
             ],
             "default": "",
-            "description": "Used for Basic Maturities (such as PAM, RGM, ANN, NGM and their Step-up versions) and American and Bermudan style options. \n- Basic Maturities: Within the group of these Maturities, it indicates the possibility of prepayments. Prepayment features are controlled by Behavior. \n- American and Bermudan style Options: Begin of exercise period."
+            "description": "Used for Basic Maturities (such as PAM, RGM, ANN, NGM and their Step-up versions) and American and Bermudan style options. \r\n- Basic Maturities: Within the group of these Maturities, it indicates the possibility of prepayments. Prepayment features are controlled by Behavior. \r\n- American and Bermudan style Options: Begin of exercise period."
         },
         "cycleAnchorDateOfPrincipalRedemption": {
             "identifier": "cycleAnchorDateOfPrincipalRedemption",
@@ -864,7 +1005,7 @@
                 "[ISO8601 Duration]L[s={0,1}]"
             ],
             "default": "",
-            "description": "Concerning the format see PRCL. \nDefines the subsequent adjustment points to NT of the interest payment calculation base."
+            "description": "Concerning the format see PRCL. \r\nDefines the subsequent adjustment points to NT of the interest payment calculation base."
         },
         "cycleOfInterestPayment": {
             "identifier": "cycleOfInterestPayment",
@@ -876,7 +1017,7 @@
                 "[ISO8601 Duration]L[s={0,1}]"
             ],
             "default": "",
-            "description": "Cycle according to which the interest payment date schedule will be calculated.\nIn case IPCL is not set, then there will only be an interest payment event at MD (and possibly at IPANX if set).\nThe interval will be adjusted yet by EOMC and BDC."
+            "description": "Cycle according to which the interest payment date schedule will be calculated.\r\nIn case IPCL is not set, then there will only be an interest payment event at MD (and possibly at IPANX if set).\r\nThe interval will be adjusted yet by EOMC and BDC."
         },
         "cycleOfMargining": {
             "identifier": "cycleOfMargining",
@@ -900,7 +1041,7 @@
                 "[ISO8601 Duration]L[s={0,1}]"
             ],
             "default": "",
-            "description": "Cycle according to which the option exercise date schedule will be calculated.\nOPCL can be NULL for American Options or Prepayment Optionality in which case the optionality period starts at OPANX and ends at OPXED (for american options) or MD (in case of prepayment optionality).\nThe interval will be adjusted yet by EOMC and BDC."
+            "description": "Cycle according to which the option exercise date schedule will be calculated.\r\nOPCL can be NULL for American Options or Prepayment Optionality in which case the optionality period starts at OPANX and ends at OPXED (for american options) or MD (in case of prepayment optionality).\r\nThe interval will be adjusted yet by EOMC and BDC."
         },
         "cycleOfPrincipalRedemption": {
             "identifier": "cycleOfPrincipalRedemption",
@@ -912,7 +1053,7 @@
                 "[ISO8601 Duration]L[s={0,1}]"
             ],
             "default": "",
-            "description": "Cycle according to which the interest payment date schedule will be calculated.\nIn case PRCL is not set, then there will only be one principal payment event at MD (and possibly at PRANX if set).\nThe interval will be adjusted yet by EOMC and BDC."
+            "description": "Cycle according to which the interest payment date schedule will be calculated.\r\nIn case PRCL is not set, then there will only be one principal payment event at MD (and possibly at PRANX if set).\r\nThe interval will be adjusted yet by EOMC and BDC."
         },
         "cycleOfRateReset": {
             "identifier": "cycleOfRateReset",
@@ -924,7 +1065,7 @@
                 "[ISO8601 Duration]L[s={0,1}]"
             ],
             "default": "",
-            "description": "Cycle according to which the rate reset date schedule will be calculated.\nIn case RRCL is not set, then there will only be one rate reset event at RRANX given RRANX if set.\nThe interval will be adjusted yet by EOMC and BDC."
+            "description": "Cycle according to which the rate reset date schedule will be calculated.\r\nIn case RRCL is not set, then there will only be one rate reset event at RRANX given RRANX if set.\r\nThe interval will be adjusted yet by EOMC and BDC."
         },
         "cycleOfScalingIndex": {
             "identifier": "cycleOfScalingIndex",
@@ -936,7 +1077,7 @@
                 "[ISO8601 Duration]L[s={0,1}]"
             ],
             "default": "",
-            "description": "Cycle according to which the scaling date schedule will be calculated.\nIn case SCCL is not set, then there will only be one scaling event at SCANX given SCANX is set.\nThe interval will be adjusted yet by EOMC and BDC."
+            "description": "Cycle according to which the scaling date schedule will be calculated.\r\nIn case SCCL is not set, then there will only be one scaling event at SCANX given SCANX is set.\r\nThe interval will be adjusted yet by EOMC and BDC."
         },
         "cyclePointOfInterestPayment": {
             "identifier": "cyclePointOfInterestPayment",
@@ -950,14 +1091,14 @@
                     "identifier": "beginning",
                     "name": "Beginning",
                     "acronym": "B",
-                    "description": "Interest is paid upfront of the interest period."
+                    "description": "Interest is paid upfront of the interest period.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "end",
                     "name": "End",
                     "acronym": "E",
-                    "description": "Interest is paid at the end of the interest period."
+                    "description": "Interest is paid at the end of the interest period.\r"
                 }
             ],
             "default": "E",
@@ -975,14 +1116,14 @@
                     "identifier": "beginning",
                     "name": "Beginning",
                     "acronym": "B",
-                    "description": "The new rate is applied at the beginning of the reset period."
+                    "description": "The new rate is applied at the beginning of the reset period.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "end",
                     "name": "End",
                     "acronym": "E",
-                    "description": "The new rate is applied at the end of the reset period."
+                    "description": "The new rate is applied at the end of the reset period.\r"
                 }
             ],
             "default": "B",
@@ -1000,35 +1141,35 @@
                     "identifier": "actualActual",
                     "name": "Actual/Actual",
                     "acronym": "AA",
-                    "description": "Year fractions accrue on the basis of the actual number of days per month and per year in the respective period."
+                    "description": "Year fractions accrue on the basis of the actual number of days per month and per year in the respective period.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "actualThreeSixty",
                     "name": "Actual Three Sixty",
                     "acronym": "A360",
-                    "description": "Year fractions accrue on the basis of the actual number of days per month and 360 days per year in the respective period."
+                    "description": "Year fractions accrue on the basis of the actual number of days per month and 360 days per year in the respective period.\r"
                 },
                 {
                     "option": "2",
                     "identifier": "actualThreeSixtyFive",
                     "name": "Actual Three Sixty Five",
                     "acronym": "A365",
-                    "description": "Year fractions accrue on the basis of the actual number of days per month and 365 days per year in the respective period."
+                    "description": "Year fractions accrue on the basis of the actual number of days per month and 365 days per year in the respective period.\r"
                 },
                 {
                     "option": "3",
                     "identifier": "thirtyEThreeSixtyISDA",
                     "name": "Thirty E Three Sixty ISDA",
                     "acronym": "30E360ISDA",
-                    "description": "Year fractions accrue on the basis of 30 days per month and 360 days per year in the respective period (ISDA method)."
+                    "description": "Year fractions accrue on the basis of 30 days per month and 360 days per year in the respective period (ISDA method).\r"
                 },
                 {
                     "option": "4",
                     "identifier": "thirtyEThreeSixty",
                     "name": "Thirty E Three Sixty",
                     "acronym": "30E360",
-                    "description": "Year fractions accrue on the basis of 30 days per month and 360 days per year in the respective period."
+                    "description": "Year fractions accrue on the basis of 30 days per month and 360 days per year in the respective period.\r"
                 },
                 {
                     "option": "5",
@@ -1077,18 +1218,18 @@
                     "identifier": "cashSettlement",
                     "name": "Cash Settlement",
                     "acronym": "S",
-                    "description": "The market value of the underlying is settled."
+                    "description": "The market value of the underlying is settled.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "physicalSettlement",
                     "name": "Physical Settlement",
                     "acronym": "D",
-                    "description": "The underlying is delivered physically."
+                    "description": "The underlying is delivered physically.\r"
                 }
             ],
             "default": "D",
-            "description": "Indicates whether the contract is settled in cash or physical delivery.\nIn case of physical delivery, the underlying contract and associated (future) cash flows are effectively exchanged. In case of cash settlement, the current market value of the underlying contract determines the cash flow exchanged."
+            "description": "Indicates whether the contract is settled in cash or physical delivery.\r\nIn case of physical delivery, the underlying contract and associated (future) cash flows are effectively exchanged. In case of cash settlement, the current market value of the underlying contract determines the cash flow exchanged."
         },
         "endOfMonthConvention": {
             "identifier": "endOfMonthConvention",
@@ -1102,7 +1243,7 @@
                     "identifier": "sameDay",
                     "name": "Same Day",
                     "acronym": "SD",
-                    "description": "Schedule times always fall on the schedule anchor date day of the month."
+                    "description": "Schedule times always fall on the schedule anchor date day of the month.\r"
                 },
                 {
                     "option": "1",
@@ -1113,7 +1254,7 @@
                 }
             ],
             "default": "sd",
-            "description": "When computing schedules a special problem arises if an anchor date is at the end of a month and a cycle of monthly or quarterly is applied (yearly in the case of leap years only). How do we have to interpret an anchor date April 30 plus 1M cycles? In case where EOM is selected, it will jump to the 31st of May, then June 30, July 31 and so on. If SM is selected, it will jump to the 30st always with of course an exception in February. \nThis logic applies for all months having 30 or less days and an anchor date at the last day. Month with 31 days will at any rate jump to the last of the month if anchor date is on the last day."
+            "description": "When computing schedules a special problem arises if an anchor date is at the end of a month and a cycle of monthly or quarterly is applied (yearly in the case of leap years only). How do we have to interpret an anchor date April 30 plus 1M cycles? In case where EOM is selected, it will jump to the 31st of May, then June 30, July 31 and so on. If SM is selected, it will jump to the 30st always with of course an exception in February. \r\nThis logic applies for all months having 30 or less days and an anchor date at the last day. Month with 31 days will at any rate jump to the last of the month if anchor date is on the last day."
         },
         "exDividendDate": {
             "identifier": "exDividendDate",
@@ -1171,7 +1312,7 @@
                     "identifier": "absoluteValue",
                     "name": "Absolute Value",
                     "acronym": "A",
-                    "description": "The fee rate represents an absolute value."
+                    "description": "The fee rate represents an absolute value.\r"
                 },
                 {
                     "option": "1",
@@ -1240,14 +1381,14 @@
                     "identifier": "nominalValue",
                     "name": "Nominal Value",
                     "acronym": "NO",
-                    "description": "Nominal value of the exposure is covered."
+                    "description": "Nominal value of the exposure is covered.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "nominalValuePlusInterest",
                     "name": "Nominal Value plus Interest",
                     "acronym": "NI",
-                    "description": "Nominal value of the exposure plus interest accrued is covered."
+                    "description": "Nominal value of the exposure plus interest accrued is covered.\r"
                 },
                 {
                     "option": "2",
@@ -1258,7 +1399,7 @@
                 }
             ],
             "default": "",
-            "description": "Defines which value of the exposure is covered:\n- NO: Nominal Value\n- NI: Nominal plus Interest\n- MV: Market Value"
+            "description": "Defines which value of the exposure is covered:\r\n- NO: Nominal Value\r\n- NI: Nominal plus Interest\r\n- MV: Market Value"
         },
         "initialExchangeDate": {
             "identifier": "initialExchangeDate",
@@ -1282,7 +1423,7 @@
                 "Positive"
             ],
             "default": "0",
-            "description": "Margin to cover losses which may be incurred as a result of market fluctuations. \nUpon contract closing or maturity, the MRIM is reimbursed."
+            "description": "Margin to cover losses which may be incurred as a result of market fluctuations. \r\nUpon contract closing or maturity, the MRIM is reimbursed."
         },
         "interestCalculationBase": {
             "identifier": "interestCalculationBase",
@@ -1296,14 +1437,14 @@
                     "identifier": "notioalOutstanding",
                     "name": "Notional Outstanding",
                     "acronym": "NT",
-                    "description": "Interest accrues on the basis of the notional outstanding."
+                    "description": "Interest accrues on the basis of the notional outstanding.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "notionalAtInitialExchange",
                     "name": "Notional at Initial Exchange",
                     "acronym": "NTIED",
-                    "description": "Interest accrues on the basis of the notional value at initial exchange."
+                    "description": "Interest accrues on the basis of the notional value at initial exchange.\r"
                 },
                 {
                     "option": "2",
@@ -1314,7 +1455,7 @@
                 }
             ],
             "default": "NT",
-            "description": "This is important for amortizing instruments. The basis of interest calculation is normally the notional outstanding amount as per SD. This is considered the fair basis and in many countries the only legal basis. If NULL or NTSD is selected, this is the case. \nAlternative bases (normally in order to favor the lending institution) are found. In the extreme case the original balance (PCDD=NT+PDCDD) never gets adjusted. In this case PCDD must be chosen. \nAn intermediate case exist wherre balances do get adjusted, however with lags. In this case NTL mut be selected and anchor dates and cycles must be set."
+            "description": "This is important for amortizing instruments. The basis of interest calculation is normally the notional outstanding amount as per SD. This is considered the fair basis and in many countries the only legal basis. If NULL or NTSD is selected, this is the case. \r\nAlternative bases (normally in order to favor the lending institution) are found. In the extreme case the original balance (PCDD=NT+PDCDD) never gets adjusted. In this case PCDD must be chosen. \r\nAn intermediate case exist wherre balances do get adjusted, however with lags. In this case NTL mut be selected and anchor dates and cycles must be set."
         },
         "interestCalculationBaseAmount": {
             "identifier": "interestCalculationBaseAmount",
@@ -1346,7 +1487,7 @@
             "type": "Real",
             "allowedValues": [],
             "default": "",
-            "description": "For variable rate basic CTs this represents a cap on the interest rate that applies during the entire lifetime of the contract.\nFor CAPFL CTs this represents the cap strike rate."
+            "description": "For variable rate basic CTs this represents a cap on the interest rate that applies during the entire lifetime of the contract.\r\nFor CAPFL CTs this represents the cap strike rate."
         },
         "lifeFloor": {
             "identifier": "lifeFloor",
@@ -1356,7 +1497,7 @@
             "type": "Real",
             "allowedValues": [],
             "default": "",
-            "description": "For variable rate basic CTs this represents a floor on the interest rate that applies during the entire lifetime of the contract.\nFor CAPFL CTs this represents the floor strike rate."
+            "description": "For variable rate basic CTs this represents a floor on the interest rate that applies during the entire lifetime of the contract.\r\nFor CAPFL CTs this represents the floor strike rate."
         },
         "maintenanceMarginLowerBound": {
             "identifier": "maintenanceMarginLowerBound",
@@ -1390,7 +1531,7 @@
             "type": "Varchar",
             "allowedValues": [],
             "default": "",
-            "description": "Is pointing to the market value at SD (MarketObject).\nUnique codes for market objects must be used."
+            "description": "Is pointing to the market value at SD (MarketObject).\r\nUnique codes for market objects must be used."
         },
         "marketObjectCodeOfRateReset": {
             "identifier": "marketObjectCodeOfRateReset",
@@ -1400,7 +1541,7 @@
             "type": "Varchar",
             "allowedValues": [],
             "default": "",
-            "description": "Is pointing to the interest rate driver (MarketObject) used for rate reset uniquely.\nUnique codes for market objects must be used."
+            "description": "Is pointing to the interest rate driver (MarketObject) used for rate reset uniquely.\r\nUnique codes for market objects must be used."
         },
         "marketObjectCodeOfScalingIndex": {
             "identifier": "marketObjectCodeOfScalingIndex",
@@ -1431,7 +1572,7 @@
                 "ISO8601 Datetime"
             ],
             "default": "",
-            "description": "Marks the contractual end of the lifecycle of a CT. Generally, date of the last cash flows. \nThis includes normally a principal and an interest payment. Some Maturity CTs as perpetuals (PBN) do not have such a date. For variable amortizing contracts of the ANN CT, this date might be less than the scheduled end of the contract (which is deduced from the periodic payment amount \nPRNXT). In this case it balloons."
+            "description": "Marks the contractual end of the lifecycle of a CT. Generally, date of the last cash flows. \r\nThis includes normally a principal and an interest payment. Some Maturity CTs as perpetuals (PBN) do not have such a date. For variable amortizing contracts of the ANN CT, this date might be less than the scheduled end of the contract (which is deduced from the periodic payment amount \r\nPRNXT). In this case it balloons."
         },
         "maximumPenaltyFreeDisbursement": {
             "identifier": "maximumPenaltyFreeDisbursement",
@@ -1487,7 +1628,7 @@
             "type": "Real",
             "allowedValues": [],
             "default": "",
-            "description": "The nominal interest rate which will be used to calculate accruals and the next interest payment at the next IP date. NT multiplied with IPNR is the base for the interest payment calculation. The relevant time period is a function of IPDC. \nIf the contract is variable (RRANX set) this field is periodically updated per SD. \nIn the case of plan vanilla interest rate swaps (IRSPV) this defines the rate of fixed leg."
+            "description": "The nominal interest rate which will be used to calculate accruals and the next interest payment at the next IP date. NT multiplied with IPNR is the base for the interest payment calculation. The relevant time period is a function of IPDC. \r\nIf the contract is variable (RRANX set) this field is periodically updated per SD. \r\nIn the case of plan vanilla interest rate swaps (IRSPV) this defines the rate of fixed leg."
         },
         "nominalInterestRate2": {
             "identifier": "nominalInterestRate2",
@@ -1497,7 +1638,7 @@
             "type": "Real",
             "allowedValues": [],
             "default": "",
-            "description": "The nominal interest rate which will be used to calculate accruals and the next interest payment at the next IP date on the second leg (the one not mentioned in CNTRL) of a plain vanilla swap. The relevant time period is a function of IPDC. \nIt is periodically updated per SD."
+            "description": "The nominal interest rate which will be used to calculate accruals and the next interest payment at the next IP date on the second leg (the one not mentioned in CNTRL) of a plain vanilla swap. The relevant time period is a function of IPDC. \r\nIt is periodically updated per SD."
         },
         "nonPerformingDate": {
             "identifier": "nonPerformingDate",
@@ -1521,7 +1662,7 @@
                 "Positive"
             ],
             "default": "",
-            "description": "Current nominal value of the contract. For debt instrument this is the current remaining notional outstanding. \nNT is generally the basis on which interest payments are calculated. If IPCBS is set, IPCBS may introduce a different basis for interest payment calculation."
+            "description": "Current nominal value of the contract. For debt instrument this is the current remaining notional outstanding. \r\nNT is generally the basis on which interest payments are calculated. If IPCBS is set, IPCBS may introduce a different basis for interest payment calculation."
         },
         "notionalPrincipal2": {
             "identifier": "notionalPrincipal2",
@@ -1569,14 +1710,14 @@
                     "identifier": "european",
                     "name": "European",
                     "acronym": "E",
-                    "description": "European-type exercise."
+                    "description": "European-type exercise.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "bermudan",
                     "name": "Bermudan",
                     "acronym": "B",
-                    "description": "Bermudan-type exercise."
+                    "description": "Bermudan-type exercise.\r"
                 },
                 {
                     "option": "2",
@@ -1599,13 +1740,13 @@
                 "Positive"
             ],
             "default": "",
-            "description": "Strike price of the option. Whether it is a call/put is determined by the attribute OPTP, i.e a call or a put (or a combination of call/put).\nThis attribute is used for price related options such as options on bonds, stocks or FX. Interest rate related options (caps/floos) are handled within th RatReset group."
+            "description": "Strike price of the option. Whether it is a call/put is determined by the attribute OPTP, i.e a call or a put (or a combination of call/put).\r\nThis attribute is used for price related options such as options on bonds, stocks or FX. Interest rate related options (caps/floos) are handled within th RatReset group."
         },
         "optionStrike2": {
             "identifier": "optionStrike2",
             "group": "Optionality",
             "name": "Option Strike 2",
-            "acronym": "OPS2",
+            "acronym": "sss",
             "type": "Real",
             "allowedValues": [
                 "Positive"
@@ -1625,14 +1766,14 @@
                     "identifier": "call",
                     "name": "Call",
                     "acronym": "C",
-                    "description": "Call option."
+                    "description": "Call option.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "put",
                     "name": "Put",
                     "acronym": "P",
-                    "description": "Put option."
+                    "description": "Put option.\r"
                 },
                 {
                     "option": "2",
@@ -1669,21 +1810,21 @@
                     "identifier": "noPenalty",
                     "name": "No Penalty",
                     "acronym": "N",
-                    "description": "No penalty applies."
+                    "description": "No penalty applies.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "fixedPenalty",
                     "name": "Fixed Penalty",
                     "acronym": "A",
-                    "description": "A fixed amount applies as penalty."
+                    "description": "A fixed amount applies as penalty.\r"
                 },
                 {
                     "option": "2",
                     "identifier": "relativePenalty",
                     "name": "Relative Penalty",
                     "acronym": "R",
-                    "description": "A penalty relative to the notional outstanding applies."
+                    "description": "A penalty relative to the notional outstanding applies.\r"
                 },
                 {
                     "option": "3",
@@ -1728,7 +1869,7 @@
             "type": "Real",
             "allowedValues": [],
             "default": "0",
-            "description": "Total original premium or discount that has been set at CDD and will be added to the (notional) cash flow at IED (cash flow at IED = NT+PDIED, w.r.t. an RPA CT). \nNegative value for discount and positive for premium.\nNote, similar to interest the PDIED portion is part of P&L."
+            "description": "Total original premium or discount that has been set at CDD and will be added to the (notional) cash flow at IED (cash flow at IED = NT+PDIED, w.r.t. an RPA CT). \r\nNegative value for discount and positive for premium.\r\nNote, similar to interest the PDIED portion is part of P&L."
         },
         "prepaymentEffect": {
             "identifier": "prepaymentEffect",
@@ -1742,14 +1883,14 @@
                     "identifier": "noPrepayment",
                     "name": "No Prepayment",
                     "acronym": "N",
-                    "description": "Prepayment is not allowed under the agreement."
+                    "description": "Prepayment is not allowed under the agreement.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "prepaymentReducesRedemptionAmount",
                     "name": "Prepayment Reduces Redemption Amount",
                     "acronym": "A",
-                    "description": "Prepayment is allowed and reduces the redemption amount for the remaining period up to maturity."
+                    "description": "Prepayment is allowed and reduces the redemption amount for the remaining period up to maturity.\r"
                 },
                 {
                     "option": "2",
@@ -1782,7 +1923,7 @@
             "type": "Real",
             "allowedValues": [],
             "default": "",
-            "description": "Purchase price exchanged at PRD.  \nPPRD represents a clean price (includes premium/discount but not IPAC)."
+            "description": "Purchase price exchanged at PRD.  \r\nPPRD represents a clean price (includes premium/discount but not IPAC)."
         },
         "priceAtTerminationDate": {
             "identifier": "priceAtTerminationDate",
@@ -1804,7 +1945,7 @@
                 "ISO8601 Datetime"
             ],
             "default": "",
-            "description": "If a contract is bought after initiation (for example a bond on the secondary market) this date has to be set. It refers to the date at which the payment (of PPRD) and transfer of the security happens. In other words, PRD - if set - takes the role otherwise IED has from a cash flow perspective. \nNote, CPID of the CT is not the counterparty of the transaction!"
+            "description": "If a contract is bought after initiation (for example a bond on the secondary market) this date has to be set. It refers to the date at which the payment (of PPRD) and transfer of the security happens. In other words, PRD - if set - takes the role otherwise IED has from a cash flow perspective. \r\nNote, CPID of the CT is not the counterparty of the transaction!"
         },
         "quantity": {
             "identifier": "quantity",
@@ -1816,7 +1957,7 @@
                 "Positive"
             ],
             "default": "1",
-            "description": "This attribute relates either to physical contracts (COM) or underlyings of traded contracts. \nIn case of physical contracts it holds the number of underlying units of the specific good (e.g. number of barrels of oil). \nIn case of well defined traded contracts it holds the number of defined underlying instruments. Example: QT of STK CTs underlying a FUTUR indicates the number of those specific STK CTs which underlie the FUTUR."
+            "description": "This attribute relates either to physical contracts (COM) or underlyings of traded contracts. \r\nIn case of physical contracts it holds the number of underlying units of the specific good (e.g. number of barrels of oil). \r\nIn case of well defined traded contracts it holds the number of defined underlying instruments. Example: QT of STK CTs underlying a FUTUR indicates the number of those specific STK CTs which underlie the FUTUR."
         },
         "rateMultiplier": {
             "identifier": "rateMultiplier",
@@ -1826,7 +1967,7 @@
             "type": "Real",
             "allowedValues": [],
             "default": "1",
-            "description": "Interest rate multiplier. A typical rate resetting rule is LIBOR plus x basis point where x represents the interest rate spread.\nHowever, in some cases like reverse or super floater contracts an additional rate multiplier applies. In this case, the new rate is determined as: IPNR after rate reset = Rate selected from the market object * RRMLT + RRSP."
+            "description": "Interest rate multiplier. A typical rate resetting rule is LIBOR plus x basis point where x represents the interest rate spread.\r\nHowever, in some cases like reverse or super floater contracts an additional rate multiplier applies. In this case, the new rate is determined as: IPNR after rate reset = Rate selected from the market object * RRMLT + RRSP."
         },
         "rateSpread": {
             "identifier": "rateSpread",
@@ -1836,7 +1977,7 @@
             "type": "Real",
             "allowedValues": [],
             "default": "0",
-            "description": "Interest rate spread. A typical rate resetting rule is LIBOR plus x basis point where x represents the interest rate spread.  \nThe following equation can be taken if RRMLT is not set: IPNR after rate reset = Rate selected from the market object  + RRSP."
+            "description": "Interest rate spread. A typical rate resetting rule is LIBOR plus x basis point where x represents the interest rate spread.  \r\nThe following equation can be taken if RRMLT is not set: IPNR after rate reset = Rate selected from the market object  + RRSP."
         },
         "scalingEffect": {
             "identifier": "scalingEffect",
@@ -1850,31 +1991,31 @@
                     "identifier": "noScaling",
                     "name": "No Scaling",
                     "acronym": "000",
-                    "description": "No scaling applies."
+                    "description": "No scaling applies.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "interestIsScaled",
                     "name": "Interest is Scaled",
                     "acronym": "I00",
-                    "description": "Scaling applies only to interest."
+                    "description": "Scaling applies only to interest.\r"
                 },
                 {
                     "option": "2",
                     "identifier": "principalIsScaled",
                     "name": "Principal is Scaled",
                     "acronym": "0N0",
-                    "description": "Scaling applies only to principal."
+                    "description": "Scaling applies only to principal.\r"
                 },
                 {
                     "option": "3",
                     "identifier": "interestAndPrincipalIsScaled",
                     "name": "Interest and Principal is Scaled",
                     "acronym": "IN0",
-                    "description": "Scaling applies to interest and principal."
+                    "description": "Scaling applies to interest and principal.\r"
                 }
             ],
-            "default": "000\n",
+            "default": "000\r\n",
             "description": "Indicates which payments are scaled. I = Interest payments, N = Nominal payments and M = Maximum deferred interest amount. They can be scaled in any combination."
         },
         "scalingIndexAtContractDealDate": {
@@ -1899,7 +2040,7 @@
                     "identifier": "senior",
                     "name": "Senior",
                     "acronym": "S",
-                    "description": "Contract represents senior debt."
+                    "description": "Contract represents senior debt.\r"
                 },
                 {
                     "option": "1",
@@ -1922,7 +2063,7 @@
                 "ISO4217"
             ],
             "default": "",
-            "description": "The currency in which cash flows are settled. This currency can be different from the currency (CUR) in which cash flows or the contract, respectively, is denominated in which case the respective FX-rate applies at settlement time.\nIf no settlement currency is defined the cash flows are settled in the currency in which they are denominated."
+            "description": "The currency in which cash flows are settled. This currency can be different from the currency (CUR) in which cash flows or the contract, respectively, is denominated in which case the respective FX-rate applies at settlement time.\r\nIf no settlement currency is defined the cash flows are settled in the currency in which they are denominated."
         },
         "settlementPeriod": {
             "identifier": "settlementPeriod",
@@ -1934,7 +2075,7 @@
                 "ISO8601 Duration"
             ],
             "default": "P0D",
-            "description": "Defines the period from fixing of a contingent event/obligation (Exercise Date) to settlement of the obligation.\n"
+            "description": "Defines the period from fixing of a contingent event/obligation (Exercise Date) to settlement of the obligation.\r\n"
         },
         "statusDate": {
             "identifier": "statusDate",
@@ -1958,7 +2099,7 @@
                 "ISO8601 Datetime"
             ],
             "default": "",
-            "description": "If a contract is sold before MD (for example a bond on the secondary market) this date has to be set. It refers to the date at which the payment (of PTD) and transfer of the security happens. In other words, TD - if set - takes the role otherwise MD has from a cash flow perspective. \nNote, CPID of the CT is not the counterparty of the transaction!"
+            "description": "If a contract is sold before MD (for example a bond on the secondary market) this date has to be set. It refers to the date at which the payment (of PTD) and transfer of the security happens. In other words, TD - if set - takes the role otherwise MD has from a cash flow perspective. \r\nNote, CPID of the CT is not the counterparty of the transaction!"
         },
         "unit": {
             "identifier": "unit",
@@ -1972,56 +2113,56 @@
                     "identifier": "barrel",
                     "name": "Barrel",
                     "acronym": "BRL",
-                    "description": "Physical unit of the contract is Barrels."
+                    "description": "Physical unit of the contract is Barrels.\r"
                 },
                 {
                     "option": "1",
                     "identifier": "bushel",
                     "name": "Bushel",
                     "acronym": "BSH",
-                    "description": "Physical unit of the contract is Bushel."
+                    "description": "Physical unit of the contract is Bushel.\r"
                 },
                 {
                     "option": "2",
                     "identifier": "gallon",
                     "name": "Gallon",
                     "acronym": "GLN",
-                    "description": "Physical unit of the contract is Gallons."
+                    "description": "Physical unit of the contract is Gallons.\r"
                 },
                 {
                     "option": "3",
                     "identifier": "currencyUnit",
                     "name": "Currency Unit",
                     "acronym": "CUU",
-                    "description": "Physical unit of the contract is Currency Units."
+                    "description": "Physical unit of the contract is Currency Units.\r"
                 },
                 {
                     "option": "4",
                     "identifier": "megaWattHours",
                     "name": "Mega Watt Hours",
                     "acronym": "MWH",
-                    "description": "Physical unit of the contract is Mega Watt Hours."
+                    "description": "Physical unit of the contract is Mega Watt Hours.\r"
                 },
                 {
                     "option": "5",
                     "identifier": "pounds",
                     "name": "Pounds",
                     "acronym": "PND",
-                    "description": "Physical unit of the contract is Pounds."
+                    "description": "Physical unit of the contract is Pounds.\r"
                 },
                 {
                     "option": "6",
                     "identifier": "shortTons",
                     "name": "Short Tons",
                     "acronym": "STN",
-                    "description": "Physical unit of the contract is Short Tons."
+                    "description": "Physical unit of the contract is Short Tons.\r"
                 },
                 {
                     "option": "7",
                     "identifier": "tons",
                     "name": "Tons",
                     "acronym": "TON",
-                    "description": "Physical unit of the contract is Tons."
+                    "description": "Physical unit of the contract is Tons.\r"
                 },
                 {
                     "option": "8",
@@ -2044,7 +2185,7 @@
                 "Positive"
             ],
             "default": "",
-            "description": "MRVM reflects the accrued but not yet paid margin as per SD.  \nOpen traded positions are revalued by the exchange at the end of every trading day using mark-to-market valuation. Often clearing members do not credit or debit their clients daily with MRVM, but rather use a Maintenance Margin. If the balance falls outside MRMML (and MRMMU), then  capital must be added (is refunded) to reach the original margin amount MRIM. We can also say that MVO+MRVM is equal to the reference value as per last margin update."
+            "description": "MRVM reflects the accrued but not yet paid margin as per SD.  \r\nOpen traded positions are revalued by the exchange at the end of every trading day using mark-to-market valuation. Often clearing members do not credit or debit their clients daily with MRVM, but rather use a Maintenance Margin. If the balance falls outside MRMML (and MRMMU), then  capital must be added (is refunded) to reach the original margin amount MRIM. We can also say that MVO+MRVM is equal to the reference value as per last margin update."
         },
         "xDayNotice": {
             "identifier": "xDayNotice",

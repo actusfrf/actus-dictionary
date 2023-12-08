@@ -1,0 +1,91 @@
+{
+   "version": {
+       "Version": "1.4",
+       "Date": "2023-12-08"
+       },
+   "versionHistory": {
+       "Version 1.0": { 
+           "indentifier": "1.0",
+           "date": "2018-11-01",
+           "description": "The First Public release of the ACTUS dictionary",
+           "updateItems": [ ]
+       },
+       "Version 1.1": {
+           "identifier": "1.1",
+           "date": "2019-10-23",
+           "description": "Added Taxonomy, States, Event types and Events to dictionary. Improved descriptions of terms and data formats. Added new terms e.g. contract structure, settlement currency. Fixed inconsistent applicability rules",
+           "updateItems": [ ]
+       },
+       "Version 1.2": {
+           "identifier": "1.2",
+           "date": "2020-06-03",
+           "description": "This release streamlines the general notation for terms , improves the specification of data formats and fixes definitions for Event, State and Contract Structure entities. Detailed list of items below:",
+           "updateItems": [       
+               { "item": "0",
+                 "description": "Added termination date and maturity date as state variables" 
+               },
+               { "item": "1",
+                 "description": "Aligned Execution and exercise terminology"
+               },
+               { "item": "2",
+                 "description": "Aligned fixing days. Settlement period and grace period terminology"
+               },
+               { "item": "3",
+                 "description": "Added Enum options with identifier name and description"
+               },
+               { "item": "4",
+                 "description": "Added underlying contract roles: UDL, UDLP, UDLM" 
+               },
+               { "item": "5",
+                 "description": "Added 'matured' and 'terminated' contract performance values"
+               },
+               { "item": "6",
+                 "description": "Merged Event Types and Event sheets into a single sheet;with types as allowed values for the eventType enum"
+               },
+               { "item": "7",
+                 "description": "Fixed Contract Structure term and added Option and Acronym to contract Structure Role and type"
+               },
+               { "item": "8",
+                 "description": "Updated Period and Cycle times to ISO8601 standard" 
+               }, 
+               { "item": "9",
+                 "description": "Fixed missing options in the contract performance state variable"
+               }, 
+               { "item": "10",  "Fixed various typos"
+                 "description": 
+               } 
+           ]
+       },
+       "Version 1.3": {
+           "identifier": "1.3",
+           "date": "2020-09-07",
+           "description": "Minor fixes",
+           "updateItems": []
+      },
+      "Version 1.4": {
+           "identifier": "1.4"
+           "date": "2023-12-08",
+           "description": "New Boundary Controlled Switch (BCS) contract Type added",
+           "updateItems": [
+               { "item": "0",
+                 "description": "BoundaryControlledSwitch (BCS) contract type added to Taxonomy"
+               },
+               { "item": "1",
+                 "description": "BCS contracts with one boundary defined at this time ( multiple boundary BCS contracts are a possible future extension)"
+               },
+               { "item": "2",
+                 "description": "new terms boundaryValue, boundaryDirection, boundaryEffect, boundaryLegInitiallyActive, boundaryMonitoringAnchorDate, boundaryMonitoringEndDate, boundaryMonitoringCycle, boundaryCrossed added to Terms"
+               },
+               { "item": "3",
+                 "description": "new term group 'Boundary' added to Terms"
+               },
+               { "item": "4",
+                 "description": "new states boundaryLeg1Active, boundaryLeg2Active, boundaryCrossed added to States"
+               },
+               { "item": "5",
+                 "description": "new events boundaryMonitor, boundary added to Events"
+
+               }
+          ]
+    }
+}
