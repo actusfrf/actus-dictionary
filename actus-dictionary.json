@@ -1,7 +1,7 @@
 {
     "version": {
         "Version": "1.4",
-        "Date": "2023-12-01"
+        "Date": "2023-12-08"
     },
     "taxonomy": {
         "annuity": {
@@ -17,7 +17,7 @@
         "boundaryControlledSwitch": {
             "identifier": "boundaryControlledSwitch",
             "name": "Boundary Controlled Switch",
-            "acronym": "BRCSW",
+            "acronym": "BCS",
             "family": "Combined",
             "class": "Asymmetric",
             "description": "A boundary controlled switch is a derivative contract with subcontract legs which can be activated (knocked in) or extinguished (knocked out) when the underlying asset price reaches a specified value.  The underlying asset may be a stock, index, or exchange-traded fund. Boundary controlled switch contracts with a single boundary are currently defined.",
@@ -468,6 +468,16 @@
             "allowedValues": [],
             "default": "",
             "description": "For array-type rate reset schedules, this attribute represents either an interest rate (corresponding to IPNR) or a spread (corresponding to RRSP). Which case applies depends on the attribute ARFIXVAR: if ARFIXVAR=FIX then it represents the new IPNR and if ARFIXVAR=VAR then the applicable RRSP."
+        },
+        "boundaryCrossedFlag": {
+            "identifier": "boundaryCrossedFlag",
+            "group": "Boundary",
+            "name": "Boundary Crossed Flag",
+            "acronym": "BCF",
+            "type": "Boolean",
+            "allowedValues": [],
+            "default": "FALSE",
+            "description": "Initializes the value of Boundary Crossed Flag state variable at statusDate"
         },
         "boundaryDirection": {
             "identifier": "boundaryDirection",
@@ -3363,6 +3373,7 @@
             "name": "Boundary Crossed Flag",
             "acronym": "BCF",
             "description": "TRUE value indicates that a boundary crossing event has already occurred; boundary monitoring is no longer in effect.",
+            "type": "Boolean",
             "allowedValues": []
         },
         "boundaryLeg1ActiveFlag": {

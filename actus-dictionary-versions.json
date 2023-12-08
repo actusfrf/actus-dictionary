@@ -1,7 +1,7 @@
 {
    "version": {
        "Version": "1.4",
-       "Date": "2023-12-01"
+       "Date": "2023-12-08"
        },
    "versionHistory": {
        "Version 1.0": { 
@@ -64,17 +64,17 @@
       },
       "Version 1.4": {
            "identifier": "1.4"
-           "date": "2023-12-01",
-           "description": "New Boundary Controlled Switch (BCRSW) contract Type added",
+           "date": "2023-12-08",
+           "description": "New Boundary Controlled Switch (BCS) contract Type added",
            "updateItems": [
                { "item": "0",
-                 "description": "BoundaryControlledSwitch (BCRSW) contract type added to Taxonomy"
+                 "description": "BoundaryControlledSwitch (BCS) contract type added to Taxonomy"
                },
                { "item": "1",
-                 "description": "BCRSW contracts with one boundary defined at this time ( multiple boundaryBCRSW contracts are a possible future extension)"
+                 "description": "BCS contracts with one boundary defined at this time ( multiple boundary BCS contracts are a possible future extension)"
                },
                { "item": "2",
-                 "description": "new terms boundaryValue, boundaryDirection, boundaryEffect, boundaryLegInitiallyActive, boundaryMonitoringAnchorDate, boundaryMonitoringEndDate, boundaryMonitoringCyle added to Terms"
+                 "description": "new terms boundaryValue, boundaryDirection, boundaryEffect, boundaryLegInitiallyActive, boundaryMonitoringAnchorDate, boundaryMonitoringEndDate, boundaryMonitoringCycle, boundaryCrossed added to Terms"
                },
                { "item": "3",
                  "description": "new term group 'Boundary' added to Terms"
