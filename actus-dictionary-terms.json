@@ -1192,7 +1192,7 @@
                 "ISO8601 Duration"
             ],
             "default": "P0D",
-            "description": "If real payment happens after scheduled payment date plus DLP, then the counterparty is in technical default. This means that the creditor legally has the right to declare default of the debtor."
+            "description": "If real payment happens after scheduled payment date plus DQP,then the counterparty is in technical default. This means that the creditor legally has the right to declare default of the debtor."
         },
         "delinquencyRate": {
             "identifier": "delinquencyRate",
@@ -1746,7 +1746,7 @@
             "identifier": "optionStrike2",
             "group": "Optionality",
             "name": "Option Strike 2",
-            "acronym": "sss",
+            "acronym": "OPS2",
             "type": "Real",
             "allowedValues": [
                 "Positive"
