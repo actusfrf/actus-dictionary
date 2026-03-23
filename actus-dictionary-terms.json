@@ -12,7 +12,7 @@
             "type": "Real",
             "allowedValues": [],
             "default": "",
-            "description": "Accrued interest as per SD. In case of NULL, this value will be recalculated using IPANX, IPCL and IPNR information. Can be used to represent irregular next IP payments."
+            "description": “If accruedInterest(IPAC)  has a specified value possibly 0.0 at statusDate this value will be used.  If this contract term is not specified for appropriate  interest-bearing contract types, ( PAM, ANN, LAM,  etc. ) and  statusDate is after the contract IED, the accruedInterest amount at statusDate will be estimated using the statusDate values for nominalInterestRate, notionalPrincipal and an accrual interval starting at the most recent interestPayment or the IED date if no IP event yet.  This estimate will be correct if there has been no rate or principal change since that estimated accrual period start date.”
         },
         "amortizationDate": {
             "identifier": "amortizationDate",
